@@ -1,0 +1,207 @@
+/*
+	Variable Grid System.
+	Learn more ~ http://www.spry-soft.com/grids/
+	Based on 960 Grid System - http://960.gs/
+
+	Licensed under GPL and MIT.
+*/
+
+/*
+  Forces backgrounds to span full width,
+  even if there is horizontal scrolling.
+  Increase this if your layout is wider.
+
+  Note: IE6 works fine without this fix.
+*/
+
+ 
+/* Containers
+----------------------------------------------------------------------------------------------------*/
+.container_4 {
+	 
+	width: 870px;
+	
+			background:#272727;
+	-moz-border-radius:7px;
+	-webkit-border-radius:7px;
+	border-radius:7px;
+    min-height: 100%;
+
+}
+
+/* Grid >> Global
+----------------------------------------------------------------------------------------------------*/
+
+
+.grid_1,
+.grid_2,
+.grid_3,
+.grid_4 {
+	display:inline;
+	float: left;
+	position: relative;
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+
+
+.push_1, .pull_1,
+.push_2, .pull_2,
+.push_3, .pull_3,
+.push_4, .pull_4 {
+	position:relative;
+}
+
+
+/* Grid >> Children (Alpha ~ First, Omega ~ Last)
+----------------------------------------------------------------------------------------------------*/
+
+.alpha {
+	margin-left: 0;
+}
+
+.omega {
+	margin-right: 0;
+}
+
+/* Grid >> 4 Columns
+----------------------------------------------------------------------------------------------------*/
+
+
+.container_4 .grid_1 {
+	width:200px;
+
+}
+
+.container_4 .grid_2 {
+	width:400px;
+}
+
+.container_4 .grid_3 {
+	width:670px;
+	 
+	background:url(../images/bg.png) repeat;
+	-moz-border-radius:0px 5px 5px 0px;
+	-webkit-border-radius:0px 5px 5px 0px;
+	border-radius:0px 5px 5px 0px;
+}
+
+.container_4 .grid_4 {
+	width:800px;
+}
+
+
+
+
+/* Prefix Extra Space >> 4 Columns
+----------------------------------------------------------------------------------------------------*/
+
+
+.container_4 .prefix_1 {
+	padding-left:200px;
+}
+
+.container_4 .prefix_2 {
+	padding-left:400px;
+}
+
+.container_4 .prefix_3 {
+	padding-left:600px;
+}
+
+
+
+/* Suffix Extra Space >> 4 Columns
+----------------------------------------------------------------------------------------------------*/
+
+
+.container_4 .suffix_1 {
+	padding-right:200px;
+}
+
+.container_4 .suffix_2 {
+	padding-right:400px;
+}
+
+.container_4 .suffix_3 {
+	padding-right:600px;
+}
+
+
+
+/* Push Space >> 4 Columns
+----------------------------------------------------------------------------------------------------*/
+
+
+.container_4 .push_1 {
+	left:200px;
+}
+
+.container_4 .push_2 {
+	left:400px;
+}
+
+.container_4 .push_3 {
+	left:600px;
+}
+
+
+
+/* Pull Space >> 4 Columns
+----------------------------------------------------------------------------------------------------*/
+
+
+.container_4 .pull_1 {
+	left:-200px;
+}
+
+.container_4 .pull_2 {
+	left:-400px;
+}
+
+.container_4 .pull_3 {
+	left:-600px;
+}
+
+
+
+
+/* `Clear Floated Elements
+----------------------------------------------------------------------------------------------------*/
+
+/* http://sonspring.com/journal/clearing-floats */
+
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+/* http://www.yuiblog.com/blog/2010/09/27/clearfix-reloaded-overflowhidden-demystified */
+
+.clearfix:before,
+.clearfix:after {
+  content: '\0020';
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+/*
+  The following zoom:1 rule is specifically for IE6 + IE7.
+  Move to separate stylesheet if invalid CSS is a problem.
+*/
+
+.clearfix {
+  zoom: 1;
+}
