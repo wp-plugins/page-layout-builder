@@ -23,7 +23,7 @@
         <div id="general" class="general settings">
         <label for="logo">CSS Layout Framework:</label> 
         <div class="sap"></div>
-        <label><input type="radio" name="wpeden_admin[general][css_layout]" value="960" <?php if($minimax_options['general']['css_layout']=="960")echo 'checked="checked"';else echo '';?>> 960 Grid System </label>
+        <label><input type="radio" name="wpeden_admin[general][css_layout]" disabled="disabled" value="960" <?php if($minimax_options['general']['css_layout']=="960")echo 'checked="checked"';else echo '';?>> 960 Grid System </label>
         <label><input type="radio" name="wpeden_admin[general][css_layout]" value="bootstrap" <?php if($minimax_options['general']['css_layout']=="bootstrap")echo 'checked="checked"';else echo '';?>> Bootstrap </label>
                  
          
@@ -32,10 +32,14 @@
         
         <label for="logo">CSS UI Framework:</label> 
         <div class="sap"></div>
-        <label><input type="radio" name="wpeden_admin[general][ui]" value="jquery" <?php if($minimax_options['general']['ui']=="jquery")echo 'checked="checked"';else echo '';?> disabled="disabled" > Jquery UI </label>
+        <label><input type="radio" name="wpeden_admin[general][ui]" disabled="disabled" value="jquery" <?php if($minimax_options['general']['ui']=="jquery")echo 'checked="checked"';else echo '';?> disabled="disabled" > Jquery UI </label>
         <label><input type="radio" name="wpeden_admin[general][ui]" value="bootstrap" <?php if($minimax_options['general']['ui']=="bootstrap")echo 'checked="checked"';else echo '';?>> Bootstrap UI </label><label><input type="radio" name="wpeden_admin[general][ui]" value="none" <?php if($minimax_options['general']['ui']=="none"||$minimax_options['general']['ui']=="")echo 'checked="checked"';else echo '';?>> None </label>
-                
+                <br><br><br>
+         <div class="sap"></div>
          
+         <b>Get MiniMax Pro</b>
+         <div class="sap"></div>
+         <a href="http://wpeden.com/product/minimax-page-layout-builder/" class="button">Check minimax pro here</a>
        
         </div>
         
