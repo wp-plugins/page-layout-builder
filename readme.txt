@@ -16,6 +16,9 @@ Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress. Bui
 
 `It's totally DRAG and DROP, No Conding Knowledge Required!`
 
+= Recommended Widgets =
+* Rich Text Editor ( http://wordpress.org/plugins/richtext/ )
+
  
  
 == Installation ==
