@@ -1,18 +1,18 @@
 <?php
 /*
-Plugin Name: Drag and Drop Page Layout Builder
-Description: MiniMax will add an option with page to build layout simple using drag and drop tools.
-Plugin URI: http://www.wpeden.com
+Plugin Name: Page Layout Builder
+Description: Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress
+Plugin URI: http://wpeden.com
 Author: Shaon
-Version: 1.0.0
-Author URI: http://www.wpeden.com
+Version: 1.0.1
+Author URI: http://wpeden.com
 */
  
 
 define("MX_THEME_DIR",dirname(__FILE__));
 define("MX_PLUG_DIR",dirname(__FILE__));
 define("MX_CACHE_DIR",dirname(__FILE__).'/cache/');
-define("MX_THEME_URL",get_stylesheet_directory_uri());
+define("MX_THEME_URL",plugins_url('/page-layout-builder/'));
 if(!defined('MX_THEME'))
 define('MX_THEME','minimax_root');
 
@@ -27,7 +27,7 @@ $minimax_layout_holder = array(
 include("includes/core.php"); 
  
 function minimax_opt_menu(){                                                                                             /*Theme Option Menu*/
-      add_menu_page( "MiniMax", "MiniMax", 'administrator', 'minimax', 'minimax_options', plugins_url('/page-layout-builder/images/modules_clr.png'));  
+      add_menu_page( "Page Layout Builder Settings", "Page Layout Builder Settings", 'administrator', 'minimax', 'minimax_options', plugins_url('/page-layout-builder/images/modules_clr.png'));  
     }
     
 function minimax_options(){                                                                                                  /*Theme Option Function*/

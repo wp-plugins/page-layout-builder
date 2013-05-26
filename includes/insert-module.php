@@ -18,3 +18,7 @@ if($id)    {
 }}
 ?>
 </ul>
+<div style="clear: both;"></div>    <br><br>
+<a class="button button-primary button-large" target="_blank" href="http://wpeden.com/minimax-wordpress-page-layout-builder-plugin/">
+Get Pro Version for 20+ new UI set widgets
+</a>

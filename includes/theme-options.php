@@ -33,7 +33,8 @@
         <label for="logo">CSS UI Framework:</label> 
         <div class="sap"></div>
         <label><input type="radio" name="wpeden_admin[general][ui]" disabled="disabled" value="jquery" <?php if($minimax_options['general']['ui']=="jquery")echo 'checked="checked"';else echo '';?> disabled="disabled" > Jquery UI </label>
-        <label><input type="radio" name="wpeden_admin[general][ui]" value="bootstrap" <?php if($minimax_options['general']['ui']=="bootstrap")echo 'checked="checked"';else echo '';?>> Bootstrap UI </label><label><input type="radio" name="wpeden_admin[general][ui]" value="none" <?php if($minimax_options['general']['ui']=="none"||$minimax_options['general']['ui']=="")echo 'checked="checked"';else echo '';?>> None </label>
+        <label><input type="radio" name="wpeden_admin[general][ui]" value="bootstrap" <?php if($minimax_options['general']['ui']=="bootstrap")echo 'checked="checked"';else echo '';?>> Bootstrap UI </label>
+        <label><input type="radio" name="wpeden_admin[general][ui]" disabled="disabled" value="none" <?php if($minimax_options['general']['ui']=="none"||$minimax_options['general']['ui']=="")echo 'checked="checked"';else echo '';?>> None </label>
                 <br><br><br>
          <div class="sap"></div>
          

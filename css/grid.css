@@ -81,7 +81,7 @@
 .container_4 .grid_3 {
 	width:670px;
 	 
-	background:url(../images/bg.png) repeat;
+	background: #eee url(../images/bg.png) repeat;
 	-moz-border-radius:0px 5px 5px 0px;
 	-webkit-border-radius:0px 5px 5px 0px;
 	border-radius:0px 5px 5px 0px;
