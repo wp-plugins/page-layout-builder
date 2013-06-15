@@ -34,6 +34,9 @@ Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress. Bui
 
 
 == Changelog ==
+= 1.1.1 =
+* Upgraded 3rd party widget compatibility
+* Upgraded bootstrap
 
 = 1.1.0 =
 * Integrated rich text widget

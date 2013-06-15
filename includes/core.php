@@ -176,7 +176,7 @@ function minimax_render_layout($layout, $id, $holder = '') {
     }
     $rid = $ls['css_id']?$ls['css_id']:"row_{$id}";
     
-    echo '<div class="minimax_row '.$ls['css_class'].' '.$ls['css_class_pd'].'" id="'.$rid.'" style="'.$ls['css_txt'].'" ><div class="minimax_'.$container_css.' minimax_content_area">';     
+    echo '<div class="w3eden '.$ls['css_class'].' '.$ls['css_class_pd'].'" id="'.$rid.'" style="'.$ls['css_txt'].'" ><div class="row-fluid minimax_content_area">';     
     if(!isset($gs[$id]))
     include(MX_THEME_DIR."/layouts/{$layout_folder}/{$layout}.layout.php");
     else  {
