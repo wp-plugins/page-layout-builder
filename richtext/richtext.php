@@ -14,8 +14,8 @@ class MiniMax_RichText extends WP_Widget {
         $pagenow = $pagenow?$pagenow:end(explode($_SERVER[PHP_SELF]));         
        if(is_admin()){
            //if(get_post_type()!=''){
-            wp_enqueue_script("ckeditor",plugins_url()."/richtext/ckeditor/ckeditor.js");
-            wp_enqueue_script("jadapter",plugins_url()."/richtext/jquery-adapter.js");
+            wp_enqueue_script("ckeditor",plugins_url()."/page-layout-builder/richtext/ckeditor/ckeditor.js");
+            wp_enqueue_script("jadapter",plugins_url()."/page-layout-builder/richtext/jquery-adapter.js");
            //}
         } 
         
