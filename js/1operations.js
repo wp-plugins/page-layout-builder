@@ -24,9 +24,7 @@ jQuery(function(){
                 reset_layout_width();                
             });
     
-      jQuery('.module-preview.w3eden *').live('click',function(e){
-          e.preventDefault();
-      });
+    
       
       jQuery('.mwdth').live('click',function(){
               var prts = this.id.split("_");
@@ -102,10 +100,7 @@ jQuery(function(){
       jQuery('.rsettings').live('click',function(){
           layout_settings_id = jQuery(this).attr('rel');          
           layout_settings_data = jQuery('#'+layout_settings_id).val();
-          jQuery( "#dialog" ).dialog( 'option', 'title','Row Settings');
-          jQuery( "#dialog" ).dialog( 'option', 'width',300);
-          //tb_show("Layout Settings","admin-ajax.php?page=minimax&action=layout_settings&layout_settings_id="+layout_settings_id+"&layout_settings_data="+layout_settings_data+"&modal=1&width=400&height=200");
-          jQuery( "#dialog" ).dialog( "open" ).load("admin-ajax.php?page=minimax&action=layout_settings&layout_settings_id="+layout_settings_id+"&layout_settings_data="+layout_settings_data+"&modal=1&width=400&height=200");
+          tb_show("Layout Settings","admin-ajax.php?page=minimax&action=layout_settings&layout_settings_id="+layout_settings_id+"&layout_settings_data="+layout_settings_data+"&modal=1&width=400&height=200");
           return false;
       });
       
@@ -123,18 +118,16 @@ jQuery(function(){
           insertto = '#'+this.rel+' .module';          
           module_index = this.rel;
           //tb_show("Insert Module","admin-ajax.php?page=minimax&action=insert_module&modal=1&width=510&height=500")
-          //jQuery( "#dialog" ).dialog( 'option', 'position',{my:"top+50px,center"});
+          jQuery('#ui-dialog-title-dialog').html('Available Modules');
           jQuery( "#dialog" ).dialog( 'option', 'width',940);
-          //jQuery( "#dialog" ).dialog( 'option', 'height',600);
-          jQuery( "#dialog" ).dialog( 'option', 'title','Modules');
           jQuery( "#dialog" ).dialog( "open" ).load("admin-ajax.php?page=minimax&action=insert_module&modal=1&width=770&height=600");
           return false;
       });
       
       //Import Layout
       var insertto = "", module_index = "", msf_mid = "", msf_title = "";
-      jQuery('.import-layout').live('click',function(){
-          jQuery( "#dialog" ).dialog( 'option', 'title','Import Layout');
+      jQuery('.import-layout').live('click',function(){                     
+          jQuery('#ui-dialog-title-dialog').html('Import Layout');
           jQuery( "#dialog" ).dialog( 'option', 'width',540);
           jQuery( "#dialog" ).dialog( "open" ).load("admin-ajax.php?page=minimax&action=import_layout&modal=1&width=370&height=300");
           return false;
@@ -151,11 +144,7 @@ jQuery(function(){
           var post = "&post="+pageid;
           var data_inst = jQuery('#'+jQuery(this).attr('datafield')).val();
           //tb_show("Module Settings","admin-ajax.php?page=minimax&action=module_settings&modal=1&width=510&height=500&module="+msf_mid+data+datafield+post);                    
-          jQuery( "#dialog" ).dialog( 'option', 'title','Module Settings');
-          jQuery( "#dialog" ).html( 'Loading...');
-          jQuery( "#dialog" ).dialog( 'option', 'width',700);
           jQuery( "#dialog" ).dialog('open').load("admin-ajax.php?page=minimax&action=module_settings&modal=1&width=510&height=500&module="+msf_mid+data+datafield+post,{data_inst:data_inst});
-
           //jQuery( "#childdialog" ).dialog('open');
           //tb_remove();
           return false;
@@ -187,18 +176,17 @@ jQuery(function(){
       });            
       
       jQuery('#module-settings-form').live('submit',function(){
-          jQuery(this).append('<img src="images/loading.gif" /> Saving...');
           jQuery(this).ajaxSubmit({              
               url:ajaxurl+'?page=minimax&action=module_settings_data',
               success:function(res){
                   var d = new Date();
                   var z = d.getTime();
-                  jQuery(insertto).append('<li id="module_'+module_index+'_'+z+'" rel="'+module_index+'"><input type="hidden" id="modid_module_'+module_index+'_'+z+'" name="modules['+module_index+'][]" value="'+msf_mid+'" /><input type="hidden" name="modules_settings['+module_index+'][]" id="modset_module_'+module_index+'_'+z+'" value="'+res+'" /><h3><nobr class="title">'+msf_title+'</nobr><nobr class="ctl"><span class="handle"></span> <img src="'+base_theme_url+'/images/delete.png"  class="delete_module" rel="#module_'+module_index+'_'+z+'" />&nbsp;<img class="insert" rel="'+msf_mid+'" datafield="modset_module_'+module_index+'_'+z+'" data="'+module_index+'|0" src="'+base_theme_url+'/images/settings.png" /></nobr></h3><div class="module-preview w3eden"><img src="images/loading.gif" /> Loading Preview...</div><div class="clear"</div></li>');
+                  jQuery(insertto).append('<li id="module_'+module_index+'_'+z+'" rel="'+module_index+'"><span class="handle"></span><input type="hidden" name="modules['+module_index+'][]" value="'+msf_mid+'" /><input type="hidden" name="modules_settings['+module_index+'][]" id="modset_module_'+module_index+'_'+z+'" value="'+res+'" /><nobr class="title">'+msf_title+'</nobr><nobr class="ctl"><img src="'+base_theme_url+'/images/delete.png"  class="delete_module" rel="#module_'+module_index+'_'+z+'" />&nbsp;<img class="insert" rel="'+msf_mid+'" datafield="modset_module_'+module_index+'_'+z+'" data="'+module_index+'|0" src="'+base_theme_url+'/images/settings.png" /></nobr><div class="clear"</div></li>');          
                   jQuery( insertto ).sortable({handle : '.handle', connectWith: "ul.module"});
                   jQuery( insertto ).disableSelection({handle : '.handle'});   
                   jQuery("#dialog").html("Loading...");                
                   jQuery('#dialog').dialog('close');
-                  jQuery('#module_'+module_index+'_'+z+' .module-preview').load(ajaxurl+'?page=minimax&action=get_module_preview',{mod:msf_mid, modinfo:res});
+                  
                  
               }   
           });
@@ -207,13 +195,13 @@ jQuery(function(){
       });
       
       jQuery('#layout-settings-form').live('submit',function(){
-          var layout_settings_id = jQuery(this).attr('rel');
-          jQuery(this).append('<div style="position: absolute;margin-top: -5px"><img src="images/loading.gif" /> Saving...</div>');
+          var layout_settings_id = jQuery(this).attr('rel');      
+           
           jQuery(this).ajaxSubmit({                        
               url:ajaxurl+'?page=minimax&action=layout_settings_data',
               success:function(res){
-                  jQuery('#'+layout_settings_id).val(res);
-                  jQuery("#dialog").dialog("close");
+                  jQuery('#'+layout_settings_id).val(res);                   
+                  tb_remove();
               }   
           });
           
@@ -222,7 +210,6 @@ jQuery(function(){
       
       jQuery('#update-module-settings-form').live('submit',function(){
           var datafield = jQuery(this).attr('datafield');
-          jQuery(this).append('<img src="images/loading.gif" /> Saving...');
           jQuery(this).ajaxSubmit({              
               url:ajaxurl+'?page=minimax&action=module_settings_data',
               success:function(res){
@@ -230,12 +217,7 @@ jQuery(function(){
                   jQuery('#'+datafield).val(res);
                   //jQuery('#'+datafield+"_icon").attr('data',res);
                   jQuery("#dialog").html("Loading...");
-                  jQuery('#dialog').dialog('close');
-                  var mod = datafield.replace("modset_","");
-                  var msf_mid =   datafield.replace("modset_","modid_");
-                  msf_mid = jQuery('#'+msf_mid).val();
-                  jQuery('#'+mod+' .module-preview').html('<img src="images/loading.gif" /> Updating Preview...')
-                  jQuery('#'+mod+' .module-preview').load(ajaxurl+'?page=minimax&action=get_module_preview',{mod:msf_mid, modinfo:res});
+                  jQuery('#dialog').dialog('close');                  
               }   
           });
           

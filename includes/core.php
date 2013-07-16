@@ -191,31 +191,59 @@ function minimax_render_layout($layout, $id, $holder = '') {
 function minimax_render_module_frames($id){
     global $mxwidgets, $minimax_modules, $minimax_modules_settings;
     $base_theme_url = base_theme_url;
-    $minimax_modules_settings = get_option('minimax_modules_settings',array());    
+    $minimax_modules_settings = get_option('minimax_modules_settings',array());
     if(!is_array($minimax_modules_settings)) $minimax_modules_settings = array();
-    $post_modules_settings = get_post_meta(get_the_ID(),'minimax_modules_settings',true);    
+    $post_modules_settings = get_post_meta($_GET['post'],'minimax_modules_settings',true);
     if(!is_array($post_modules_settings)) $post_modules_settings = array();
     $minimax_modules_settings += $post_modules_settings;
     //echo "<div class='modules' id='$id' >";
     $module_frames = '';
     if(isset($minimax_modules[$id])&&is_array($minimax_modules[$id])):
-    
-    foreach($minimax_modules[$id] as $mid=>$module):
-    $mod = $mxwidgets[$module];    
-    $z++;
-    $ms = $z-1;        
-    $module_frames .=<<<MOD
+        $z = 0;
+        foreach($minimax_modules[$id] as $mid=>$module):
+            $mod = $mxwidgets[$module];
+            $z++;
+            $ms = $z-1;
+
+            //generate module preview
+
+            $instance = @unserialize(base64_decode($minimax_modules_settings[$id][$mid]));
+            //echo "<pre>";
+            //print_r($minimax_modules_settings);
+            //echo $id."<br/>";
+            $instance = @array_shift(array_shift($instance));
+            if($instance):
+                foreach($instance as $k=>$v):
+                    $ins[$k] = is_array($v)?$v:stripslashes($v);
+                endforeach; endif;
+
+            ob_start();
+
+            if(method_exists($pmod = new $module(),'preview'))
+                $pmod->preview($ins);
+            else
+                $pmod->widget(array(), $ins);
+            //the_widget($module, $ins);*/
+            $prevw = ob_get_contents();
+            ob_clean();
+
+            //end preview
+
+            $module_frames .=<<<MOD
     <li id='module_{$id}_{$z}' rel='{$id}'>
-        <span class="handle"></span>
-        <input type="hidden" name="modules[{$id}][]" value="{$module}" />
+
+        <input type="hidden" id="modid_module_{$id}_{$z}" name="modules[{$id}][]" value="{$module}" />
         <input id="modset_module_{$id}_{$z}" type="hidden" name="modules_settings[{$id}][]" value="{$minimax_modules_settings[$id][$mid]}" />
-        <nobr class="title">{$mod->name}</nobr>
-        <nobr class="ctl"><img src="{$base_theme_url}/images/delete.png" class='delete_module' rel='#module_{$id}_{$z}' />&nbsp;<img class="insert" id="modset_module_{$id}_{$z}_icon" rel="$module" data="{$id}|{$mid}" datafield="modset_module_{$id}_{$z}" src="{$base_theme_url}/images/settings.png" /></nobr><div class="clear"</div></li>
+        <h3><nobr class="title">{$mod->name}</nobr><nobr class="ctl"><span class="handle"></span><img src="{$base_theme_url}/images/delete.png" class='delete_module' rel='#module_{$id}_{$z}' />&nbsp;<img class="insert" id="modset_module_{$id}_{$z}_icon" rel="$module" data="{$id}|{$mid}" datafield="modset_module_{$id}_{$z}" src="{$base_theme_url}/images/settings.png" /></nobr></h3>
+        <div class='module-preview w3eden'>
+        {$prevw}
+        </div>
+        <div class="clear"</div></li>
 MOD;
     endforeach;
     endif;
     echo $module_frames;
-    
+
 }
 
 //Render Modules (site)
@@ -433,6 +461,24 @@ function minimax_import_layout_data(){
     }   
 }
 
+function minimax_get_module_preview(){
+    //global $mxwidgets, $minimax_modules, $minimax_modules_settings;
+    $instance = @unserialize(base64_decode($_POST['modinfo']));
+    $instance = @array_shift(array_shift($instance));
+    if($instance):
+        foreach($instance as $k=>$v):
+            $ins[$k] = is_array($v)?$v:stripslashes($v);
+        endforeach; endif;
+    $module = $_POST['mod'];
+
+    if(method_exists($pmod = new $module(),'preview'))
+        $pmod->preview($ins);
+    else
+        the_widget($module, $ins);
+
+    die();
+}
+
 function minimax_new_meida_buttons(){
     $post_type = get_post_type();
     $pageid = isset($_GET['post'])?$_GET['post']:'';
@@ -466,7 +512,11 @@ function minimax_admin_enqueue_scripts(){
     wp_enqueue_style("frame-grid",base_theme_url.'/frames/css/grid.css');    
     wp_enqueue_style("gh-buttons",base_theme_url.'/css/gh-buttons.css');        
     wp_enqueue_style("thickbox");  
-    wp_enqueue_style("jquery-ui-new",plugins_url('/page-layout-builder/css/aristo.css'));  
+    //wp_enqueue_style("jquery-ui-new",plugins_url('/page-layout-builder/css/aristo.css'));
+
+    wp_enqueue_style("jquery-ui-m",plugins_url('/minimax/css/jqui/theme/jquery-ui.css'));
+    wp_enqueue_style("jquery-ui-new",plugins_url('/minimax/css/jqui/css/custom.css'));
+
     //wp_enqueue_style("jquery-ui-new",plugins_url('/page-layout-builder/css/flickr.css'));  
     
     //Scripts    
@@ -489,6 +539,8 @@ function minimax_admin_enqueue_scripts(){
     add_action("wp_ajax_layout_settings","minimax_layout_settings");
     add_action("wp_ajax_layout_settings_data","minimax_layout_settings_data");
     add_action("wp_ajax_minimax_generate_layout","minimax_generate_custom_layout");
+    add_action("wp_ajax_get_module_preview","minimax_get_module_preview");
+
          
     add_action( 'save_post', 'minimax_save_page_layout' );  
     add_action( 'admin_init', 'minimax_export_page_layout' );  

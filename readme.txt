@@ -39,6 +39,12 @@ Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress. Bui
 
 == Changelog ==
 
+= 1.2.0 =
+
+* Added modules preview option
+* Integrated media manager with ckeditor
+* Upgraded UI
+
 = 1.1.3 =
 * Fixed js path for rich text module
 
