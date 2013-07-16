@@ -14,6 +14,8 @@ Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress
 == Description ==
 Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress. Building custom WordPress page layout using Page Layout Builder is just as easy as drag-and-drop. You don't need to run for learning HTML or finding a coder/designer to change a page layout. Also you can directly use more than 3000+ widgets from wordpress.org to place anywhere inside your page content. No longer need to hang with build in sidebars with theme. We also developing all necessary modules like sliders, galleries, images, drop-down menu, progress bar, timeline, testimonials, message box, warning box, notification box, loop for custom post type, post loop with various templates, sub-pages, heading, regular html and many more to build a eye catching page layout or a complete theme just from a blank canvas within few minutes even without knowing or writing a single html code. Do anything within your imagination. Yes, it is time to take control over your website and its content. 
 
+[youtube https://www.youtube.com/watch?v=iPQAYdP2kyI]
+
 = Integrated Modules =
 * RichText Module ( CKEditor )
  
