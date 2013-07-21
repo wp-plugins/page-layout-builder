@@ -1,5 +1,5 @@
 <?php
-error_reporting( E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_WARNING );
+error_reporting( 0 );
 global $mxwidgets, $minimax_layout_data, $minimax_modules, $wp_widget_factory, $minimax_modules_settings, $minimax_options, $minimax_layout_settings;
 define("base_theme_url",plugins_url('page-layout-builder'));
 
@@ -514,8 +514,8 @@ function minimax_admin_enqueue_scripts(){
     wp_enqueue_style("thickbox");  
     //wp_enqueue_style("jquery-ui-new",plugins_url('/page-layout-builder/css/aristo.css'));
 
-    wp_enqueue_style("jquery-ui-m",plugins_url('/minimax/css/jqui/theme/jquery-ui.css'));
-    wp_enqueue_style("jquery-ui-new",plugins_url('/minimax/css/jqui/css/custom.css'));
+    wp_enqueue_style("jquery-ui-m",plugins_url('/page-layout-builder/css/jqui/theme/jquery-ui.css'));
+    wp_enqueue_style("jquery-ui-new",plugins_url('/page-layout-builder/css/jqui/css/custom.css'));
 
     //wp_enqueue_style("jquery-ui-new",plugins_url('/page-layout-builder/css/flickr.css'));  
     
@@ -528,6 +528,7 @@ function minimax_admin_enqueue_scripts(){
     wp_enqueue_script("minimax-opr",base_theme_url.'/js/operations.js',array('jquery'));      
     }
 }
+
 
 
 //Ajax Actions

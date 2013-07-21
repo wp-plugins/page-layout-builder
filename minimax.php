@@ -23,15 +23,15 @@ $minimax_layout_holder = array(
             'footer'=>'Footer Layout'
 );
  
- 
+  
 include("includes/core.php"); 
 include("richtext/richtext.php"); 
- 
-function minimax_opt_menu(){                                                                                             /*Theme Option Menu*/
+     
+function minimax_opt_menu(){                                                                                              
       add_menu_page( "Page Layout Builder Settings", "Page Layout Builder Settings", 'administrator', 'minimax', 'minimax_options', plugins_url('/page-layout-builder/images/modules_clr.png'));  
     }
     
-function minimax_options(){                                                                                                  /*Theme Option Function*/
+function minimax_options(){                                                                                                   
         global $minimax_options;
         require_once("includes/theme-options.php");
         
@@ -66,19 +66,10 @@ function minimax_squeeze_page_canvas(){
  
  
  
- function  custom_init(){
-         
- }
-
  
-  
-
-  
-add_action( 'init', 'custom_init' ); 
  
 add_action('admin_menu', 'minimax_opt_menu');
 add_action('template_redirect', 'minimax_squeeze_page_canvas');
 add_action('wp_ajax_module_status_change', 'minimax__module_status_change');
-
-
-
+  
+     

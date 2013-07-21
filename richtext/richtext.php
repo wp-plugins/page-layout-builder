@@ -4,7 +4,7 @@
 if(!class_exists('MiniMax_RichText')){
 
     function get_all_images(){
-        if($_REQUEST['imagejson']!=1) return;
+        if(!isset($_REQUEST['imagejson'])||$_REQUEST['imagejson']!=1) return;
         $query_images_args = array(
             'post_type' => 'attachment', 'post_mime_type' =>'image', 'post_status' => 'inherit', 'posts_per_page' => -1,
         );
@@ -18,8 +18,7 @@ if(!class_exists('MiniMax_RichText')){
         }
         echo json_encode($images); die();
     }
-
-    get_all_images();
+  
 
 class MiniMax_RichText extends WP_Widget {
     
@@ -29,11 +28,12 @@ class MiniMax_RichText extends WP_Widget {
         parent::WP_Widget( /* Base ID */'MiniMax_RichText', /* Name */'Rich Text', array( 'description' => 'Rich Text Editor' ) );
         //else
         //parent::WP_Widget( /* Base ID */'MiniMax_RichText', /* Name */'Rich Text', array( 'description' => 'Rich Text Editor ( Only available with Page Layout Builder )' ) );
-        $pagenow = $pagenow?$pagenow:end(explode($_SERVER[PHP_SELF]));         
-       if(is_admin()){
+        //$pagenow = $pagenow?$pagenow:end(explode($_SERVER[PHP_SELF]));         
+       
+       if(is_admin() && $pagenow=='post-new.php'){
            //if(get_post_type()!=''){
-            wp_enqueue_script("ckeditor",plugins_url()."/page-layout-builder/richtext/ckeditor/ckeditor.js");
-            wp_enqueue_script("jadapter",plugins_url()."/page-layout-builder/richtext/jquery-adapter.js");
+            wp_enqueue_script("plb-ckeditor",plugins_url()."/page-layout-builder/richtext/ckeditor/ckeditor.js");
+            wp_enqueue_script("plb-jadapter",plugins_url()."/page-layout-builder/richtext/jquery-adapter.js");
 
            //}
         } 

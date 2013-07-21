@@ -41,6 +41,10 @@ Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress. Bui
 
 == Changelog ==
 
+= 1.2.1 =
+* fixed the issue with popup 
+* resolved issue with menu sorting
+
 = 1.2.0 =
 
 * Added modules preview option
