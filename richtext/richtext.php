@@ -2,22 +2,7 @@
  
 
 if(!class_exists('MiniMax_RichText')){
-
-    function get_all_images(){
-        if(!isset($_REQUEST['imagejson'])||$_REQUEST['imagejson']!=1) return;
-        $query_images_args = array(
-            'post_type' => 'attachment', 'post_mime_type' =>'image', 'post_status' => 'inherit', 'posts_per_page' => -1,
-        );
-
-        $query_images = new WP_Query( $query_images_args );
-        $images = array();
-        foreach ( $query_images->posts as $image) {
-            //print_r($image); die();
-            $images[]= array('thumb'=>plugins_url('/page-layout-builder/timthumb.php?w=100&h=70&src=').wp_get_attachment_url( $image->ID ),'image'=>wp_get_attachment_url( $image->ID ),'folder'=>'');
-            //print_r($images); die();
-        }
-        echo json_encode($images); die();
-    }
+ 
   
 
 class MiniMax_RichText extends WP_Widget {
@@ -30,7 +15,7 @@ class MiniMax_RichText extends WP_Widget {
         //parent::WP_Widget( /* Base ID */'MiniMax_RichText', /* Name */'Rich Text', array( 'description' => 'Rich Text Editor ( Only available with Page Layout Builder )' ) );
         //$pagenow = $pagenow?$pagenow:end(explode($_SERVER[PHP_SELF]));         
        
-       if(is_admin() && $pagenow=='post-new.php'){
+       if(is_admin() && ($pagenow=='post-new.php'||$pagenow=='post.php')){
            //if(get_post_type()!=''){
             wp_enqueue_script("plb-ckeditor",plugins_url()."/page-layout-builder/richtext/ckeditor/ckeditor.js");
             wp_enqueue_script("plb-jadapter",plugins_url()."/page-layout-builder/richtext/jquery-adapter.js");
@@ -186,8 +171,7 @@ class MiniMax_RichText extends WP_Widget {
     }
 
 } 
-
-add_action( 'init', 'get_all_images');
+ 
 add_action( 'widgets_init', create_function( '', 'register_widget("MiniMax_RichText");' ) );
 
 }
