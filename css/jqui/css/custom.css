@@ -66,3 +66,9 @@ body.dark {
   .dark .modalDemo p a {
     color: #50b1ff;
   }
+
+
+.ui-dialog.ui-front,
+.ui-dialog{
+    z-index: 99999999999 !important;
+}
