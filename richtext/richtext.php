@@ -1,27 +1,23 @@
 <?php
- 
+/*
+Plugin Name: Rich Text
+Plugin URI: #
+Description: Rich Text Module For MiniMax
+Author: Shaon
+Version: 1.6
+Author URI: #
+*/
 
 if(!class_exists('MiniMax_RichText')){
- 
-  
+
+    
 
 class MiniMax_RichText extends WP_Widget {
     
     function __construct() {   
-        global $pagenow;
-       // if(get_post_type()!='')
-        parent::WP_Widget( /* Base ID */'MiniMax_RichText', /* Name */'Rich Text', array( 'description' => 'Rich Text Editor' ) );
-        //else
-        //parent::WP_Widget( /* Base ID */'MiniMax_RichText', /* Name */'Rich Text', array( 'description' => 'Rich Text Editor ( Only available with Page Layout Builder )' ) );
-        //$pagenow = $pagenow?$pagenow:end(explode($_SERVER[PHP_SELF]));         
-       
-       if(is_admin() && ($pagenow=='post-new.php'||$pagenow=='post.php')){
-           //if(get_post_type()!=''){
-            wp_enqueue_script("plb-ckeditor",plugins_url()."/page-layout-builder/richtext/ckeditor/ckeditor.js");
-            wp_enqueue_script("plb-jadapter",plugins_url()."/page-layout-builder/richtext/jquery-adapter.js");
 
-           //}
-        } 
+        parent::WP_Widget( /* Base ID */'MiniMax_RichText', /* Name */'Rich Text', array( 'description' => 'Rich Text Editor' ) );
+
         
     }
 
@@ -69,13 +65,13 @@ class MiniMax_RichText extends WP_Widget {
       .cke_skin_kama .cke_dialog  { z-index: 999999 !important; }
       //*.cke_skin_kama .cke_dialog .cke_dialog_body { z-index: 9999999 !important; }*/
       </style>
-       
+
         <div id="tabpane">
  
         <p>
 
-            <a  href="#" class="button" id="iimg" title="Add Media"><span class="wp-media-buttons-icon"></span> Add Media</a>
-        <textarea class="<?php echo $this->get_field_id('content'); ?>"   id="<?php echo $this->get_field_id('content'); ?>" cols="40" rows="" name="<?php echo $this->get_field_name('content');?>">
+            <a  href="#" class="button" id="iimg" title="Add Media"><span class="wp-media-buttons-icon"></span> Add Media</a><br/>
+        <textarea style="width: 100%;height:300px" class="<?php echo $this->get_field_id('content'); ?>"   id="<?php echo $this->get_field_id('content'); ?>" cols="40" rows="" name="<?php echo $this->get_field_name('content');?>">
         <?php
         echo $content;
         ?>
@@ -86,16 +82,13 @@ class MiniMax_RichText extends WP_Widget {
          </div>-->
 
             <script type="text/javascript">
+                <?php /*
                 //<![CDATA[
-                var fcbase = '<?php echo plugins_url('page-layout-builder/richtext/ckeditor/plugins'); ?>';
+                var fcbase = '<?php echo plugins_url('minimax/modules/richtext/ckeditor/plugins'); ?>';
                 // Replace the <textarea id="editor1"> with an CKEditor instance.
                 try{
 
-                    var editor = CKEDITOR.replace( '<?php echo $this->get_field_id('content'); ?>'/*,{
-                        //customConfig : '<?php echo plugins_url('page-layout-builder/richtext/ckeditor/plugins/kcfinder/config.js'); ?>'
-                        //"extraPlugins": "imagebrowser",
-                        //"imageBrowser_listUrl": "<?php echo home_url('/?imagejson=1');?>"
-                    }*/); } catch(err){
+                    var editor = CKEDITOR.replace( '<?php echo $this->get_field_id('content'); ?>'); } catch(err){
                     CKEDITOR.remove(editor);
                     var editor = CKEDITOR.replace( '<?php echo $this->get_field_id('content'); ?>');
                 }
@@ -103,19 +96,34 @@ class MiniMax_RichText extends WP_Widget {
 
 
                 // ]]>
+                */ ?>
+
 
 
             </script>
+            <script type="text/javascript">
+                tinymce.init({
+                    selector: "#<?php echo $this->get_field_id('content'); ?>",
+                    relative_urls: false,
+                    remove_script_host: false,
+                    convert_urls: false
+                });
+            </script>
+
             <script type="text/javascript">
 
                 jQuery(document).ready(function() {
 
                     // Uploading files
                     var file_frame;
-
+                    jQuery('#TB_closeWindowButton').live('click',function(){
+                        tb_remove();
+                        jQuery('#TB_window').remove(); 
+                    });
                     jQuery('#iimg').live('click', function( event ){
+                        tb_show('', 'media-upload.php?type=image&amp;TB_iframe=true');return false;
 
-                        event.preventDefault();
+                        /*event.preventDefault();
 
                         // If the media frame already exists, reopen it.
                         if ( file_frame ) {
@@ -145,8 +153,16 @@ class MiniMax_RichText extends WP_Widget {
                         });
 
                         // Finally, open the modal
-                        file_frame.open();
+                        file_frame.open();*/
                     });
+
+                    window.send_to_editor = function(html) {
+                        tinymce.activeEditor.execCommand('mceInsertContent', false, html);
+                        //editor.insertHtml(html);
+                        //jQuery('#upload_image').val(imgurl);
+                        tb_remove();
+                        jQuery('#TB_window').remove();
+                    }
 
 
 
@@ -157,6 +173,18 @@ class MiniMax_RichText extends WP_Widget {
 
 
             </script>
+            <style type="text/css">
+            #TB_overlay,
+            #TB_load{
+                z-index:302 !important;
+            }
+            #TB_window{
+                z-index:303 !important;
+            }
+            #TB_title:not(:first-child){
+                display: none;
+            }
+            </style>
         
         </p>
          
@@ -171,7 +199,8 @@ class MiniMax_RichText extends WP_Widget {
     }
 
 } 
- 
+
+add_action( 'init', 'get_all_images');
 add_action( 'widgets_init', create_function( '', 'register_widget("MiniMax_RichText");' ) );
 
 }
