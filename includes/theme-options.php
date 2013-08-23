@@ -8,7 +8,7 @@
     </div>
     
     <ul class="nav" id="theme-admin-menu">
-        <li><a class="active" href="#general"><span class="icon"><img src="<?php echo base_theme_url; ?>/images/general.png" /></span>General</a></li>
+<!--        <li><a class="active" href="#general"><span class="icon"><img src="--><?php //echo base_theme_url; ?><!--/images/general.png" /></span>General</a></li>-->
         <!--<li><a href="#layout"><span class="icon"><img src="<?php echo base_theme_url; ?>/images/layout.png" /></span>Layout</a></li>-->
         <!--<li><a href="#modules"><span class="icon"><img src="<?php echo base_theme_url; ?>/images/modules.png" /></span>Modules</a></li>-->        
     </ul>

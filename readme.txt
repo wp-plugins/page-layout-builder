@@ -41,6 +41,10 @@ Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress. Bui
 
 == Changelog ==
 
+= 1.2.5 =
+* Fixed layout issue
+* Fixed media popup z-index
+
 = 1.2.4 =
 * Fixed issue with rich text editor
 

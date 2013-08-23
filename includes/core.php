@@ -165,7 +165,9 @@ function minimax_render_layout($layout, $id, $holder = '') {
     }else{
         $container_css = "bs_row-fluid" ; 
         $layout_folder = "bootstrap";
-    }     
+    }
+    $container_css = "container_12" ;
+    $layout_folder = "bootstrap";
     global $minimax_layout_data, $minimax_layout_settings;  
     if(!$minimax_layout_settings) $minimax_layout_settings = get_option('minimax_layout_settings',array());    
     if(in_array($holder, get_post_types())){

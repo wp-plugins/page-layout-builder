@@ -70,5 +70,12 @@ body.dark {
 
 .ui-dialog.ui-front,
 .ui-dialog{
-    z-index: 99999999999 !important;
+    z-index: 600001 !important;
+}
+
+div#TB_overlay, #TB_load{
+    z-index: 700001 !important;
+}
+div#TB_window{
+    z-index: 800001 !important;
 }
