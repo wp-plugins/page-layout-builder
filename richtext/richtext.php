@@ -63,7 +63,7 @@ class MiniMax_RichText extends WP_Widget {
       
       .cke_skin_kama { z-index: 999999 !important; }
       .cke_skin_kama .cke_dialog  { z-index: 999999 !important; }
-      //*.cke_skin_kama .cke_dialog .cke_dialog_body { z-index: 9999999 !important; }*/
+      /*.cke_skin_kama .cke_dialog .cke_dialog_body { z-index: 9999999 !important; }*/
       </style>
 
         <div id="tabpane">
@@ -76,10 +76,10 @@ class MiniMax_RichText extends WP_Widget {
         echo $content;
         ?>
         </textarea>
-        <!--<div id="poststuff">
-        <?php /*the_editor("a123","a123"); */?>
+        <div id="poststuff">
+        <?php wp_editor("a123","a123"); ?>
 
-         </div>-->
+         </div>
 
             <script type="text/javascript">
                 <?php /*
@@ -102,12 +102,7 @@ class MiniMax_RichText extends WP_Widget {
 
             </script>
             <script type="text/javascript">
-                tinymce.init({
-                    selector: "#<?php echo $this->get_field_id('content'); ?>",
-                    relative_urls: false,
-                    remove_script_host: false,
-                    convert_urls: false
-                });
+
             </script>
 
             <script type="text/javascript">

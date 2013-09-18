@@ -79,3 +79,7 @@ div#TB_overlay, #TB_load{
 div#TB_window{
     z-index: 800001 !important;
 }
+
+.mceListBoxMenu{
+    z-index: 900001 !important;;
+}

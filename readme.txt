@@ -2,8 +2,8 @@
 Contributors: codename065
 Donate link: http://wpeden.com
 Tags: content builder, page builder, layout builder, theme builder, squeeze page builder, sales page builder
-Requires at least: 2.0.2
-Tested up to: 3.5.1
+Requires at least: 3.5
+Tested up to: 3.6.1
 License: GPLv2 or later
  
   
