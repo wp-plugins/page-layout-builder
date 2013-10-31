@@ -4,7 +4,7 @@ Plugin Name: Page Layout Builder
 Description: Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress
 Plugin URI: http://wpeden.com
 Author: Shaon
-Version: 1.2.6
+Version: 1.2.7
 Author URI: http://wpeden.com
 */
  

@@ -49,7 +49,8 @@ class MiniMax_RichText extends WP_Widget {
 
    
     function form( $instance ) {
-        
+
+
         
         if ( $instance ) {
             extract($instance);
@@ -70,114 +71,48 @@ class MiniMax_RichText extends WP_Widget {
  
         <p>
 
-            <a  href="#" class="button" id="iimg" title="Add Media"><span class="wp-media-buttons-icon"></span> Add Media</a><br/>
-        <textarea style="width: 100%;height:300px" class="<?php echo $this->get_field_id('content'); ?>"   id="<?php echo $this->get_field_id('content'); ?>" cols="40" rows="" name="<?php echo $this->get_field_name('content');?>">
-        <?php
-        echo $content;
-        ?>
-        </textarea>
-        <div id="poststuff">
-        <?php wp_editor("a123","a123"); ?>
 
-         </div>
+        <?php wp_editor($content, 'mcontent', array('editor_class' => 'wp-editor','textarea_name'=>$this->get_field_name('content'), 'media_buttons' => false ) ); ?>
+<!-- textarea name="mycontent" id="mycontent"></textarea -->
+
 
             <script type="text/javascript">
-                <?php /*
-                //<![CDATA[
-                var fcbase = '<?php echo plugins_url('minimax/modules/richtext/ckeditor/plugins'); ?>';
-                // Replace the <textarea id="editor1"> with an CKEditor instance.
-                try{
+function load_mceeditor($element) {
+ 
+        var textfield_id = $element.attr("id");
 
-                    var editor = CKEDITOR.replace( '<?php echo $this->get_field_id('content'); ?>'); } catch(err){
-                    CKEDITOR.remove(editor);
-                    var editor = CKEDITOR.replace( '<?php echo $this->get_field_id('content'); ?>');
-                }
+        tinymce.EditorManager.execCommand('mceRemoveControl',true, textfield_id);
+        window.tinyMCEPreInit.mceInit[textfield_id] = _.extend({}, tinyMCEPreInit.mceInit['content']);
 
+        if(_.isUndefined(tinyMCEPreInit.qtInit[textfield_id])) {
+            window.tinyMCEPreInit.qtInit[textfield_id] = _.extend({}, tinyMCEPreInit.qtInit['replycontent'], {id: textfield_id})
+        }
 
-
-                // ]]>
-                */ ?>
-
-
-
-            </script>
-            <script type="text/javascript">
-
+        quicktags( window.tinyMCEPreInit.qtInit[textfield_id] );
+        //$element.val($content_holder.val());
+        //tinymce.EditorManager.execCommand('mceAddControl',true, textfield_id);
+        window.switchEditors.go(textfield_id, 'tmce');
+    }
+ jQuery('#tabpane .wp-editor-area').each(function(){
+     load_mceeditor(jQuery(this));
+    });
             </script>
 
-            <script type="text/javascript">
 
-                jQuery(document).ready(function() {
-
-                    // Uploading files
-                    var file_frame;
-                    jQuery('#TB_closeWindowButton').live('click',function(){
-                        tb_remove();
-                        jQuery('#TB_window').remove(); 
-                    });
-                    jQuery('#iimg').live('click', function( event ){
-                        tb_show('', 'media-upload.php?type=image&amp;TB_iframe=true');return false;
-
-                        /*event.preventDefault();
-
-                        // If the media frame already exists, reopen it.
-                        if ( file_frame ) {
-                            file_frame.open();
-                            return;
-                        }
-
-                        // Create the media frame.
-                        file_frame = wp.media.frames.file_frame = wp.media({
-                            title: jQuery( this ).data( 'uploader_title' ),
-                            button: {
-                                text: jQuery( this ).data( 'uploader_button_text' ),
-                            },
-                            multiple: false  // Set to true to allow multiple files to be selected
-                        });
-
-                        // When an image is selected, run a callback.
-                        file_frame.on( 'select', function() {
-                            // We set multiple to false so only get one image from the uploader
-                            attachment = file_frame.state().get('selection').first().toJSON();
-
-                            editor.insertHtml("<img src='"+attachment.url+"' style='max-width:100%'/>");
-
-                            file_frame.close();
-
-                            // Do something with attachment.id and/or attachment.url here
-                        });
-
-                        // Finally, open the modal
-                        file_frame.open();*/
-                    });
-
-                    window.send_to_editor = function(html) {
-                        tinymce.activeEditor.execCommand('mceInsertContent', false, html);
-                        //editor.insertHtml(html);
-                        //jQuery('#upload_image').val(imgurl);
-                        tb_remove();
-                        jQuery('#TB_window').remove();
-                    }
-
-
-
-
-
-                });
-
-
-
-            </script>
             <style type="text/css">
+
             #TB_overlay,
             #TB_load{
-                z-index:302 !important;
+                z-index:4000000001 !important;
             }
             #TB_window{
-                z-index:303 !important;
+                z-index:4000000001 !important;
             }
             #TB_title:not(:first-child){
                 display: none;
+            }
+            div#mcontent_forecolor_menu{
+                z-index: 4000000001 !important;
             }
             </style>
         

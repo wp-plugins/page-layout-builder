@@ -1,9 +1,9 @@
 === Page Layout Builder ===
-Contributors: codename065
+Contributors: codename065, shahriar0822
 Donate link: http://wpeden.com
-Tags: content builder, page builder, layout builder, theme builder, squeeze page builder, sales page builder
+Tags: content builder, page builder, layout builder, theme builder, squeeze page builder, sales page builder, drag and drop page builder, drag and drop content builder, drag drop
 Requires at least: 3.5
-Tested up to: 3.6.1
+Tested up to: 3.7.1
 License: GPLv2 or later
  
   
@@ -20,7 +20,7 @@ Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress. Bui
 * RichText Module ( CKEditor )
  
 
-`It's totally DRAG and DROP, No Conding Knowledge Required!`
+`It's totally DRAG and DROP, No Coding Knowledge Required!`
 
 
  
@@ -40,6 +40,9 @@ Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress. Bui
 
 
 == Changelog ==
+
+= 1.2.7 =
+* Upgraded richtext module
 
 = 1.2.5 =
 * Fixed layout issue
