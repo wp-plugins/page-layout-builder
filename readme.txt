@@ -17,7 +17,8 @@ Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress. Bui
 [youtube https://www.youtube.com/watch?v=iPQAYdP2kyI]
 
 = Integrated Modules =
-* RichText Module ( CKEditor )
+* RichText Module 
+* Image Module with 5 predefined styles
  
 
 `It's totally DRAG and DROP, No Coding Knowledge Required!`
@@ -40,6 +41,10 @@ Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress. Bui
 
 
 == Changelog ==
+
+= 1.2.8 =
+* Upgraded front-end layout css
+* Added Image Module
 
 = 1.2.7 =
 * Upgraded richtext module

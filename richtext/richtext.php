@@ -114,6 +114,7 @@ function load_mceeditor($element) {
             div#mcontent_forecolor_menu{
                 z-index: 4000000001 !important;
             }
+             
             </style>
         
         </p>
@@ -130,7 +131,6 @@ function load_mceeditor($element) {
 
 } 
 
-add_action( 'init', 'get_all_images');
 add_action( 'widgets_init', create_function( '', 'register_widget("MiniMax_RichText");' ) );
 
 }

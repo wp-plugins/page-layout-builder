@@ -4,7 +4,7 @@ Plugin Name: Page Layout Builder
 Description: Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress
 Plugin URI: http://wpeden.com
 Author: Shaon
-Version: 1.2.7
+Version: 1.2.8
 Author URI: http://wpeden.com
 */
  
@@ -26,9 +26,10 @@ $minimax_layout_holder = array(
   
 include("includes/core.php"); 
 include("richtext/richtext.php"); 
+include("image/image.php"); 
      
 function minimax_opt_menu(){                                                                                              
-      add_menu_page( "Page Layout Builder Settings", "Page Layout Builder Settings", 'administrator', 'minimax', 'minimax_options', plugins_url('/page-layout-builder/images/modules_clr.png'));  
+      add_menu_page( "Page Layout Builder Settings", "Builder Settings", 'administrator', 'minimax', 'minimax_options', plugins_url('/page-layout-builder/images/modules_clr.png'));  
     }
     
 function minimax_options(){                                                                                                   
