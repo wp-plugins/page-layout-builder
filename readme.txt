@@ -42,6 +42,9 @@ Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress. Bui
 
 == Changelog ==
 
+= 1.2.9 =
+* Fixed a few minor issues
+
 = 1.2.8 =
 * Upgraded front-end layout css
 * Added Image Module
