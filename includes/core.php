@@ -1,5 +1,5 @@
 <?php
-error_reporting( 0 );
+error_reporting(0); 
 global $mxwidgets, $minimax_layout_data, $minimax_modules, $wp_widget_factory, $minimax_modules_settings, $minimax_options, $minimax_layout_settings;
 define("base_theme_url",plugins_url('page-layout-builder'));
 
@@ -136,9 +136,10 @@ function minimax_layout_settings_data(){
 
 //Render saved layout frames (admin)
 function minimax_render_layout_frames($holder){     
-    global $minimax_layout_data, $minimax_layout_settings;          
+    global $minimax_layout_data, $minimax_layout_settings;   
+    if(isset($_GET['post'])){
     $gs = get_post_meta($_GET['post'],'minimax_grid_settings',true);
-    $gs = $gs[$holder."_rows"];  
+    $gs = $gs[$holder."_rows"];  }
     if(is_array($minimax_layout_data)&&isset($minimax_layout_data[$holder])&&is_array($minimax_layout_data[$holder])):    
     foreach($minimax_layout_data[$holder] as $id=>$layout):
     echo '<li id="row_li_'.$id.'"><input id="row_settings_'.$id.'" type="hidden" name="layout_settings['.$holder.']['.$layout.']['.$id.']" value="'.$minimax_layout_settings[$holder][$layout][$id].'" /><div class="row-handler"><div class="sort"></div><div rel="row_li_'.$id.'" class="rdel delete"></div><div  rel="row_settings_'.$id.'" class="rsettings"></div></div><div class="row-container"><div class="container_12 clearfix wrapper row" id="row_'.$id.'"><input type="hidden" name="layouts['.$holder.']['.$id.']" value="'.$layout.'" />';    
@@ -195,8 +196,11 @@ function minimax_render_module_frames($id){
     $base_theme_url = base_theme_url;
     $minimax_modules_settings = get_option('minimax_modules_settings',array());
     if(!is_array($minimax_modules_settings)) $minimax_modules_settings = array();
+    if(isset($_GET['post']))
     $post_modules_settings = get_post_meta($_GET['post'],'minimax_modules_settings',true);
-    if(!is_array($post_modules_settings)) $post_modules_settings = array();
+    if(!isset($post_modules_settings)||!is_array($post_modules_settings))
+        $post_modules_settings = array();
+  
     $minimax_modules_settings += $post_modules_settings;
     //echo "<div class='modules' id='$id' >";
     $module_frames = '';
@@ -385,17 +389,26 @@ function minimax_save_page_layout( $post_id ) {
      
     if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
     if(!$_POST) return;
-    $squeeze_page = $_POST['squeeze_page']=='1'?1:0;
+    $squeeze_page = isset($_POST['squeeze_page'])?1:0;
     update_post_meta($post_id, "squeeze_page",$squeeze_page);
+    if(isset($_POST['sptemplate']))
     update_post_meta($post_id, "sptemplate",$_POST['sptemplate']);
+    if(isset($_POST['bodybgcolor']))
     update_post_meta($post_id, "bodybgcolor",$_POST['bodybgcolor']);
+    if(isset($_POST['bodybgimage']))
     update_post_meta($post_id, "bodybgimage",$_POST['bodybgimage']);
+    if(isset($_POST['layouts']))
     update_post_meta($post_id, "minimax_layout",$_POST['layouts']);
+    if(isset($_POST['layout_settings']))
     update_post_meta($post_id, "minimax_layout_settings",$_POST['layout_settings']); 
+    if(isset($_POST['layout_grids']))
     update_post_meta($post_id,"minimax_grid_settings",$_POST['layout_grids']);
+    if(isset($_POST['modules']))
     update_post_meta($post_id, "minimax_modules",$_POST['modules']);
+    if(isset($_POST['modules_settings']))
     update_post_meta($post_id, "minimax_modules_settings",$_POST['modules_settings']);
     
+    if(file_exists(MX_CACHE_DIR.$post_id))
     @unlink(MX_CACHE_DIR.$post_id);
                                                                   
 } 

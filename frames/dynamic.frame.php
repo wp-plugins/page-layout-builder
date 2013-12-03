@@ -1,6 +1,6 @@
 <?php
 
-$cols = $cols?$cols:2;
+$cols = isset($cols)?$cols:2;
 
 $grid = (int)(12/$cols);
 
@@ -8,7 +8,7 @@ $rem = 12%$cols;
 
 for($i=1; $i<=$cols;  $i++){
     if($i==$cols) $grid +=$rem;
-    if($gs[$id]) $grid = $gs[$id]['grid_'.$i];
+    if(isset($gs[$id])) $grid = $gs[$id]['grid_'.$i];
 ?> 
 
 	<div id="grid_<?php echo $i; ?>_<?php echo $id; ?>" class="gridt grid_<?php echo $grid; ?>">

@@ -1,6 +1,6 @@
 <?php
 
-$cols = $cols?$cols:2;
+$cols = isset($cols)?$cols:2;
 
 $grid = (int)(12/$cols);
 

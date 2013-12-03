@@ -34,7 +34,7 @@
          
          <b>Get MiniMax Pro</b>
          <div class="sap"></div>
-         <a href="http://wpeden.com/product/minimax-page-layout-builder/" class="button">Check minimax pro here</a>
+         <a href="http://wpeden.com/minimax-wordpress-page-layout-builder-plugin/" target="_blank" class="button">Check minimax pro here</a>
        
         </div>
         
