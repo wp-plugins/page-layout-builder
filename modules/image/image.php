@@ -1,19 +1,12 @@
 <?php
-/*
-Plugin Name: Image 
-Plugin URI: #
-Description: Image module for minimax
-Author: Shaon
-Version: 1.6
-Author URI: #
-*/
+ 
 
 class MiniMax_Image extends WP_Widget {
     /** constructor */
     function __construct() {
         parent::WP_Widget( /* Base ID */'MiniMax_Image', /* Name */'Image', array( 'description' => 'Image Widget' ) );
          if(!is_admin()){
-            wp_enqueue_style("minimax-image",base_theme_url.'/modules/image/image.css');
+            wp_enqueue_style("minimax-image",  plugins_url().'/page-layout-builder/modules/image/image.css');
         }
     }
 
@@ -33,7 +26,7 @@ class MiniMax_Image extends WP_Widget {
 
         <div class="media">
             <a href="#" class="pull-left thumbnail" style="margin-right: 5px !important;">
-                <img class="imgbr" src="<?php echo base_theme_url."/includes/timthumb.php?src=".urlencode($url)."&w=50&h=50"; ?>" title="<?php echo $title; ?>" alt="<?php echo $alt; ?>">
+                <img class="imgbr" src="<?php echo MX_THEME_URL."timthumb.php?src=".urlencode($url)."&w=50&h=50"; ?>" title="<?php echo $title; ?>" alt="<?php echo $alt; ?>">
             </a>
             <div class="meida-body" style="padding-top:5px !important;">
                 <h3 class='media-heading'><i class="icon icon-th"></i> <?php echo $title; ?></h3>
