@@ -42,6 +42,9 @@ Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress. Bui
 
 == Changelog ==
 
+= 1.3.2 =
+* Resolved version conflict
+
 = 1.3.1 = 
 * Fixed invalid header issue
 * Upgraded image module
