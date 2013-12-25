@@ -42,6 +42,9 @@ Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress. Bui
 
 == Changelog ==
 
+= 1.3.3 = 
+* Regular maintenance and compatibility released for wp 3.8
+
 = 1.3.2 =
 * Resolved version conflict
 
