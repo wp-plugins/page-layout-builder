@@ -3,7 +3,7 @@ Contributors: codename065, shahriar0822
 Donate link: http://wpeden.com
 Tags: content builder, page builder, layout builder, theme builder, squeeze page builder, sales page builder, drag and drop page builder, drag and drop content builder, drag drop
 Requires at least: 3.5
-Tested up to: 3.7.1
+Tested up to: 3.8
 License: GPLv2 or later
  
   
@@ -36,11 +36,15 @@ Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress. Bui
 
 == Screenshots ==
 1. Sample Layout ( Admin )
-2. Front-end preview form #1
+2. Front-end Mobile from Screenshot #1
 3. Widgets window
+4. Front-end Mobile Device Preview from Screenshot #1
 
 
 == Changelog ==
+
+= 1.3.4 = 
+* Minor css upgrade
 
 = 1.3.3 = 
 * Regular maintenance and compatibility released for wp 3.8

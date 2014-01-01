@@ -4,7 +4,7 @@
 class MiniMax_Image extends WP_Widget {
     /** constructor */
     function __construct() {
-        parent::WP_Widget( /* Base ID */'MiniMax_Image', /* Name */'Image', array( 'description' => 'Image Widget' ) );
+        parent::WP_Widget( /* Base ID */'MiniMax_Image', /* Name */'Image', array( 'description' => 'Image Module for Page Layout Builder' ) );
          if(!is_admin()){
             wp_enqueue_style("minimax-image",  plugins_url().'/page-layout-builder/modules/image/image.css');
         }
@@ -65,8 +65,7 @@ class MiniMax_Image extends WP_Widget {
         <<?php echo $titleh; ?>><a href="<?php echo $link; ?>"><?php echo $title; ?></a></<?php echo $titleh; ?>>
         <p><?php echo $desc; ?></p>         
         </div>
-        </div> 
-         
+        </div>          
         <?php
          echo $after_widget;         
     }
