@@ -1,3 +1,6 @@
+<?php if(!defined("ABSPATH")) die("Error! Unauthorized Access"); 
+if(!is_admin()) die("Error! Unauthorized Access");
+?>
 <style type="text/css">
 .btn5x{
     -webkit-border-radius: 5px !important;

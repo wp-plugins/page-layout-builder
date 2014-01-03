@@ -43,6 +43,9 @@ Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress. Bui
 
 == Changelog ==
 
+= 1.3.5 =
+* Fixed a security issue
+
 = 1.3.4 = 
 * Minor css upgrade
 
