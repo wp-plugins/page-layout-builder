@@ -130,7 +130,11 @@ function minimax_layout_settings(){
 
 //Format Layout Settings Data (admin)
 function minimax_layout_settings_data(){
-    echo base64_encode(serialize($_POST['ls']));
+    $ls = $_POST['ls'];
+    foreach ($ls as $key=>$val){
+        $ls[$key] = esc_attr($val);
+    }
+    echo base64_encode(serialize($ls));
     die();
 }
 

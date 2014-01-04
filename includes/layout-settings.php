@@ -11,15 +11,15 @@ if(!is_admin()) die("Error! Unauthorized Access");
 <form method="post" action="admin-ajax.php" id="layout-settings-form" rel="<?php echo $_GET['layout_settings_id']; ?>" >
 <p>
 <label>Row Class Name (CSS):</label>
-<input class="widefat" type="text" name="ls[css_class]" value="<?php echo $ls['css_class']; ?>">
+<input class="widefat" type="text" name="ls[css_class]" value="<?php echo esc_attr($ls['css_class']); ?>">
 </p>
 <p> 
 <label>Row ID:</label>
-<input class="widefat" type="text" name="ls[css_id]" value="<?php echo $ls['css_id']; ?>">
+<input class="widefat" type="text" name="ls[css_id]" value="<?php echo esc_attr($ls['css_id']); ?>">
 </p>
 <p> 
 <label>Row CSS Text:</label>
-<input class="widefat" type="text" name="ls[css_txt]" value="<?php echo $ls['css_txt']; ?>">
+<input class="widefat" type="text" name="ls[css_txt]" value="<?php echo esc_attr($ls['css_txt']); ?>">
 </p>
 <p> 
 <label>Pre Defined Style:</label>
