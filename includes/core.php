@@ -231,7 +231,7 @@ function minimax_render_module_frames($id){
 
             if(method_exists($pmod = new $module(),'preview'))
                 $pmod->preview($ins);
-            else
+            else if(get_option('plb_modpreview')!=2)
                 $pmod->widget(array(), $ins);
             //the_widget($module, $ins);*/
             $prevw = ob_get_contents();
@@ -368,7 +368,9 @@ function minimax_save_theme_options(){
     update_option("minimax_layout",$_POST['layouts']);
     update_option("minimax_layout_settings",$_POST['layout_settings']);
     update_option("minimax_modules",$_POST['modules']);
-    update_option("minimax_modules_settings",$_POST['modules_settings']);       
+    update_option("minimax_modules_settings",$_POST['modules_settings']);
+
+    update_option("plb_modpreview",$_POST['plb_modpreview']);
     die();
 }
  
@@ -492,7 +494,7 @@ function minimax_get_module_preview(){
 
     if(method_exists($pmod = new $module(),'preview'))
         $pmod->preview($ins);
-    else
+    else if(get_option('plb_modpreview')!=2)
         the_widget($module, $ins);
 
     die();

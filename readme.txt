@@ -43,6 +43,9 @@ Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress. Bui
 
 == Changelog ==
 
+= 1.3.7 =
+* Added new option for disabling/enabling module preview
+
 = 1.3.6 = 
 * Sanitized user input data
 * Fixed a security issue
