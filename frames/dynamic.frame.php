@@ -29,7 +29,13 @@ for($i=1; $i<=$cols;  $i++){
         </div>
         
      </div>
-<?php } ?>	 
- 
+<?php }  if(get_option('plb_modpreview')==2):?>
+<style>
+    .module-preview{
+        display: none;
+    }
+</style>
+<?php endif; ?>
+
 
  

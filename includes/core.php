@@ -226,7 +226,7 @@ function minimax_render_module_frames($id){
                 foreach($instance as $k=>$v):
                     $ins[$k] = is_array($v)?$v:stripslashes($v);
                 endforeach; endif;
-
+            $prevw = "";
             ob_start();
 
             if(method_exists($pmod = new $module(),'preview'))
@@ -234,20 +234,19 @@ function minimax_render_module_frames($id){
             else if(get_option('plb_modpreview')!=2)
                 $pmod->widget(array(), $ins);
             //the_widget($module, $ins);*/
-            $prevw = ob_get_contents();
-            ob_clean();
+            $prevw = ob_get_clean();
 
             //end preview
-
+            if($prevw!="") $prevw = "<div class='module-preview w3eden'>{$prevw}</div>";
             $module_frames .=<<<MOD
     <li id='module_{$id}_{$z}' rel='{$id}'>
 
         <input type="hidden" id="modid_module_{$id}_{$z}" name="modules[{$id}][]" value="{$module}" />
         <input id="modset_module_{$id}_{$z}" type="hidden" name="modules_settings[{$id}][]" value="{$minimax_modules_settings[$id][$mid]}" />
         <h3><nobr class="title">{$mod->name}</nobr><nobr class="ctl"><span class="handle"></span><img src="{$base_theme_url}/images/delete.png" class='delete_module' rel='#module_{$id}_{$z}' />&nbsp;<img class="insert" id="modset_module_{$id}_{$z}_icon" rel="$module" data="{$id}|{$mid}" datafield="modset_module_{$id}_{$z}" src="{$base_theme_url}/images/settings.png" /></nobr></h3>
-        <div class='module-preview w3eden'>
+
         {$prevw}
-        </div>
+
         <div class="clear"</div></li>
 MOD;
     endforeach;

@@ -1,6 +1,6 @@
 === Page Layout Builder ===
 Contributors: codename065, shahriar0822
-Donate link: http://wpeden.com
+Donate link: http://wpeden.com/minimax-wordpress-page-layout-builder-plugin/
 Tags: content builder, page builder, layout builder, theme builder, squeeze page builder, sales page builder, drag and drop page builder, drag and drop content builder, drag drop
 Requires at least: 3.5
 Tested up to: 3.8
@@ -42,6 +42,9 @@ Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress. Bui
 
 
 == Changelog ==
+
+= 1.3.8 =
+* Upgraded module frames
 
 = 1.3.7 =
 * Added new option for disabling/enabling module preview
