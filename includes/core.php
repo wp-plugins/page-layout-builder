@@ -44,7 +44,7 @@ function minimax_layout_holder($name){
 function minimax_page_layout($content){    
     $pid = get_the_ID();        
     //if(get_post_type($pid)!='page') return $content;
-    if(file_exists(MX_CACHE_DIR.$pid)) return $content.file_get_contents(MX_CACHE_DIR.$pid);
+    if(file_exists(MX_CACHE_DIR.$pid) && get_option('plb_modcache')!=2) return $content.file_get_contents(MX_CACHE_DIR.$pid);
     ob_start();   
     $minimax_layout_data = get_post_meta($pid,'minimax_layout',true);     
     $minimax_modules = get_post_meta($pid,'minimax_modules',true);        
@@ -55,6 +55,7 @@ function minimax_page_layout($content){
     endforeach;
     endif;
     $data = ob_get_contents();
+    if(get_option('plb_modcache')!=2)
     file_put_contents(MX_CACHE_DIR.$pid, $data);
     ob_clean();
     return $content.$data;  
@@ -370,6 +371,7 @@ function minimax_save_theme_options(){
     update_option("minimax_modules_settings",$_POST['modules_settings']);
 
     update_option("plb_modpreview",$_POST['plb_modpreview']);
+    update_option("plb_modcache",$_POST['plb_modcache']);
     die();
 }
  

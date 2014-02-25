@@ -21,6 +21,11 @@
                 <option value="1">Enabled</option>
                 <option value="2" <?php selected(get_option('plb_modpreview'),2); ?> >Disabled</option>
 
+            </select> <br/>
+            Module Caching: <select name="plb_modcache">
+                <option value="1">Enabled</option>
+                <option value="2" <?php selected(get_option('plb_modcache'),2); ?> >Disabled</option>
+
             </select>
 <br/><br/>
          

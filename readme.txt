@@ -43,6 +43,9 @@ Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress. Bui
 
 == Changelog ==
 
+= 1.3.9 =
+* Added cache control option
+
 = 1.3.8 =
 * Upgraded module frames
 
