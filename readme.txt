@@ -19,6 +19,7 @@ Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress. Bui
 = Integrated Modules =
 * RichText Module 
 * Image Module with 5 predefined styles
+* Tabs Module
  
 
 `It's totally DRAG and DROP, No Coding Knowledge Required!`
@@ -36,12 +37,15 @@ Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress. Bui
 
 == Screenshots ==
 1. Sample Layout ( Admin )
-2. Front-end Mobile from Screenshot #1
+2. Front-end Preview from Screenshot #1
 3. Widgets window
 4. Front-end Mobile Device Preview from Screenshot #1
 
 
 == Changelog ==
+
+= 1.4.0 =
+* Added Tab Mobule
 
 = 1.3.9 =
 * Added cache control option

@@ -4,7 +4,7 @@ Plugin Name: Page Layout Builder
 Description: Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress
 Plugin URI: http://wpeden.com/minimax-wordpress-page-layout-builder-plugin/
 Author: Shaon
-Version: 1.3.9
+Version: 1.4.0
 Author URI: http://wpeden.com
 */
 
@@ -27,6 +27,7 @@ $minimax_layout_holder = array(
 include(MX_PLUG_DIR . "/includes/core.php");
 include(MX_PLUG_DIR . "/modules/richtext/richtext.php");
 include(MX_PLUG_DIR . "/modules/image/image.php");
+include(MX_PLUG_DIR . "/modules/csstabs/csstabs.php");
 
 function minimax_opt_menu()
 {
@@ -68,9 +69,42 @@ function minimax__module_status_change()
     }
 }
 
+function minimax_init() {
+
+    register_post_type("minimax_tabs", array(
+            'labels' => array(
+                'name' => __('Tabs'),
+                'singular_name' => __('Tabs'),
+                'add_new' => __('Add Tab'),
+                'add_new_item' => __('Add New Tab'),
+                'edit_item' => __('Edit Tab'),
+                'new_item' => __('New Tab'),
+                'view_item' => __('View Tab'),
+                'search_items' => __('Search Tab'),
+                'not_found' => __('No Tab found'),
+                'not_found_in_trash' => __('No Tab found in Trash'),
+                'parent_item_colon' => ''
+            ),
+            'public' => true,
+            'publicly_queryable' => true,
+            'has_archive' => true,
+            'show_ui' => true,
+            'query_var' => true,
+            'rewrite' => array('slug' => 'minimax-tabs', 'with_front' => true),
+            'capability_type' => 'post',
+            'hierarchical' => false,
+            'menu_icon' => plugins_url() . '/minimax/images/tab.png',
+            'supports' => array('title', 'editor')
+            //'taxonomies' => array('ptype')
+        )
+    );
+
+}
+
 
 add_action('admin_menu', 'minimax_opt_menu');
 add_action('template_redirect', 'minimax_squeeze_page_canvas');
 add_action('wp_ajax_module_status_change', 'minimax__module_status_change');
-  
+add_action('init', 'minimax_init');
+
 
