@@ -4,7 +4,7 @@ Plugin Name: Page Layout Builder
 Description: Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress
 Plugin URI: http://wpeden.com/minimax-wordpress-page-layout-builder-plugin/
 Author: Shaon
-Version: 1.4.0
+Version: 1.4.1
 Author URI: http://wpeden.com
 */
 
@@ -93,7 +93,7 @@ function minimax_init() {
             'rewrite' => array('slug' => 'minimax-tabs', 'with_front' => true),
             'capability_type' => 'post',
             'hierarchical' => false,
-            'menu_icon' => plugins_url() . '/minimax/images/tab.png',
+            'menu_icon' => plugins_url() . '/page-layout-builder/images/tab.png',
             'supports' => array('title', 'editor')
             //'taxonomies' => array('ptype')
         )

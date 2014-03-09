@@ -54,10 +54,9 @@ function minimax_page_layout($content){
     minimax_render_layout($layout, $id, get_post_type());
     endforeach;
     endif;
-    $data = ob_get_contents();
+    $data = "<div class='w3eden'>". ob_get_clean() ."</div>";
     if(get_option('plb_modcache')!=2)
-    file_put_contents(MX_CACHE_DIR.$pid, $data);
-    ob_clean();
+    file_put_contents(MX_CACHE_DIR.$pid, $data);     
     return $content.$data;  
 }
 
@@ -165,14 +164,11 @@ function minimax_render_layout($layout, $id, $holder = '') {
     $gs = get_post_meta(get_the_ID(),'minimax_grid_settings',true);
     //print_r($gs);
     $gs = $gs[$holder."_rows"];  
-    if($minimax_options['general']['css_layout']=="960"){
-        $container_css = "container_12" ;
-        $layout_folder = "960";
-    }else{
-        $container_css = "bs_row-fluid" ; 
+    
+        $container_css = "row" ; 
         $layout_folder = "bootstrap";
-    }
-    $container_css = "container_12" ;
+    
+    $container_css = "container" ;
     $layout_folder = "bootstrap";
     global $minimax_layout_data, $minimax_layout_settings;  
     if(!$minimax_layout_settings) $minimax_layout_settings = get_option('minimax_layout_settings',array());    
@@ -184,14 +180,14 @@ function minimax_render_layout($layout, $id, $holder = '') {
     }
     $rid = $ls['css_id']?$ls['css_id']:"row_{$id}";
     
-    echo '<div class="w3eden '.$ls['css_class'].' '.$ls['css_class_pd'].'" id="'.$rid.'" style="'.$ls['css_txt'].'" ><div class="row-fluid minimax_content_area">';     
-    if(!isset($gs[$id]))
-    include(MX_THEME_DIR."/layouts/{$layout_folder}/{$layout}.layout.php");
-    else  {
+    //echo '<div class="w3eden '.$ls['css_class'].' '.$ls['css_class_pd'].'" id="'.$rid.'" style="'.$ls['css_txt'].'" ><div class="row minimax_content_area">';     
+    //if(!isset($gs[$id]))
+    //include(MX_THEME_DIR."/layouts/{$layout_folder}/{$layout}.layout.php");
+    //else  {
         $cols = count($gs[$id]);
         include(MX_THEME_DIR."/layouts/{$layout_folder}/dynamic.layout.php"); 
-    }
-    echo "<div style='clear: both;'></div></div></div>";
+    //}
+    //echo "<div style='clear: both;'></div></div></div>";
 }
 
 
@@ -380,13 +376,10 @@ function minimax_save_theme_options(){
 function minimax_enqueue_scripts(){
     $minimax_options = get_option("wpeden_admin");
     wp_enqueue_script("jquery"); 
-    if($minimax_options['general']['css_layout']=="960")       
-        wp_enqueue_style("gs-960",base_theme_url.'/css/960.gs.css');
-    else{
+   
         wp_enqueue_style("bootstrap",base_theme_url.'/twbs/css/bootstrap.css'); 
-        wp_enqueue_style("bootstrap-responsive",base_theme_url.'/twbs/css/bootstrap-responsive.css'); 
         wp_enqueue_script("bootstrap-js",base_theme_url.'/twbs/js/bootstrap.js'); 
-    }
+    
     
     wp_enqueue_style("row-styles",base_theme_url.'/css/row-styles.css');
 }

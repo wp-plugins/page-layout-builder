@@ -8,7 +8,7 @@ class MiniMax_tabwidget extends WP_Widget {
             wp_enqueue_script( 'jquery' );
             wp_enqueue_script( 'jquery-ui-core' );
             wp_enqueue_script( 'jquery-ui-sortable' );
-            wp_enqueue_style('tab-css',base_theme_url.'/modules/csstabs/csstabs.css');
+            wp_enqueue_style('tab-css',base_theme_url.'/page-layout-builder/csstabs/csstabs.css');
         }
         
     }
