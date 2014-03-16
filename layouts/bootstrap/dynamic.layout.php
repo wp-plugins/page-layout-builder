@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row-minimax">
 <?php
 
 $cols = isset($cols)?$cols:2;

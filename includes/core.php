@@ -54,7 +54,7 @@ function minimax_page_layout($content){
     minimax_render_layout($layout, $id, get_post_type());
     endforeach;
     endif;
-    $data = "<div class='w3eden'>". ob_get_clean() ."</div>";
+    $data = "<div class='w3eden'><div class='container-fluid'>". ob_get_clean() ."</div></div>";
     if(get_option('plb_modcache')!=2)
     file_put_contents(MX_CACHE_DIR.$pid, $data);     
     return $content.$data;  

@@ -44,6 +44,9 @@ Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress. Bui
 
 == Changelog ==
 
+= 1.4.2 =
+* changed .row classname to .row-minimax to resolve css conflict with some other themes
+ 
 = 1.4.1 = 
 * Updated to Bootstrap 3.1.1
 
