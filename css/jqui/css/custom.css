@@ -66,20 +66,3 @@ body.dark {
   .dark .modalDemo p a {
     color: #50b1ff;
   }
-
-
-.ui-dialog.ui-front,
-.ui-dialog{
-    z-index: 600001 !important;
-}
-
-div#TB_overlay, #TB_load{
-    z-index: 700001 !important;
-}
-div#TB_window{
-    z-index: 800001 !important;
-}
-
-.mceListBoxMenu{
-    z-index: 900001 !important;;
-}

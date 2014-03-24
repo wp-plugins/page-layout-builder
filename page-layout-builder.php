@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: Page Layout Builder
-Description: Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress
+Plugin Name: MiniMax - Page Layout Builder
+Description: MiniMax - Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress
 Plugin URI: http://wpeden.com/minimax-wordpress-page-layout-builder-plugin/
 Author: Shaon
-Version: 1.4.2
+Version: 1.5.0
 Author URI: http://wpeden.com
 */
 
@@ -31,7 +31,7 @@ include(MX_PLUG_DIR . "/modules/csstabs/csstabs.php");
 
 function minimax_opt_menu()
 {
-    add_menu_page("Page Layout Builder Settings", "Builder Settings", 'administrator', 'minimax', 'minimax_options', plugins_url('/page-layout-builder/images/modules_clr.png'));
+    add_menu_page("MiniMax - Page Layout Builder Settings", "MiniMax", 'administrator', 'minimax', 'minimax_options', plugins_url('/page-layout-builder/images/modules.png'));
 }
 
 function minimax_options()
@@ -94,6 +94,33 @@ function minimax_init() {
             'capability_type' => 'post',
             'hierarchical' => false,
             'menu_icon' => plugins_url() . '/page-layout-builder/images/tab.png',
+            'supports' => array('title', 'editor')
+            //'taxonomies' => array('ptype')
+        )
+    );
+    register_post_type("minimax_accordion", array(
+            'labels' => array(
+                'name' => __('Accordion'),
+                'singular_name' => __('Accordion'),
+                'add_new' => __('Add Accordion'),
+                'add_new_item' => __('Add New Accordion'),
+                'edit_item' => __('Edit Accordion'),
+                'new_item' => __('New Accordion'),
+                'view_item' => __('View Accordion'),
+                'search_items' => __('Search Accordion'),
+                'not_found' => __('No Accordion found'),
+                'not_found_in_trash' => __('No Accordion found in Trash'),
+                'parent_item_colon' => ''
+            ),
+            'public' => true,
+            'publicly_queryable' => true,
+            'has_archive' => true,
+            'show_ui' => true,
+            'query_var' => true,
+            'rewrite' => array('slug' => 'minimax-accordion', 'with_front' => true),
+            'capability_type' => 'post',
+            'hierarchical' => false,
+            'menu_icon' => plugins_url() . '/page-layout-builder/images/accordion.png',
             'supports' => array('title', 'editor')
             //'taxonomies' => array('ptype')
         )

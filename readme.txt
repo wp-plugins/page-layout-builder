@@ -16,10 +16,20 @@ Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress. Bui
 
 [youtube https://www.youtube.com/watch?v=iPQAYdP2kyI]
 
+= and Visual Front-end Builder =
+What You See Is What You Get
+[youtube https://www.youtube.com/watch?v=eMyufoWVkhw]
+
 = Integrated Modules =
 * RichText Module 
 * Image Module with 5 predefined styles
 * Tabs Module
+* Accordion Module
+* Sub-pages module
+
+= Want more modules? =
+You may [Upgrade to Pro](http://wpeden.com/minimax-wordpress-page-layout-builder-plugin/ "20+ modules and Extensive Front-end Page Builder") for 20+ modules & Extensive features of front-end page builder
+
  
 
 `It's totally DRAG and DROP, No Coding Knowledge Required!`
@@ -43,6 +53,11 @@ Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress. Bui
 
 
 == Changelog ==
+
+= 1.5.0 =
+* Added visual front-end builder
+* Added Accordion Module
+* Added Sub-pages Module
 
 = 1.4.2 =
 * changed .row classname to .row-minimax to resolve css conflict with some other themes

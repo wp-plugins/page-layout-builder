@@ -310,11 +310,13 @@ jQuery(function(){
  jQuery('.mod_name').live("click",function(){
      //alert("");
      var obj=this;
+     //jQuery(this).find('.icon').removeClass('icon-ok icon-remove').addClass('icon-spinner icon-spin');
+     jQuery(this).html('<i class="icon-spinner icon-spin"></i>');
      jQuery('.mod_'+jQuery(obj).attr("rel")).removeClass(jQuery('.mod_'+jQuery(obj).attr("rel")).attr("rel")); 
      jQuery('.mod_'+jQuery(obj).attr("rel")).addClass( "loading");    
      jQuery.post(ajaxurl,{
         action:"module_status_change" ,
-        status:jQuery('.mod_'+jQuery(this).attr("rel")).attr("rel"),
+        status:jQuery(this).attr("status"),
         module: jQuery(this).attr("rel")
      },function(res){         
          //alert(jQuery(_obj).attr("rel"));
@@ -325,13 +327,18 @@ jQuery(function(){
          //change the status
          //alert(jQuery('#st_'+jQuery(this).attr("rel")).text());
          if(res=="power_on"){
-             
-             jQuery('#st_'+jQuery(obj).attr("rel")).removeClass("mod_status_Inactive");
-             jQuery('#st_'+jQuery(obj).attr("rel")).addClass("mod_status_Active");
+             //alert(jQuery(obj).find('.icon').attr('class'));
+             jQuery(obj).html('Deactivate');
+             jQuery(obj).attr('status','power_on');
+             jQuery('#st_'+jQuery(obj).attr("rel")).removeClass("mod_status_Inactive").removeClass("label-danger");
+             jQuery('#st_'+jQuery(obj).attr("rel")).addClass("mod_status_Active").addClass('label-success');
              jQuery('#st_'+jQuery(obj).attr("rel")).html("active");
          }else{
-             jQuery('#st_'+jQuery(obj).attr("rel")).removeClass("mod_status_Active");
-             jQuery('#st_'+jQuery(obj).attr("rel")).addClass("mod_status_Inactive");
+             //alert(jQuery(obj).find('.icon').attr('class'));
+             jQuery(obj).attr('status','power_off');
+             jQuery(obj).html('Activate');
+             jQuery('#st_'+jQuery(obj).attr("rel")).removeClass("mod_status_Active").removeClass("label-success");
+             jQuery('#st_'+jQuery(obj).attr("rel")).addClass("mod_status_Inactive").addClass('label-danger');
              jQuery('#st_'+jQuery(obj).attr("rel")).html("inactive");
          }
      });

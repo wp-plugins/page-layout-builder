@@ -3,10 +3,46 @@
 //Layout builder metabox
 function minimax_layout_builder_meta_box() {
     add_meta_box( get_post_type().'-minimax-layout-builder', 'MiniMax Layout Builder  <a style="float:right;font-weight:bold;text-decoration:none" href="#" rel="#layout_page" class="insert-layout ghbutton big">+ Insert Layout</a>', 'minimax_content_layout_builder', get_post_type(), 'normal','high' );   
-    //add_meta_box( get_post_type().'-minimax-squeeze-page', 'Blank Canvas', 'minimax_squeeze_page', get_post_type(), 'side','core' );   
+    add_meta_box( get_post_type().'-minimax-squeeze-page', 'Blank Canvas', 'minimax_squeeze_page', get_post_type(), 'side','core' );   
     //add_meta_box( 'page-minimax-widgets', 'Widgets', 'minimax_all_widgets', 'page', 'side','core' );   
 }
- 
+
+function minimax_squeeze_page($post){     
+    ?>
+    <input type="checkbox" value="1" id="bco" name="squeeze_page" <?php echo get_post_meta($_GET['post'],'squeeze_page',true)=='1'?'checked=checked':''; ?> > <strong>Use Blank Canvas Template</strong>
+    <br/>
+    Check this option if you want to build a page layout from ground on a balnk canvas (will skip current theme header, footer, sidebars)
+    
+    <br/>
+    <br/>
+    <div id="bc" <?php echo get_post_meta($_GET['post'],'squeeze_page',true)!='1'?'style="display:none;"':''; ?> >
+    <strong>Select Squeeze Page Template:</strong><br />
+    <select name="sptemplate">
+    <?php 
+    $allthemes = scandir(MX_PLUG_DIR.'/canvas/');
+   // include_once(ABSPATH."/wp-includes/theme.php");
+    foreach($allthemes as $theme){
+        if($theme=='.'||$theme=='..') continue;
+        $themeinfo = wp_get_theme( $theme, MX_PLUG_DIR.'/canvas/' );
+        echo "<option ".(get_post_meta($_GET['post'],'sptemplate',true)==$theme?'selected=selected':'')." value='{$theme}'>{$themeinfo->Name}</option>";
+        
+    } ?>
+    </select><br />
+    <strong>Body Background Color:</strong><br />
+    <input size="30" type="text" name="bodybgcolor" class="miniColors" value="<?php echo get_post_meta($_GET['post'],'bodybgcolor',true); ?>" /><br/>
+    <strong>Body Background Image:</strong><br />
+    <input size="30" type="text" id="bodybgimage" name="bodybgimage" value="<?php echo get_post_meta($_GET['post'],'bodybgimage',true); ?>" /> <input type="button" style="font-size: 10px;" value="Browse" onclick="mediaupload('bodybgimage')" />
+    </div>
+    <script language="JavaScript">
+    <!--
+      jQuery('#bco').click(function(){
+          if(this.checked) jQuery('#bc').slideDown();
+          else jQuery('#bc').slideUp();
+      });
+    //-->
+    </script>
+    <?php
+}
 
 function minimax_all_widgets(){
     ?>
@@ -75,11 +111,11 @@ border-bottom:1px inset #dddddd;
     }
     </style>
     
-  <link rel="stylesheet" type="text/css" href="<?php echo plugins_url('/page-layout-builder/css/tipTip.css');?>" /> 
-  <script language="JavaScript" src="<?php echo plugins_url('/page-layout-builder/js/jquery.tipTip.minified.js');?>"></script>
+  <link rel="stylesheet" type="text/css" href="<?php echo MX_THEME_URL.'css/tipTip.css';?>" />
+  <script language="JavaScript" src="<?php echo MX_THEME_URL.'js/jquery.tipTip.minified.js';?>"></script>
     
     <div id="alll">
-    <div id="layout_<?php echo get_post_type(); ?>">                
+    <div id="layout_<?php echo get_post_type(); ?>">
                 <?php 
                     global $minimax_layout_settings;
                     if(isset($_GET['post']))
@@ -107,7 +143,8 @@ border-bottom:1px inset #dddddd;
         jQuery( ".dialog" ).dialog({ zIndex: 100, position: 'top' , closeOnEscape: true, autoOpen: false,modal:true,width:'640px' });
         jQuery( "#childdialog" ).dialog({ zIndex: 101, position: 'top' , closeOnEscape: true, autoOpen: false,width:'640px' });
         jQuery('.ui-dialog').css('margin-top','28px');
-        jQuery(".tooltip").tipTip({defaultPosition:'top'});
+        jQuery(".tooltip,.mx-tooltip,.stooltip").tipTip({defaultPosition:'top'});
+
     });
     </script>
 

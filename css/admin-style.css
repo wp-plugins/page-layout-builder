@@ -205,50 +205,39 @@ height: 60px;
      
 }
 
+#modules{
+    margin-top: 20px !important;
+}
 #modules > li{
-    width: 200px;
-    height: 68px;
+
+    height: 65px;
     text-align: center;
     float: left;
-    margin: 5px !important;
-    padding: 5px;
-    border: 1px solid #dddddd;
-    border-radius: 3px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
+
 }
 
 #modules > li h3{
-    font-size:8pt;
+    font-size:9pt;
+    font-weight: 700;
+    color: #333333;
     margin-top: 0px !important;
     text-transform: capitalize;
-    color: #ffffff;
 }
 #modules > li a{
     display: block;
-    width: 110px;
-    float: right;
+    float: left;
     font-size:8pt;
     overflow: hidden;
-    text-transform: lowercase;     
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
-   background: #45484d;
-   color: #ffffff;
- 
-padding: 4px 12px;
+    text-transform: lowercase;
+    border-radius: 4px;
+padding: 12px 4px 4px 60px;
 line-height: normal;
-height: 48px; 
+height: 60px;
 text-align: left;
-color: #ffffff !important;    
+
 text-decoration: none;
 margin: 0px;
     
-}
-
-#modules > li:hover a{
-    background: #0074A2;
 }
 
 .module > li nobr.ctl{
@@ -311,13 +300,26 @@ ul.module{min-height: 18px;}
 -moz-border-radius-topright: 4px !important;
 border-top-left-radius: 4px !important;
 border-top-right-radius: 4px !important;
+    background: #F9F9F9 !important;
 }
 #TB_window{
-        -webkit-border-radius: 5px !important;
+    -webkit-border-radius: 5px !important;
     -moz-border-radius: 5px !important;
     border-radius: 5px !important;
-    border:1px solid #666666 !important;
-    box-shadow:none !important;
+    border:0px solid #666666 !important;
+    -webkit-box-shadow: 0px 0px 17px rgba(50, 50, 50, 0.48);
+    -moz-box-shadow:    0px 0px 17px rgba(50, 50, 50, 0.48);
+    box-shadow:         0px 0px 17px rgba(50, 50, 50, 0.48);
+}
+
+
+.tb-close-icon {
+    background: url("jqui/theme/images/modalClose.png") no-repeat scroll center center transparent;
+    height: 30px;
+    margin-left: -5px;
+    margin-top: -20px;
+    position: absolute;
+    width: 30px;
 }
 
 /* icons */
@@ -604,4 +606,41 @@ border-top-right-radius: 4px !important;
 .module-preview.w3eden .icon{
     font-family: 'FontAwesome' !important;
     margin-top: 2px !important;
+}
+
+.ui-widget-overlay.ui-front {
+   z-index: 98 !important;
+}
+
+
+#dialog .container-fluid{
+    padding: 0 !important;
+}
+#modules{
+    padding: 0 !important;
+    margin: 0 !important;
+    border-bottom: 1px solid #eeeeee;
+    border-right: 1px solid #eeeeee;
+}
+#modules li{
+    border-left: 1px solid #eeeeee;
+    border-top: 1px solid #eeeeee;
+    margin: 0;
+}
+#smdl{
+    margin-bottom: 10px !important;
+}
+
+#modules li:hover{
+    background-color:#f1f1f1 !important;
+}
+
+#module-settings-form #poststuff{
+    min-width: 100px !important;
+}
+.panel.pro_only{
+    opacity: 0.5;
+}
+.mod_status{
+    text-transform: capitalize !important;
 }

@@ -1,5 +1,17 @@
 <?php
+/*
+Plugin Name: CSS Tab widget
+Plugin URI: #
+Description: CSS Tab widget
+Author: Shaon
+Version: 1.6
+Author URI: #
+*/
 
+/**
+ * Foo_Widget Class
+ */
+if(!class_exists('MiniMax_tabwidget')){
 class MiniMax_tabwidget extends WP_Widget {
     /** constructor */
     function __construct() {
@@ -8,7 +20,7 @@ class MiniMax_tabwidget extends WP_Widget {
             wp_enqueue_script( 'jquery' );
             wp_enqueue_script( 'jquery-ui-core' );
             wp_enqueue_script( 'jquery-ui-sortable' );
-            wp_enqueue_style('tab-css',base_theme_url.'/page-layout-builder/csstabs/csstabs.css');
+            wp_enqueue_style('tab-css',base_theme_url.'/modules/csstabs/csstabs.css');
         }
         
     }
@@ -150,7 +162,7 @@ class MiniMax_tabwidget extends WP_Widget {
     
 ?>
 <!--left box-->
-<div style="padding-top: 0;min-width: 300px;float:left;" id="poststuff" class="left_box postbox ">
+<div style="padding-top: 0;" id="poststuff" class="left_box postbox ">
 <h3 class="hndle"><span>Inactive tabs</span></h3>
 <ul class="tab_ul" id="inactive_tabs">
 <?php
@@ -169,7 +181,7 @@ class MiniMax_tabwidget extends WP_Widget {
 ?>
 </ul>
 </div>
-<div  style="padding-top: 0;min-width: 300px" id="poststuff" class="right_box postbox " >
+<div  style="padding-top: 0;" id="poststuff" class="right_box postbox " >
 <h3 class="hndle"><span>Active tabs</span></h3>
 <ul class="tab_ul" id="active_tabs">
  <?php
@@ -187,7 +199,6 @@ class MiniMax_tabwidget extends WP_Widget {
 </ul>
 </div>
 
-        <div style="display: none">
 Tab Style <select name="<?php echo $this->get_field_name('tab_style');?>">
 <option value="">Default</option>
 <option value="tab-style-1" <?php if(isset($tab_style) && $tab_style=="tab-style-1")echo 'selected="selected"';?>>Style1</option>
@@ -198,7 +209,7 @@ Tab Position <select name="<?php echo $this->get_field_name('tab_position');?>">
 <option value="left" <?php if(isset($tab_position) && $tab_position=="left")echo 'selected="selected"';?>>Left</option>
 <option value="right" <?php if(isset($tab_position) && $tab_position=="right")echo 'selected="selected"';?>>Right</option>
 <option value="below" <?php if(isset($tab_position) && $tab_position=="below")echo 'selected="selected"';?>>Bottom</option>
-</select><br /></div>
+</select><br />
 <div style="clear: both;"></div>
         <script type="text/javascript">                        
         jQuery(document).ready(function(){
@@ -268,15 +279,10 @@ jQuery(document).ready(function() {
     <?php
 }
 
-function my_menu(){
-    add_options_page('tab options', 'tab options', 'manage_options', 'tab-options', 'wptab_admin_option1');
-}
 
-function wptab_admin_option1(){
-    
-}
 
 // register Foo_Widget widget
 add_action( 'widgets_init', create_function( '', 'register_widget("minimax_tabwidget");' ) );
-add_action("admin_menu","my_menu");
+
 add_action("wp_head","myscript");
+}

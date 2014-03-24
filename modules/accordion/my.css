@@ -1,0 +1,52 @@
+.left_box, .right_box{
+    float: left;
+    width:48%;
+    border:1px solid #ccc;
+    border-radius:5px;
+    height: auto;
+    margin-right :10px ;
+    min-height: 300px;
+    
+}
+
+ul.accordion_ul {
+    padding: 5px;
+    margin: 0;
+    min-height: 350px;
+    max-height: 350px;
+    overflow-y:scroll;
+}
+.accordion_ul li{
+    padding: 5px 10px;
+    /*height: 20px;*/
+    font-weight: bold;
+    cursor: move;
+    height: auto;
+    background: #fafafa !important;
+    border-radius: 4px;
+}
+.slider_title{
+    vertical-align: top;
+    margin: 0 10px 0  70px;
+    font-size: 15px;
+    float: left;
+    display: block;
+}
+#nivo_control, #boutique_control,#parallex_control{
+    display: none;
+}
+.slider_settings input[type="text"], .slider_settings input[type="text"], .slider_settings select,.slider_settings input[type="button"]{
+    height: 25px !important;
+    box-shadow:none !important;
+    padding: 5px !important;
+    font-size: 12px !important;
+}
+.slider_settings label{
+    padding-bottom: 20px !important;
+}
+.slider_settings select{
+    padding: 3px !important;
+}
+.slider_settings{
+    padding: 10px;
+}

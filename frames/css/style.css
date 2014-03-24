@@ -23,7 +23,7 @@ ul.module{
 	padding:0;
 	margin-bottom:40px;
 	}
-ul.module li{
+ul.module > li{
 	margin:5px;
 	padding:5px;
 	background:#dddddd;
