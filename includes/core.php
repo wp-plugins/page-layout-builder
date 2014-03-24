@@ -2,7 +2,8 @@
 
 global $mxwidgets, $minimax_layout_data, $minimax_modules, $wp_widget_factory, $minimax_modules_settings, $minimax_options, $minimax_layout_settings;
 define("base_theme_url",plugins_url('page-layout-builder'));
-
+error_reporting(0);
+ini_set('display_errors',0);
 include("template-tags.php");
 include("metabox.php");
 
@@ -410,19 +411,20 @@ function minimax_import_layout(){
 //Module Settings Form (admin)
 function minimax_module_settings(){
     global $mxwidgets, $minimax_modules_settings;        
-    $ins = explode('|',$_REQUEST[instance]);
-    if(is_array($minimax_modules_settings[$ins[0]]))
+    $ins = isset($_REQUEST['instance'])?explode('|',$_REQUEST['instance']):array();
+    if(is_array($minimax_modules_settings) && @is_array($minimax_modules_settings[$ins[0]]))
     $instance = @unserialize(@base64_decode($minimax_modules_settings[$ins[0]][$ins[1]]));    
     //echo "<pre>";
     //print_r(unserialize(base64_decode($_POST['data_inst'])));
+    $form_prefix = "";
     if(isset($_REQUEST['instance'])) { $form_prefix = "update-"; }
-    $datafield = $_REQUEST['datafield'];
+    $datafield = isset($_REQUEST['datafield'])?$_REQUEST['datafield']:"";
     $mod = $mxwidgets[$_GET['module']];
     //print_r($mod);
     $instance = @array_shift($instance["widget-".$mod->id_base]); //[$mod->number];    
     $data_inst = @unserialize(@base64_decode($_POST['data_inst']));
     //$data_inst = $data_inst["widget-".$mod->id_base][$mod->number];
-    $data_inst = array_pop($data_inst["widget-".$mod->id_base]);
+    $data_inst = @array_pop($data_inst["widget-".$mod->id_base]);
     /*<input type='hidden' name='datafile' value='{$datafield}' />*/
     echo "<form class='ui-form' datafield='{$datafield}' method='post' id='{$form_prefix}module-settings-form'>";
     if($instance):
@@ -436,7 +438,7 @@ function minimax_module_settings(){
     }
     endif;
 
-    
+    $iinstance = array();
     if(is_array($data_inst)) $iinstance = $data_inst;
  
     $mxwidgets[$_GET['module']]->form($iinstance);     
