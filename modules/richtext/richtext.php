@@ -43,7 +43,7 @@ class MiniMax_RichText extends WP_Widget {
         
          
         if ( !empty( $content ) && $cssclass != '' ) { echo "<div class='{$cssclass}'>" . $content . "</div>"; } 
-        else if ( !empty( $content ) && $cssclass == '' ) { echo $content; } 
+        else if ( !empty( $content ) && $cssclass == '' ) { echo wpautop($content); } 
         ?>
         
         <?php

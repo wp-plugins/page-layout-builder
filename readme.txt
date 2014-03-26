@@ -54,6 +54,9 @@ You may [Upgrade to Pro](http://wpeden.com/minimax-wordpress-page-layout-builder
 
 == Changelog ==
 
+= 1.5.1 =
+* Fixed auto p issue with rich text module 
+
 = 1.5.0 =
 * Added visual front-end builder
 * Added Accordion Module
