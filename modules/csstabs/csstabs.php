@@ -69,7 +69,7 @@ class MiniMax_tabwidget extends WP_Widget {
                 foreach($pid as $key=>$val){   
                     $pimg = get_post($val);
         ?>
-            <div class="tab-pane <?php if($cntt==$temp)echo 'active';?>" id="tab<?php echo $cntt;?>"><?php echo $pimg->post_content;?></div>
+            <div class="tab-pane <?php if($cntt==$temp)echo 'active';?>" id="tab<?php echo $cntt;?>"><?php echo wpautop($pimg->post_content);?></div>
             
           <?php ++$cntt;
                 }
@@ -162,7 +162,7 @@ class MiniMax_tabwidget extends WP_Widget {
     
 ?>
 <!--left box-->
-<div style="padding-top: 0;" id="poststuff" class="left_box postbox ">
+<div style="padding-top: 0;min-width: 200px" id="poststuff" class="left_box postbox ">
 <h3 class="hndle"><span>Inactive tabs</span></h3>
 <ul class="tab_ul" id="inactive_tabs">
 <?php
@@ -181,7 +181,7 @@ class MiniMax_tabwidget extends WP_Widget {
 ?>
 </ul>
 </div>
-<div  style="padding-top: 0;" id="poststuff" class="right_box postbox " >
+<div  style="padding-top: 0;min-width: 200px" id="poststuff" class="right_box postbox " >
 <h3 class="hndle"><span>Active tabs</span></h3>
 <ul class="tab_ul" id="active_tabs">
  <?php
@@ -204,12 +204,7 @@ Tab Style <select name="<?php echo $this->get_field_name('tab_style');?>">
 <option value="tab-style-1" <?php if(isset($tab_style) && $tab_style=="tab-style-1")echo 'selected="selected"';?>>Style1</option>
 <option value="tab-style-2" <?php if(isset($tab_style) && $tab_style=="tab-style-2")echo 'selected="selected"';?>>Style2</option>
 </select><br />
-Tab Position <select name="<?php echo $this->get_field_name('tab_position');?>">
-<option value="top">Top</option>
-<option value="left" <?php if(isset($tab_position) && $tab_position=="left")echo 'selected="selected"';?>>Left</option>
-<option value="right" <?php if(isset($tab_position) && $tab_position=="right")echo 'selected="selected"';?>>Right</option>
-<option value="below" <?php if(isset($tab_position) && $tab_position=="below")echo 'selected="selected"';?>>Bottom</option>
-</select><br />
+ 
 <div style="clear: both;"></div>
         <script type="text/javascript">                        
         jQuery(document).ready(function(){
