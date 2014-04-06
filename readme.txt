@@ -54,6 +54,10 @@ You may [Upgrade to Pro](http://wpeden.com/minimax-wordpress-page-layout-builder
 
 == Changelog ==
 
+
+= 1.5.3 =
+* Fixed some css issue with accordion module
+
 = 1.5.2 =
 * Upgraded Tab Mobule
 
