@@ -673,6 +673,7 @@ function minimax_admin_enqueue_scripts(){
     //Scripts    
     wp_enqueue_script("jquery-ui-all");
     wp_enqueue_script("jquery-ui-sortable");
+    wp_enqueue_script("jquery-ui-dialog");
     wp_enqueue_script("jquery-form");
     wp_enqueue_script("thickbox");    
     wp_enqueue_script("jquery-cookie",base_theme_url.'/js/jquery.cookie.js',array('jquery'));
