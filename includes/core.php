@@ -41,14 +41,15 @@ function minimax_layout_holder($name){
 }
 
 //Page layout renderer (site)
-function minimax_page_layout($content){    
-    $pid = get_the_ID();        
+function minimax_page_layout($content, $aid = null){    
+    $pid = $aid!=null?$aid:get_the_ID();        
     //if(get_post_type($pid)!='page') return $content;
     if(file_exists(MX_CACHE_DIR.$pid) && get_option('minimax_cahce_status',0)==1 && get_option('minimax_frontend_editing',0)==0) return $content.file_get_contents(MX_CACHE_DIR.$pid);
+    
     ob_start();   
     $minimax_layout_data = get_post_meta($pid,'minimax_layout',true);     
     $minimax_modules = get_post_meta($pid,'minimax_modules',true);        
-    $minimax_modules_settings = get_post_meta($pid,'minimax_modules_settings',true);  
+    $minimax_modules_settings = get_post_meta($pid,'minimax_modules_settings',true);     
     if(is_array($minimax_layout_data[get_post_type()])):
 
     echo "<div class='w3eden' id='layout_".get_post_type()."'>";
@@ -62,6 +63,7 @@ function minimax_page_layout($content){
     echo "</div>";
     endif;
     $data = ob_get_clean();
+    
     if(get_option('minimax_cahce_status',0)==1 && get_option('minimax_frontend_editing',0)==0)
     file_put_contents(MX_CACHE_DIR.$pid, $data);
 

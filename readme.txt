@@ -54,6 +54,9 @@ You may [Upgrade to Pro](http://wpeden.com/minimax-wordpress-page-layout-builder
 
 == Changelog ==
 
+= 1.5.5 =
+* updated tab module css
+
 = 1.5.4 =
 * Compatibility release for WordPress 3.9
 

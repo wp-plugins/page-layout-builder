@@ -65,7 +65,7 @@ class MiniMax_RichText extends WP_Widget {
             extract($instance);
         }
         else {
-
+            $content = '';
         }
 
         ?>
@@ -103,7 +103,7 @@ class MiniMax_RichText extends WP_Widget {
                         window.switchEditors.go(textfield_id, 'tmce');
                     }
                     jQuery('#tabpane .wp-editor-area').each(function(){
-                        load_mceeditor(jQuery(this));
+                       // load_mceeditor(jQuery(this));
                     });
                 </script>
                 <script type="text/javascript">
