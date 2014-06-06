@@ -69,7 +69,7 @@ class MiniMax_tabwidget extends WP_Widget {
                 foreach($pid as $key=>$val){   
                     $pimg = get_post($val); $post = $pimg; setup_postdata($post);
         ?>
-            <div class="tab-pane <?php if($cntt==$temp)echo 'active';?>" id="tab<?php echo $cntt;?>"><?php echo minimax_page_layout($pimg->post_content, $pimg->ID).$pimg->ID;?></div>
+            <div class="tab-pane <?php if($cntt==$temp)echo 'active';?>" id="tab<?php echo $cntt;?>"><?php echo minimax_page_layout($pimg->post_content, $pimg->ID);?></div>
             
           <?php ++$cntt;
                 }

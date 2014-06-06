@@ -20,11 +20,14 @@ class MiniMax_RichText extends WP_Widget {
         parent::WP_Widget( /* Base ID */'MiniMax_RichText', /* Name */'Rich Text', array( 'description' => 'Rich Text Editor' ) );
         //else
         //parent::WP_Widget( /* Base ID */'MiniMax_RichText', /* Name */'Rich Text', array( 'description' => 'Rich Text Editor ( Only available with Page Layout Builder )' ) );
-        //$pagenow = $pagenow?$pagenow:end(explode($_SERVER[PHP_SELF]));         
+        //$pagenow = $pagenow?$pagenow:end(explode($_SERVER[PHP_SELF]));
+        wp_enqueue_script('tiny_mce');
+        wp_enqueue_script('editorremov');
+        wp_enqueue_script('editor-functions');
        if(is_admin() && ($pagenow=='post-new.php' || $pagenow == 'post.php')){
            //if(get_post_type()!=''){
-            wp_enqueue_script("ckeditor",plugins_url()."/page-layout-builder/modules/richtext/ckeditor/ckeditor.js");
-            wp_enqueue_script("jadapter",plugins_url()."/page-layout-builder/modules/richtext/jquery-adapter.js");
+            //wp_enqueue_script("ckeditor",plugins_url()."/page-layout-builder/modules/richtext/ckeditor/ckeditor.js");
+            //wp_enqueue_script("jadapter",plugins_url()."/page-layout-builder/modules/richtext/jquery-adapter.js");
 
            //}
         } 
@@ -81,16 +84,28 @@ class MiniMax_RichText extends WP_Widget {
             <p>
 
 
-                <?php wp_editor($content, 'mcontent', array('editor_class' => 'wp-editor','textarea_name'=>$this->get_field_name('content'), 'media_buttons' => true ) ); ?>
+                <?php
+                $id = "a".uniqid();
+                wp_editor($content, $id, array('editor_class' => 'wp-editor','textarea_name'=>$this->get_field_name('content'), 'media_buttons' => true ) ); ?>
                 <!-- textarea name="mycontent" id="mycontent"></textarea -->
 
-
                 <script type="text/javascript">
+                    jQuery(function(){
+
+                    tinyMCE.init({
+                        mode: "none"
+
+                    });
+
+
+
+                    tinyMCE.execCommand('mceAddEditor',false,'<?php echo $id; ?>' );
+
                     function load_mceeditor($element) {
 
                         var textfield_id = $element.attr("id");
 
-                        tinymce.EditorManager.execCommand('mceRemoveControl',true, textfield_id);
+                        //tinymce.execCommand('mceAddControl',false,textfield_id );
                         window.tinyMCEPreInit.mceInit[textfield_id] = _.extend({}, tinyMCEPreInit.mceInit['content']);
 
                         if(_.isUndefined(tinyMCEPreInit.qtInit[textfield_id])) {
@@ -103,7 +118,8 @@ class MiniMax_RichText extends WP_Widget {
                         window.switchEditors.go(textfield_id, 'tmce');
                     }
                     jQuery('#tabpane .wp-editor-area').each(function(){
-                       // load_mceeditor(jQuery(this));
+                        load_mceeditor(jQuery(this));
+                    });
                     });
                 </script>
                 <script type="text/javascript">
@@ -234,12 +250,15 @@ class MiniMax_RichText extends WP_Widget {
 
             </script>
             <script type="text/javascript">
+
                 tinymce.init({
                     selector: "#<?php echo $this->get_field_id('content'); ?>",
                     relative_urls: false,
                     remove_script_host: false,
                     convert_urls: false
                 });
+
+
             </script>
 
             <script type="text/javascript">
@@ -300,8 +319,24 @@ class MiniMax_RichText extends WP_Widget {
         <?php 
     }
 
-} 
+}
 
+function mmx_loadmce(){
+    if(isset($_REQUEST['loadmce'])){
+        wp_enqueue_script('editor');
+        wp_enqueue_media();
+        $content = '123';
+        echo "<html><head>";
+        wp_head();
+        echo "</head><body>";
+        wp_editor($content, 'mcontente', array('editor_class' => 'wp-editor','textarea_name'=>$this->get_field_name('content'), 'media_buttons' => true ) );
+        wp_footer();
+        echo "</body></html>";die();
+
+
+    }
+}
+add_action("init",'mmx_loadmce');
 add_action( 'widgets_init', create_function( '', 'register_widget("MiniMax_RichText");' ) );
 
 }

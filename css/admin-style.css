@@ -580,7 +580,7 @@ border-top-right-radius: 4px !important;
     letter-spacing: 1px;
 }
 
-.ui-dialog *{
+.ui-dialog *:not(.mce-ico){
     font-family: 'Open Sans',Arial !important;
 }
 .ui-dialog{
@@ -643,4 +643,14 @@ border-top-right-radius: 4px !important;
 }
 .mod_status{
     text-transform: capitalize !important;
+}
+div.mce-panel.mce-floatpanel.mce-menu{
+    z-index: 999999999999 !important;
+}
+
+.media-modal-backdrop{
+    z-index: 999999;
+}
+.media-modal.wp-core-ui{
+    z-index: 9999999;
 }
