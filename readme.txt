@@ -8,7 +8,7 @@ License: GPLv2 or later
  
   
  
-Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress
+Drag and Drop Responsive Page Builder / Layout Builder / Content Builder for WordPress. Start inside active theme or blank canvas.
    
 
 == Description ==
