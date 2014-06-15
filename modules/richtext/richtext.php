@@ -93,7 +93,8 @@ class MiniMax_RichText extends WP_Widget {
                     jQuery(function(){
 
                     tinyMCE.init({
-                        mode: "none"
+                        mode: "none",
+                        relative_urls: false
 
                     });
 

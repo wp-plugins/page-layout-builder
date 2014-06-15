@@ -54,6 +54,9 @@ You may [Upgrade to Pro](http://wpeden.com/minimax-wordpress-page-layout-builder
 
 == Changelog ==
 
+= 1.6.1 =
+* Fixed relative image path issue with rich text editor
+
 = 1.6.0 =
 * Fixed issue with rich text module
 
