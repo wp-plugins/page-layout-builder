@@ -1,8 +1,6 @@
 <div class="wrap">
     <div id="icon-options-general" class="icon32"><br></div><h2>MiniMax Modules</h2>
 </div>
-<script src="<?php echo MX_THEME_URL.'bootstrap/js/bootstrap.min.js'; ?>" type="text/javascript"></script>
-<link rel="stylesheet" href="<?php echo MX_THEME_URL.'bootstrap/bootstrap.css'; ?>" />
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
 
 <style>
@@ -102,7 +100,6 @@
                                         $mod_panel_cls = "default";
                                         $icon = 'Activate';
                                     }
-                                    //echo '<tr><td><div rel="'.$mod_status.'" class="widget '.$mod_status.' mod_'.$module.'"><input type="button" class="mod_name" rel="'.$module.'" value=""><div class="insert"><div><h3 class="widget-title" style="margin: 0px">'.$moduledata['Name'].'</h3><em><small>'.substr($moduledata['Description'],0,strpos($moduledata['Description'],"By")).'</small></em></div><small id="st_'.$module.'" class="mod_status mod_status_'.$mod_status_appear.'">'.$mod_status_appear.'</small></div><div style="clear: both;"></div></div></td></tr>';
                                     echo '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><div class="panel panel-'.$mod_panel_cls." ".str_replace(".","_",$moduledata['Version']).'">'
                                     . '<div class="panel-heading"><b>' . $moduledata['Name'] . '</b> <small id="st_' . $module . '" class="label label-' . $mod_status_cls . ' mod_status mod_status_' . $mod_status_appear . '">' . $mod_status_appear . '</small></div>'
                                     . '<div class="panel-body">' . substr($moduledata['Description'], 0, strpos($moduledata['Description'], "By")) . '</b></div>'

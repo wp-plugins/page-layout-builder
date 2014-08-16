@@ -3,35 +3,34 @@
 //Layout builder metabox
 function minimax_layout_builder_meta_box() {
     add_meta_box( get_post_type().'-minimax-layout-builder', 'MiniMax Layout Builder  <a style="float:right;font-weight:bold;text-decoration:none" href="#" rel="#layout_page" class="insert-layout ghbutton big">+ Insert Layout</a>', 'minimax_content_layout_builder', get_post_type(), 'normal','high' );   
-    add_meta_box( get_post_type().'-minimax-squeeze-page', 'Blank Canvas', 'minimax_squeeze_page', get_post_type(), 'side','core' );   
-    //add_meta_box( 'page-minimax-widgets', 'Widgets', 'minimax_all_widgets', 'page', 'side','core' );   
+    add_meta_box( get_post_type().'-minimax-squeeze-page', 'Blank Canvas', 'minimax_squeeze_page', get_post_type(), 'side','core' );     
 }
 
 function minimax_squeeze_page($post){     
     ?>
-    <input type="checkbox" value="1" id="bco" name="squeeze_page" <?php echo get_post_meta($_GET['post'],'squeeze_page',true)=='1'?'checked=checked':''; ?> > <strong>Use Blank Canvas Template</strong>
+    <input type="checkbox" value="1" id="bco" name="squeeze_page" <?php echo get_post_meta(isset($_GET['post'])?$_GET['post']:'','squeeze_page',true)=='1'?'checked=checked':''; ?> > <strong>Use Blank Canvas Template</strong>
     <br/>
-    Check this option if you want to build a page layout from ground on a balnk canvas (will skip current theme header, footer, sidebars)
+    Check this option if you want to build a page layout from ground on a blank canvas (will skip current theme header, footer, sidebars)
     
     <br/>
     <br/>
-    <div id="bc" <?php echo get_post_meta($_GET['post'],'squeeze_page',true)!='1'?'style="display:none;"':''; ?> >
-    <strong>Select Squeeze Page Template:</strong><br />
+    <div id="bc" <?php echo get_post_meta(isset($_GET['post'])?$_GET['post']:'','squeeze_page',true)!='1'?'style="display:none;"':''; ?> >
+    <strong>Select Squeeze Page Theme:</strong><br />
     <select name="sptemplate">
     <?php 
     $allthemes = scandir(MX_PLUG_DIR.'/canvas/');
-   // include_once(ABSPATH."/wp-includes/theme.php");
+   
     foreach($allthemes as $theme){
-        if($theme=='.'||$theme=='..') continue;
+        if($theme == '.' || $theme == '..') continue;
         $themeinfo = wp_get_theme( $theme, MX_PLUG_DIR.'/canvas/' );
         echo "<option ".(get_post_meta($_GET['post'],'sptemplate',true)==$theme?'selected=selected':'')." value='{$theme}'>{$themeinfo->Name}</option>";
         
     } ?>
     </select><br />
     <strong>Body Background Color:</strong><br />
-    <input size="30" type="text" name="bodybgcolor" class="miniColors" value="<?php echo get_post_meta($_GET['post'],'bodybgcolor',true); ?>" /><br/>
+    <input size="28" type="text" name="bodybgcolor" class="miniColors" value="<?php echo get_post_meta(isset($_GET['post'])?$_GET['post']:'','bodybgcolor',true); ?>" /><br/>
     <strong>Body Background Image:</strong><br />
-    <input size="30" type="text" id="bodybgimage" name="bodybgimage" value="<?php echo get_post_meta($_GET['post'],'bodybgimage',true); ?>" /> <input type="button" style="font-size: 10px;" value="Browse" onclick="mediaupload('bodybgimage')" />
+    <input size="28" type="text" id="bodybgimage" name="bodybgimage" value="<?php echo get_post_meta(isset($_GET['post'])?$_GET['post']:'','bodybgimage',true); ?>" /> <input type="button" style="font-size: 10px;" value="Browse" onclick="mediaupload('bodybgimage')" />
     </div>
     <script language="JavaScript">
     <!--
@@ -39,19 +38,6 @@ function minimax_squeeze_page($post){
           if(this.checked) jQuery('#bc').slideDown();
           else jQuery('#bc').slideUp();
       });
-    //-->
-    </script>
-    <?php
-}
-
-function minimax_all_widgets(){
-    ?>
-    
-    <div id="allmods" style="display: block;clear: both;">
-    </div>
-    <script language="JavaScript">
-    <!--
-     // jQuery('#allmods').load('admin-ajax.php?page=minimax&action=insert_module');
     //-->
     </script>
     <?php
@@ -111,8 +97,8 @@ border-bottom:1px inset #dddddd;
     }
     </style>
     
-  <link rel="stylesheet" type="text/css" href="<?php echo MX_THEME_URL.'css/tipTip.css';?>" />
-  <script language="JavaScript" src="<?php echo MX_THEME_URL.'js/jquery.tipTip.minified.js';?>"></script>
+  <link rel="stylesheet" type="text/css" href="<?php echo plugins_url('/page-layout-builder/css/tipTip.css');?>" /> 
+  <script language="JavaScript" src="<?php echo plugins_url('/page-layout-builder/js/jquery.tipTip.minified.js');?>"></script>
     
     <div id="alll">
     <div id="layout_<?php echo get_post_type(); ?>">
@@ -136,6 +122,27 @@ border-bottom:1px inset #dddddd;
     <div class="clear"></div> 
     <div id="dialog" title="MiniMax"><p>Loading...</p></div>
     <div id="childdialog" title="MiniMax"><p>Loading...</p></div>
+    
+    <div class="w3eden">  
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        </div>
+        <div class="modal-body">
+            <div id="modalcontentarea"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+    
     <script type="text/javascript">
      
     jQuery(function() {
@@ -147,173 +154,10 @@ border-bottom:1px inset #dddddd;
 
     });
     </script>
-
-
-    
-   <?php /*  
-   <script language="JavaScript">
-<!--
-  jQuery(function(){
-      jQuery('.admin-cont').css('min-height',(jQuery('body').height()-120)+'px');
-      jQuery('#theme-admin-menu a').click(function(){
-          
-          jQuery('.settings').hide();
-          jQuery(jQuery(this).attr('href')).show();
-          jQuery('#theme-admin-menu li a').removeClass('active');
-          jQuery(this).addClass('active');
-          var sn = jQuery(this).attr('href').replace('#','').replace('-',' ');
-          jQuery('#admin-title span').html(sn).css('text-transform','capitalize');
-          return false;
-      });
-      
-      //Insert Layout
-      jQuery('.insert-layout').click(function(){
-          holder = this.rel+" .layout-data";
-          holder_id = this.rel.replace("#layout_","");
-          tb_show("Insert Layout","themes.php?page=minimax&task=select_layout&TB_iframe=1");
-          return false;
-      });
-      
-      //Layout Settings
-      var layout_settings_id = "",layout_settings_data="";
-      jQuery('.rsettings').live('click',function(){
-          layout_settings_id = jQuery(this).attr('rel');          
-          layout_settings_data = jQuery('#'+layout_settings_id).val();
-          tb_show("Layout Settings","admin-ajax.php?page=minimax&action=layout_settings&layout_settings_id="+layout_settings_id+"&layout_settings_data="+layout_settings_data+"&modal=1");                    
-          return false;
-      });
-      
-      //Delete Layout
-      jQuery('.rdel').live('click',function(){
-          if(!confirm('Are you sure?')) return;
-          jQuery('#'+jQuery(this).attr('rel')).slideUp(function(){jQuery(this).remove();});
-      });
-      
-      
-      
-      //Select Module
-      var insertto = "", module_index = "", msf_mid = "", msf_title = "";
-      jQuery('.btnAddMoudule').live('click',function(){
-          insertto = '#'+this.rel+' .module';          
-          module_index = this.rel;
-          tb_show("Insert Module","admin-ajax.php?page=minimax&action=insert_module&modal=1")
-          return false;
-      });
-      
-      //Insert Module
-      jQuery('.insert').live('click',function(){
-          //tb_remove();
-          msf_mid = jQuery(this).attr('rel');
-          msf_title = this.title;
-          var data = jQuery(this).attr('data')==undefined?"":"&instance="+jQuery(this).attr('data');          
-          var datafield = jQuery(this).attr('datafield')==undefined?"":"&datafield="+jQuery(this).attr('datafield');          
-          tb_show("Module Settins","admin-ajax.php?page=minimax&action=module_settings&modal=1&width=510&height=500&module="+msf_mid+data+datafield);          
-      });
-      
-      
-      //Delete Module
-      jQuery('.delete_module').live('click',function(){
-          jQuery(jQuery(this).attr('rel')).slideUp(function(){jQuery(this).remove();});
-      });
-      
-      
-      // Form Submit
-      jQuery('#minimax-form').submit(function(){
-          jQuery('#mxinfo').html('Please Wait...')
-          jQuery('#mxinfo').slideDown();
-          jQuery(this).ajaxSubmit({              
-              url:ajaxurl,
-              success:function(res){
-                   jQuery('#mxinfo').html('Setting Saved Successfully!')
-                   setTimeout("jQuery('#mxinfo').slideUp();",2000);
-              }   
-          });
-          
-          return false;
-          
-      });            
-      
-      jQuery('#module-settings-form').live('submit',function(){
-          jQuery(this).ajaxSubmit({              
-              url:ajaxurl+'?page=minimax&action=module_settings_data',
-              success:function(res){
-                  var d = new Date();
-                  var z = d.getTime();
-                  jQuery(insertto).append('<li id="module_'+module_index+'_'+z+'"><span class="handle"></span><input type="hidden" name="modules['+module_index+'][]" value="'+msf_mid+'" /><input type="hidden" name="modules_settings['+module_index+'][]" value="'+res+'" /><nobr class="title">'+msf_title+'</nobr><nobr class="ctl"><img src="<?php echo base_theme_url; ?>/images/delete.png"  class="delete_module" rel="#module_'+module_index+'" />&nbsp;<img src="<?php echo base_theme_url; ?>/images/settings.png" /></nobr><div class="clear"</div></li>');          
-                  jQuery( insertto ).sortable({handle : '.handle'});
-                  jQuery( insertto ).disableSelection({handle : '.handle'});
-                  tb_remove();
-                  
-                 
-              }   
-          });
-          
-          return false;
-      });
-      
-      jQuery('#layout-settings-form').live('submit',function(){
-          var layout_settings_id = jQuery(this).attr('rel');      
-          jQuery(this).ajaxSubmit({                        
-              url:ajaxurl+'?page=minimax&action=layout_settings_data',
-              success:function(res){
-                  jQuery('#'+layout_settings_id).val(res);                   
-                  tb_remove();
-              }   
-          });
-          
-          return false;
-      });
-      
-      jQuery('#update-module-settings-form').live('submit',function(){
-          var datafield = jQuery(this).attr('datafield');
-          jQuery(this).ajaxSubmit({              
-              url:ajaxurl+'?page=minimax&action=module_settings_data',
-              success:function(res){
-                  //alert('#'+datafield);
-                  jQuery('#'+datafield).val(res);
-                  jQuery('#'+datafield+"_icon").attr('data',res);
-                  tb_remove();                  
-              }   
-          });
-          
-          return false;
-      });
-      
-      jQuery('.module').sortable({handle : '.handle'});
-      
-      jQuery( '.layout-data' ).sortable({handle : '.row-handler'});
-      jQuery( '.layout-data' ).disableSelection();
-  });
-  
-  var holder = "", holder_id = "";
-  function load_layout(layout){           
-     jQuery.get("admin-ajax.php?page=minimax&action=insert_layout&holder="+holder_id+"&layout="+layout,function(res){
-         jQuery(holder).append(res);         
-         jQuery( '.layout-data' ).sortable({handle : '.row-handler'});
-         jQuery( '.layout-data' ).disableSelection();
-     });        
-  }
-  
-  function mediaupload(id){
-      var id = '#'+id;
-      tb_show('Upload Image','<?php echo admin_url("media-upload.php?TB_iframe=1&width=640&height=624"); ?>');
-      window.send_to_editor = function(html) {           
-              var imgurl = jQuery('img',"<p>"+html+"</p>").attr('src');                                    
-              jQuery(id).val(imgurl);
-              tb_remove();
-              }
-      
-  }
-  
-//-->
-</script> 
-       */ ?>  
+ 
     <?php
     
 }
-
-
-
 
 //Metabox action 
 add_action( 'add_meta_boxes', 'minimax_layout_builder_meta_box');

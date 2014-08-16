@@ -20,27 +20,17 @@ class MiniMax_subpage extends WP_Widget {
         $pageid =  $instance['pageid'];
         $sicon = $instance['sicon'];   
         $xid = uniqid();
-        //print_r($title);
+
         echo $before_widget;
         if ( !empty( $title ) ) { echo $before_title . $title . $after_title; } 
+        
+        if(empty($pageid))$pageid=get_the_ID();
         ?>
-<?php
-    if(empty($pageid))$pageid=get_the_ID();
-    ?>
-    <style type="text/css">.page-list-<?php echo $xid; ?> li{ list-style:none;padding:0px;margin:0px;padding-left: 20px; background: url('<?php echo base_theme_url.'/modules/subpages/icons/'.$sicon; ?>') left center no-repeat; line-height: 22px; }</style>
-    <ul class="page-list-<?php echo $xid; ?>">
-  <?php
-  
-  wp_list_pages("title_li=&child_of=$pageid&show_date=modified
-  &date_format=$date_format"); ?>
-</ul>
-<?php
+        <style type="text/css">.widget_minimax_subpage ul li{list-style:none;}.page-list-<?php echo $xid; ?> li{ list-style:none;padding:0px;margin:0px;padding-left: 20px; background: url('<?php echo base_theme_url.'/modules/subpages/icons/'.$sicon; ?>') left center no-repeat; line-height: 22px; }</style>
+        <ul class="page-list-<?php echo $xid; ?>">
+        <?php wp_list_pages("title_li=&child_of=$pageid&show_date=modified&date_format=$date_format"); ?>
+        </ul>
     
-   // print_r($posts_array);
-?>
-
-
-
         <?php
          echo $after_widget;
     }
@@ -61,8 +51,6 @@ class MiniMax_subpage extends WP_Widget {
             
         }
         else {
-            //$title1 = __( 'New title', 'text_domain' );
-            //$cat =  $instance['cat'];
            
         }
         //print_r($instance['content']);

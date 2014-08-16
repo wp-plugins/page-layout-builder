@@ -114,7 +114,7 @@ jQuery(function(){
           layout_settings_id = jQuery(this).attr('rel');          
           layout_settings_data = jQuery('#'+layout_settings_id).val();
           jQuery( "#dialog" ).dialog( 'option', 'title','Row Settings');
-          jQuery( "#dialog" ).dialog( 'option', 'width',300);
+          jQuery( "#dialog" ).dialog( 'option', 'width',660);
           //tb_show("Layout Settings",adminurl+"admin-ajax.php?page=minimax&action=layout_settings&layout_settings_id="+layout_settings_id+"&layout_settings_data="+layout_settings_data+"&modal=1&width=400&height=200");
           jQuery( "#dialog" ).dialog( "open" ).load(adminurl+"admin-ajax.php?page=minimax&action=layout_settings&layout_settings_id="+layout_settings_id+"&layout_settings_data="+layout_settings_data+"&modal=1&width=400&height=200");
           return false;
@@ -155,23 +155,21 @@ jQuery(function(){
       
       //Insert Module
       jQuery('.insert').live('click',function(){
-          //tb_remove();
+          
           msf_mid = jQuery(this).attr('rel');
-          msf_title = this.title;
+          msf_title = jQuery(this).attr('wname');
           var data = jQuery(this).attr('data')==undefined?"":"&instance="+jQuery(this).attr('data');
           var datafield = jQuery(this).attr('datafield')==undefined?"":"&datafield="+jQuery(this).attr('datafield');          
           //var post = typenow=='page'?"&post="+pageid:"";
           var post = "&post="+pageid;
           var data_inst = jQuery('#'+jQuery(this).attr('datafield')).val();
-          //tb_show("Module Settings",adminurl+"admin-ajax.php?page=minimax&action=module_settings&modal=1&width=510&height=500&module="+msf_mid+data+datafield+post);                    
-          jQuery( "#dialog" ).dialog( 'option', 'title','Module Settings');
+                             
+          jQuery( "#dialog" ).dialog( 'option', 'title', msf_title);
           jQuery( "#dialog" ).html( 'Loading...');
           jQuery( "#dialog" ).dialog( 'option', 'width',700);
           jQuery( "#dialog" ).dialog( 'option', 'modal',true);
           jQuery( "#dialog" ).dialog('open').load(adminurl+"admin-ajax.php?page=minimax&action=module_settings&modal=1&width=510&height=500&module="+msf_mid+data+datafield+post,{data_inst:data_inst});
 
-          //jQuery( "#childdialog" ).dialog('open');
-          //tb_remove();
           return false;
       });
       
@@ -212,8 +210,8 @@ jQuery(function(){
                   jQuery( insertto ).disableSelection({handle : '.handle'});   
                   jQuery("#dialog").html("Loading...");                
                   jQuery('#dialog').dialog('close');
-                  jQuery('#module_'+module_index+'_'+z+' .module-content').load(ajaxurl+'?page=minimax&action=get_module_preview&front=1',{mod:msf_mid, modinfo:res});
-
+                  jQuery('#module_'+module_index+'_'+z+' .module-p').load(ajaxurl+'?page=minimax&action=get_module_preview&front=1',{mod:msf_mid, modinfo:res});
+                 
               }   
           });
           
@@ -248,8 +246,8 @@ jQuery(function(){
                   var mod = datafield.replace("modset_","");
                   var msf_mid =   datafield.replace("modset_","modid_");
                   msf_mid = jQuery('#'+msf_mid).val();
-                  jQuery('#'+mod+' .module-content').prepend('<span style="position: absolute;background: #E83B06;color: #ffffff;padding: 6px 10px;z-index: 999999;border-radius: 2px !important;font-size:11px;font-weight:900;letter-spacing: 1px"><i class="icon-spin icon-spinner"></i> Updating View...</span>')
-                  jQuery('#'+mod+' .module-content').load(ajaxurl+'?page=minimax&action=get_module_preview&front=1',{mod:msf_mid, modinfo:res});
+                  jQuery('#'+mod+' .minimax_module').prepend('<span style="position: absolute;background: #E83B06;color: #ffffff;padding: 6px 10px;z-index: 999999;border-radius: 2px !important;font-size:11px;font-weight:900;letter-spacing: 1px"><i class="icon-spin icon-spinner"></i> Updating View...</span>')
+                  jQuery('#'+mod+' .minimax_module').load(ajaxurl+'?page=minimax&action=get_module_preview&front=1',{mod:msf_mid, modinfo:res});
               }   
           });
           

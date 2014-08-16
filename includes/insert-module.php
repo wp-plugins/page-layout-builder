@@ -1,8 +1,7 @@
 <script type="text/javascript" charset="utf-8">
     jQuery(document).ready(function($) {
-        //$('#smdl').liveUpdate('modules').focus();
+        
         $("#smdl").keyup(function(){
-
             // Retrieve the input field text and reset the count to zero
             var filter = $(this).val(), count = 0;
 
@@ -19,10 +18,8 @@
                     count++;
                 }
             });
-
             // Update the count
             var numberItems = count;
-           // $("#filter-count").text("Number of Comments = "+count);
         });
     });
 </script>
@@ -47,7 +44,7 @@ foreach($mxwidgets as $id=>$widget){
 if($id)    {
 ?>
 <li class="widget col-lg-3 col-md-3 col-sm-6 col-xs-12 mxwdgt" id="<?php echo $id; ?>">
-<a href="#" class="insert" rel="<?php echo $id; ?>" title="<?php echo $widget->name; ?>">
+<a href="#" class="insert" rel="<?php echo $id; ?>" wname="<?php echo $widget->name; ?>" title="<?php echo $widget->name; ?>">
 <h3 style="margin: 0px" class="widget-title"><?php echo ucfirst($widget->name); ?></h3>
  
 <em><small><?php echo $widget->widget_options['description'] ?></small></em>

@@ -7,7 +7,7 @@ Author: Shaon
 Version: 1.6
 Author URI: #
 */
-if(!class_exists('MiniMax_Image')){
+
 class MiniMax_Image extends WP_Widget {
     /** constructor */
     function __construct() {
@@ -27,13 +27,18 @@ class MiniMax_Image extends WP_Widget {
 
     function preview($instance){
         extract($instance);
+        
+        $imgpath = str_replace(site_url('/'), ABSPATH, $url);
+        $thumbpath = minimax_dynamic_thumb($imgpath, array(50, 50));
+        $thumburl = str_replace(ABSPATH, site_url('/'), $thumbpath);
+                  
         echo "<div class='widget'>";
 
         ?>
 
         <div class="media">
             <a href="#" class="pull-left thumbnail" style="margin-right: 5px !important;">
-                <img class="imgbr" src="<?php echo base_theme_url."/includes/timthumb.php?src=".urlencode($url)."&w=50&h=50"; ?>" title="<?php echo $title; ?>" alt="<?php echo $alt; ?>">
+                <img class="imgbr" src="<?php echo $thumburl; ?>" title="<?php echo $title; ?>" alt="<?php echo $alt; ?>">
             </a>
             <div class="meida-body" style="padding-top:5px !important;">
                 <h3 class='media-heading'><i class="icon icon-th"></i> <?php echo $title; ?></h3>
@@ -57,15 +62,19 @@ class MiniMax_Image extends WP_Widget {
         $link =  $instance['link'] ;
         $w =  $instance['imgw'] ;
         $h =  $instance['imgh'] ;        
-        $titleh =  $instance['titleh'] ;        
-        $content =  $instance['content'] ;        
+        $titleh =  $instance['titleh'] ;               
         $id = uniqid();
+        
+        $imgpath = str_replace(site_url('/'), ABSPATH, $url);
+        $thumbpath = minimax_dynamic_thumb($imgpath, array($w, $h));
+        $thumburl = str_replace(ABSPATH, site_url('/'), $thumbpath);
+        
         echo $before_widget;
         if ( !empty( $title1 ) ) { echo $before_title . $title . $after_title; } 
         ?>
         <div class="media">
         <a href="<?php echo $link; ?>" class="pull-left">
-        <img class="img-<?php echo $instance['bootstrap_style'];?>" src="<?php if($w && $h)echo base_theme_url."/includes/timthumb.php?src={$url}&w={$w}&h={$h}";else echo $url; ?>" title="<?php echo $title; ?>" alt="<?php echo $alt; ?>">
+        <img class="img-<?php echo $instance['bootstrap_style'];?>" src="<?php if($w && $h)echo $thumburl; else echo $url; ?>" title="<?php echo $title; ?>" alt="<?php echo $alt; ?>">
         </a>
         
         <div  class="media-body" id="mx-img-txt-<?php echo $id; ?>">
@@ -86,15 +95,19 @@ class MiniMax_Image extends WP_Widget {
         $link =  $instance['link'] ;
         $w =  $instance['imgw'] ;
         $h =  $instance['imgh'] ;        
-        $titleh =  $instance['titleh'] ;        
-        $content =  $instance['content'] ;        
+        $titleh =  $instance['titleh'] ;               
         $id = uniqid();
+        
+        $imgpath = str_replace(site_url('/'), ABSPATH, $url);
+        $thumbpath = minimax_dynamic_thumb($imgpath, array($w, $h));
+        $thumburl = str_replace(ABSPATH, site_url('/'), $thumbpath);
+        
         echo $before_widget;
         if ( !empty( $title1 ) ) { echo $before_title . $title . $after_title; } 
         ?>
         <div class="media">
         <a href="<?php echo $link; ?>" class="pull-right">
-        <img class="img-<?php echo $instance['bootstrap_style'];?>" src="<?php if($w && $h)echo base_theme_url."/includes/timthumb.php?src={$url}&w={$w}&h={$h}";else echo $url; ?>" title="<?php echo $title; ?>" alt="<?php echo $alt; ?>">
+        <img class="img-<?php echo $instance['bootstrap_style'];?>" src="<?php if($w && $h)echo $thumburl; else echo $url; ?>" title="<?php echo $title; ?>" alt="<?php echo $alt; ?>">
         </a>
         
         <div  class="media-body" id="mx-img-txt-<?php echo $id; ?>">
@@ -114,15 +127,19 @@ class MiniMax_Image extends WP_Widget {
         $link =  $instance['link'] ;
         $w =  $instance['imgw'] ;
         $h =  $instance['imgh'] ;        
-        $titleh =  $instance['titleh'] ;        
-        $content =  $instance['content'] ;        
+        $titleh =  $instance['titleh'] ;               
         $id = uniqid();
+
+        $imgpath = str_replace(site_url('/'), ABSPATH, $url);
+        $thumbpath = minimax_dynamic_thumb($imgpath, array($w, $h));
+        $thumburl = str_replace(ABSPATH, site_url('/'), $thumbpath);
+        
         echo $before_widget;
         if ( !empty( $title1 ) ) { echo $before_title . $title . $after_title; } 
         ?>
            
         <a href="<?php echo $link; ?>">
-        <img class="img-<?php echo $instance['bootstrap_style'];?>" src="<?php if($w && $h)echo base_theme_url."/includes/timthumb.php?src={$url}&w={$w}&h={$h}";else echo $url; ?>" title="<?php echo $title; ?>" alt="<?php echo $title; ?>">
+        <img class="img-<?php echo $instance['bootstrap_style'];?>" src="<?php if($w && $h)echo $thumburl; else echo $url; ?>" title="<?php echo $title; ?>" alt="<?php echo $title; ?>">
         </a>         
         <<?php echo $titleh; ?>><a href="<?php echo $link; ?>"><?php echo $title; ?></a></<?php echo $titleh; ?>>
         <p><?php echo $desc; ?></p>                  
@@ -139,15 +156,19 @@ class MiniMax_Image extends WP_Widget {
         $link =  $instance['link'] ;
         $w =  $instance['imgw'] ;
         $h =  $instance['imgh'] ;        
-        $titleh =  $instance['titleh'] ;        
-        $content =  $instance['content'] ;        
+        $titleh =  $instance['titleh'] ;            
         $id = uniqid();
+        
+        $imgpath = str_replace(site_url('/'), ABSPATH, $url);
+        $thumbpath = minimax_dynamic_thumb($imgpath, array($w, $h));
+        $thumburl = str_replace(ABSPATH, site_url('/'), $thumbpath);
+        
         echo $before_widget;
         if ( !empty( $title1 ) ) { echo $before_title . $title . $after_title; } 
         ?>
         <<?php echo $titleh; ?>><a href="<?php echo $link; ?>"><?php echo $title; ?></a></<?php echo $titleh; ?>> 
         <a href="<?php echo $link; ?>" class="pull-left" style="margin-right: 10px;margin-top: 5px;">
-        <img class="img-<?php echo $instance['bootstrap_style'];?>" src="<?php if($w && $h)echo base_theme_url."/includes/timthumb.php?src={$url}&w={$w}&h={$h}";else echo $url; ?>" title="<?php echo $title; ?>" alt="<?php echo $title; ?>">
+        <img class="img-<?php echo $instance['bootstrap_style'];?>" src="<?php if($w && $h)echo $thumburl; else echo $url; ?>" title="<?php echo $title; ?>" alt="<?php echo $title; ?>">
         </a>                 
         <p><?php echo $desc; ?></p>                  
         <?php
@@ -163,15 +184,18 @@ class MiniMax_Image extends WP_Widget {
         $link =  $instance['link'] ;
         $w =  $instance['imgw'] ;
         $h =  $instance['imgh'] ;        
-        $titleh =  $instance['titleh'] ;        
-        $content =  $instance['content'] ;        
+        $titleh =  $instance['titleh'] ;              
         $id = uniqid();
+        
+        $imgpath = str_replace(site_url('/'), ABSPATH, $url);
+        $thumbpath = minimax_dynamic_thumb($imgpath, array($w, $h));
+        $thumburl = str_replace(ABSPATH, site_url('/'), $thumbpath);
         echo $before_widget;
         if ( !empty( $title1 ) ) { echo $before_title . $title . $after_title; } 
         ?>
         <<?php echo $titleh; ?>><a href="<?php echo $link; ?>"><?php echo $title; ?></a></<?php echo $titleh; ?>> 
         <a href="<?php echo $link; ?>" class="pull-right" style="margin-left: 10px;margin-top: 5px;">
-        <img class="img-<?php echo $instance['bootstrap_style'];?>" src="<?php if($w && $h)echo base_theme_url."/includes/timthumb.php?src={$url}&w={$w}&h={$h}";else echo $url; ?>" title="<?php echo $title; ?>" alt="<?php echo $title; ?>">
+        <img class="img-<?php echo $instance['bootstrap_style'];?>" src="<?php if($w && $h)echo $thumburl; else echo $url; ?>" title="<?php echo $title; ?>" alt="<?php echo $title; ?>">
         </a>                 
         <p><?php echo $desc; ?></p>                  
         <?php
@@ -189,7 +213,6 @@ class MiniMax_Image extends WP_Widget {
 
     /** @see WP_Widget::form */
     function form( $instance ) {
-
         if ( $instance ) {
             extract($instance);
         }
@@ -263,5 +286,4 @@ class MiniMax_Image extends WP_Widget {
 
 
 add_action( 'widgets_init', create_function( '', 'register_widget("minimax_image");' ) );
-
-}
+ 

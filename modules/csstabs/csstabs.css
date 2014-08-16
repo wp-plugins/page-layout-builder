@@ -18,15 +18,27 @@ ul.tab_ul {
 }
 .tab_ul li{
     padding: 5px 10px;
-    /*height: 20px;*/
     font-weight: bold;
     cursor: move;
     height: auto;
     background: #fafafa !important;
     border-radius: 4px;
-    overflow:hidden;
+    overflow:auto;
+    margin-bottom: 4px;
 }
 
 .tab-pane{
     text-align: left !important;
+}
+#poststuff h3 {
+    font-size: 14px;
+    line-height: 1.4;
+    margin: 0;
+    padding: 8px 12px;
+}
+.js .postbox .hndle {
+    cursor: move;
+}
+#namediv h3, #submitdiv h3, .postbox h3 {
+    border-bottom: 1px solid #eee;
 }

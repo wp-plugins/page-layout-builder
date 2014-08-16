@@ -1,9 +1,8 @@
+if("undefined" == typeof post_type) var post_type = ""; 
+if("undefined" == typeof pageid) var pageid = ""; 
+
 jQuery(function(){
             jQuery("#content-tmce").after('<a onclick="switchtominimax();" class="hide-if-no-js wp-switch-editor switch-minimax" id="content-minimax">MiniMax</a>');
-            //if(pageid!='')
-            //var mxnb = "<div style='float:right;' class='ghbutton-group'><a class='ghbutton icon arrowdown' href='"+userSettings.url+"wp-admin/?minimaxexport="+pageid+"' >Export Layout</a><a class='ghbutton icon arrowup import-layout' rel='"+pageid+"' href='#' >Import Layout</a><a class='ghbutton icon loop' href='"+userSettings.url+"wp-admin/?minimaxclone="+pageid+"' >Clone</a></div>";
-            //else
-            //var mxnb = "<div style='float:right;' class='ghbutton-group'><a class='ghbutton icon arrowdown' href='#' onclick='alert(\""+post_type+" is not published or saved yet!\");return false;' >Export Layout</a><a class='ghbutton icon arrowup' href='#' onclick='alert(\""+post_type+" is not published or saved yet!\");return false;' >Import Layout</a><a class='ghbutton icon loop' href='#' onclick='alert(\""+post_type+" is not published or saved yet!\");return false;' >Clone</a></div>";
             var mxnb = '';
             jQuery("#wp-content-wrap").append("<div id='minimax-builder' class='wp-editor-container' style='display:none'><div class='quicktags-toolbar minimax-toolbar'><div class='ghbutton-group'><a class='insert-layout ghbutton ' holder='#layout_"+post_type+"' rel='col-1' href='#' >1 Col</a><a class='insert-layout ghbutton ' holder='#layout_"+post_type+"' rel='col-2' href='#' >2 Cols</a><a class='insert-layout ghbutton ' holder='#layout_"+post_type+"' rel='col-3' href='#' >3 Cols</a><a class='insert-layout ghbutton ' holder='#layout_"+post_type+"' rel='col-4' href='#' >4 Cols</a><a class='insert-layout ghbutton ' holder='#layout_"+post_type+"' rel='col-5' href='#' >5 Cols</a><a class='insert-layout ghbutton ' holder='#layout_"+post_type+"' rel='col-6' href='#' >6 Cols</a></div>"+mxnb+"</div><div id='lbrd'></div></div>");            
             jQuery('#lbrd').html(jQuery('#'+post_type+'-minimax-layout-builder .inside').html());
@@ -103,8 +102,7 @@ jQuery(function(){
           layout_settings_id = jQuery(this).attr('rel');          
           layout_settings_data = jQuery('#'+layout_settings_id).val();
           jQuery( "#dialog" ).dialog( 'option', 'title','Row Settings');
-          jQuery( "#dialog" ).dialog( 'option', 'width',300);
-          //tb_show("Layout Settings","admin-ajax.php?page=minimax&action=layout_settings&layout_settings_id="+layout_settings_id+"&layout_settings_data="+layout_settings_data+"&modal=1&width=400&height=200");
+          jQuery( "#dialog" ).dialog( 'option', 'width',660);
           jQuery( "#dialog" ).dialog( "open" ).load("admin-ajax.php?page=minimax&action=layout_settings&layout_settings_id="+layout_settings_id+"&layout_settings_data="+layout_settings_data+"&modal=1&width=400&height=200");
           return false;
       });
@@ -122,8 +120,7 @@ jQuery(function(){
       jQuery('.btnAddMoudule').live('click',function(){
           insertto = '#'+this.rel+' .module';          
           module_index = this.rel;
-          //tb_show("Insert Module","admin-ajax.php?page=minimax&action=insert_module&modal=1&width=510&height=500")
-          //jQuery( "#dialog" ).dialog( 'option', 'position',{my:"top+50px,center"});
+          
           jQuery( "#dialog" ).dialog( 'option', 'width',940);
           //jQuery( "#dialog" ).dialog( 'option', 'height',600);
           jQuery( "#dialog" ).dialog( 'option', 'title','Modules');
@@ -142,28 +139,27 @@ jQuery(function(){
       
       //Insert Module
       jQuery('.insert').live('click',function(){
-          //tb_remove();
-          msf_mid = jQuery(this).attr('rel');
-          msf_title = this.title;
-          var data = jQuery(this).attr('data')==undefined?"":"&instance="+jQuery(this).attr('data');
+          
+          msf_mid = jQuery(this).attr('rel');          
+          msf_title = jQuery(this).attr('wname');
+          var data = jQuery(this).attr('data') == undefined ? "" : "&instance="+jQuery(this).attr('data');
           var datafield = jQuery(this).attr('datafield')==undefined?"":"&datafield="+jQuery(this).attr('datafield');          
           //var post = typenow=='page'?"&post="+pageid:"";
           var post = "&post="+pageid;
           var data_inst = jQuery('#'+jQuery(this).attr('datafield')).val();
-          //tb_show("Module Settings","admin-ajax.php?page=minimax&action=module_settings&modal=1&width=510&height=500&module="+msf_mid+data+datafield+post);                    
-          jQuery( "#dialog" ).dialog( 'option', 'title','Module Settings');
+                              
+          jQuery( "#dialog" ).dialog( 'option', 'title', msf_title);
           jQuery( "#dialog" ).html( 'Loading...');
           jQuery( "#dialog" ).dialog( 'option', 'width',700);
           jQuery( "#dialog" ).dialog('open').load("admin-ajax.php?page=minimax&action=module_settings&modal=1&width=510&height=500&module="+msf_mid+data+datafield+post,{data_inst:data_inst});
 
-          //jQuery( "#childdialog" ).dialog('open');
-          //tb_remove();
           return false;
       });
       
       
       //Delete Module              
-      jQuery('.delete_module').live('click',function(){            
+      jQuery('.delete_module').live('click',function(){
+          //var modid = jQuery(this).parent().parent().parent().attr('id');
           jQuery(this).after("<div class='besure' style='display:none;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;z-index:99999999;position:absolute;color:#000;border:5px solid rgba(0,0,0,0.4);'><div style='padding:10px;background:#fff;font-family:verdana;font-size:10px'>Are you sure? <a style='-webkit-border-radius: 15px;-moz-border-radius: 15px;border-radius: 15px;background:#800;padding:4px 8px 6px 8px;color:#fff;text-decoration:none;' href='#' onclick='jQuery(\".besure\").fadeOut(function(){jQuery(this).remove();jQuery(\""+jQuery(this).attr("rel")+"\").slideUp(function(){jQuery(this).remove();});});return false;'>y</a> <a href='' style='-webkit-border-radius: 15px;-moz-border-radius: 15px;border-radius: 15px;background:#080;padding:4px 8px 6px 8px;color:#fff;text-decoration:none;' onclick='jQuery(\".besure\").fadeOut(function(){jQuery(this).remove();mxdm=null;});return false;'>n</a></div></div>");
           jQuery('.besure').fadeIn();
           
@@ -172,12 +168,12 @@ jQuery(function(){
       
       // Form Submit
       jQuery('#minimax-form').submit(function(){
-          jQuery('#mxinfo').html('Please Wait...')
+          jQuery('#mxinfo').html('Please Wait...');
           jQuery('#mxinfo').slideDown();
           jQuery(this).ajaxSubmit({              
               url:ajaxurl,
               success:function(res){
-                   jQuery('#mxinfo').html('Setting Saved Successfully!')
+                   jQuery('#mxinfo').html('Setting Saved Successfully!');
                    setTimeout("jQuery('#mxinfo').slideUp();",2000);
               }   
           });
@@ -203,6 +199,21 @@ jQuery(function(){
               }   
           });
           
+          return false;
+      });
+      
+     // Clone a module 
+     jQuery('.module-clone').live('click',function(){
+          var col_id = jQuery(this).attr('col_id');
+          var res = jQuery(this).attr('mod_set');
+          var msf_mid = jQuery(this).attr('mod_id');
+          var msf_title = jQuery(this).attr('mod_name');
+          var d = new Date();
+          var z = d.getTime();
+          //Load Module Frame
+          jQuery("#"+col_id + " .module").append('<li id="module_'+col_id+'_'+z+'" rel="'+col_id+'"><input type="hidden" id="modid_module_'+col_id+'_'+z+'" name="modules['+col_id+'][]" value="'+msf_mid+'" /><input type="hidden" name="modules_settings['+col_id+'][]" id="modset_module_'+col_id+'_'+z+'" value="'+res+'" /><h3><nobr class="title">'+msf_title+'</nobr><nobr class="ctl"><span class="handle"></span> <img src="'+base_theme_url+'/images/delete.png"  class="delete_module" rel="#module_'+col_id+'_'+z+'" />&nbsp;<img class="insert" rel="'+msf_mid+'" datafield="modset_module_'+col_id+'_'+z+'" data="'+col_id+'|0" src="'+base_theme_url+'/images/settings.png" />&nbsp;<img class="module-clone dtooltip" title="Clone this module" col_id = '+col_id+' mod_name="'+msf_title+'" mod_id='+msf_mid+' mod_set= '+res+' src="'+base_theme_url+'/images/copy.png" /></nobr></h3><div class="module-preview w3eden"><img src="images/loading.gif" /> Loading Preview...</div><div class="clear"</div></li>');
+          //Load Module Preview
+          jQuery('#module_'+col_id+'_'+z+' .module-preview').load(ajaxurl+'?page=minimax&action=get_module_preview',{mod:msf_mid, modinfo:res});
           return false;
       });
       
@@ -234,7 +245,7 @@ jQuery(function(){
                   var mod = datafield.replace("modset_","");
                   var msf_mid =   datafield.replace("modset_","modid_");
                   msf_mid = jQuery('#'+msf_mid).val();
-                  jQuery('#'+mod+' .module-preview').html('<img src="images/loading.gif" /> Updating Preview...')
+                  jQuery('#'+mod+' .module-preview').html('<img src="images/loading.gif" /> Updating Preview...');
                   jQuery('#'+mod+' .module-preview').load(ajaxurl+'?page=minimax&action=get_module_preview',{mod:msf_mid, modinfo:res});
               }   
           });
@@ -255,7 +266,7 @@ jQuery(function(){
           var z = d.getTime();
           var id = jQuery(jQuery(ui.item).parent()).attr('rel')+'_'+z;
           var rplc = jQuery(ui.item).attr('rel');
-          var rplcw = jQuery(jQuery(ui.item).parent()).attr('rel')
+          var rplcw = jQuery(jQuery(ui.item).parent()).attr('rel');
           jQuery(ui.item).attr('id',id).attr('rel',jQuery(jQuery(ui.item).parent()).attr('rel'));          
           jQuery(ui.item).html(jQuery(ui.item).html().replace(new RegExp(rplc,"g"),rplcw));
           jQuery(ui.item).html(jQuery(ui.item).html().replace(new RegExp(rplc+'_([\d]*)',"g"),rplcw+'_'+z));
@@ -309,8 +320,7 @@ jQuery(function(){
  //function for the module activate/deactivate
  jQuery('.mod_name').live("click",function(){
      //alert("");
-     var obj=this;
-     //jQuery(this).find('.icon').removeClass('icon-ok icon-remove').addClass('icon-spinner icon-spin');
+     var obj = this;
      jQuery(this).html('<i class="icon-spinner icon-spin"></i>');
      jQuery('.mod_'+jQuery(obj).attr("rel")).removeClass(jQuery('.mod_'+jQuery(obj).attr("rel")).attr("rel")); 
      jQuery('.mod_'+jQuery(obj).attr("rel")).addClass( "loading");    
@@ -324,7 +334,7 @@ jQuery(function(){
          jQuery('.mod_'+jQuery(obj).attr("rel")).removeClass(jQuery('.mod_'+jQuery(obj).attr("rel")).attr("rel"));           
          jQuery('.mod_'+jQuery(obj).attr("rel")).addClass( res); 
          jQuery('.mod_'+jQuery(obj).attr("rel")).attr("rel",res);
-         //change the status
+         //Change the status
          //alert(jQuery('#st_'+jQuery(this).attr("rel")).text());
          if(res=="power_on"){
              //alert(jQuery(obj).find('.icon').attr('class'));
@@ -332,14 +342,14 @@ jQuery(function(){
              jQuery(obj).attr('status','power_on');
              jQuery('#st_'+jQuery(obj).attr("rel")).removeClass("mod_status_Inactive").removeClass("label-danger");
              jQuery('#st_'+jQuery(obj).attr("rel")).addClass("mod_status_Active").addClass('label-success');
-             jQuery('#st_'+jQuery(obj).attr("rel")).html("active");
+             jQuery('#st_'+jQuery(obj).attr("rel")).html("Active");
          }else{
              //alert(jQuery(obj).find('.icon').attr('class'));
              jQuery(obj).attr('status','power_off');
              jQuery(obj).html('Activate');
              jQuery('#st_'+jQuery(obj).attr("rel")).removeClass("mod_status_Active").removeClass("label-success");
              jQuery('#st_'+jQuery(obj).attr("rel")).addClass("mod_status_Inactive").addClass('label-danger');
-             jQuery('#st_'+jQuery(obj).attr("rel")).html("inactive");
+             jQuery('#st_'+jQuery(obj).attr("rel")).html("Inactive");
          }
      });
  });        

@@ -54,6 +54,13 @@ You may [Upgrade to Pro](http://wpeden.com/minimax-wordpress-page-layout-builder
 
 == Changelog ==
 
+= 1.7.0 =
+* Added module clone feature
+* Added row style option
+* Added module style option. Any module can have it's own custom style
+* Fixed minor css issue in front end editor
+* Removed timthumb support. Image resizing is now handled by core WordPress function. Which makes it more secure.
+
 = 1.6.1 =
 * Fixed relative image path issue with rich text editor
 

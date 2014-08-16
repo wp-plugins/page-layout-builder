@@ -6,6 +6,8 @@
  * http://jquery.org/license
  *
  * http://docs.jquery.com/UI/Theming/API
+ *
+ * To view and modify this theme, visit http://jqueryui.com/themeroller/?ffDefault=Arial,Helvetica,sans-serif&fwDefault=normal&fsDefault=1.1em&cornerRadius=4px&bgColorHeader=cccccc&bgTextureHeader=03_highlight_soft.png&bgImgOpacityHeader=75&borderColorHeader=aaaaaa&fcHeader=222222&iconColorHeader=222222&bgColorContent=ffffff&bgTextureContent=01_flat.png&bgImgOpacityContent=75&borderColorContent=aaaaaa&fcContent=222222&iconColorContent=222222&bgColorDefault=e6e6e6&bgTextureDefault=02_glass.png&bgImgOpacityDefault=75&borderColorDefault=d3d3d3&fcDefault=555555&iconColorDefault=888888&bgColorHover=dadada&bgTextureHover=02_glass.png&bgImgOpacityHover=75&borderColorHover=999999&fcHover=212121&iconColorHover=454545&bgColorActive=ffffff&bgTextureActive=02_glass.png&bgImgOpacityActive=65&borderColorActive=aaaaaa&fcActive=212121&iconColorActive=454545&bgColorHighlight=fbf9ee&bgTextureHighlight=02_glass.png&bgImgOpacityHighlight=55&borderColorHighlight=fcefa1&fcHighlight=363636&iconColorHighlight=2e83ff&bgColorError=fef1ec&bgTextureError=02_glass.png&bgImgOpacityError=95&borderColorError=cd0a0a&fcError=cd0a0a&iconColorError=cd0a0a&bgColorOverlay=aaaaaa&bgTextureOverlay=01_flat.png&bgImgOpacityOverlay=0&opacityOverlay=30&bgColorShadow=aaaaaa&bgTextureShadow=01_flat.png&bgImgOpacityShadow=0&opacityShadow=30&thicknessShadow=8px&offsetTopShadow=-8px&offsetLeftShadow=-8px&cornerRadiusShadow=8px
  */
 
 /* Layout helpers
@@ -40,20 +42,6 @@
 /* Overlays */
 .ui-widget-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-
-/*
- * jQuery UI CSS Framework 1.8.16
- *
- * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
- * Dual licensed under the MIT or GPL Version 2 licenses.
- * http://jquery.org/license
- *
- * http://docs.jquery.com/UI/Theming/API
- *
- * To view and modify this theme, visit http://jqueryui.com/themeroller/?ffDefault=Arial,Helvetica,sans-serif&fwDefault=normal&fsDefault=1.1em&cornerRadius=4px&bgColorHeader=cccccc&bgTextureHeader=03_highlight_soft.png&bgImgOpacityHeader=75&borderColorHeader=aaaaaa&fcHeader=222222&iconColorHeader=222222&bgColorContent=ffffff&bgTextureContent=01_flat.png&bgImgOpacityContent=75&borderColorContent=aaaaaa&fcContent=222222&iconColorContent=222222&bgColorDefault=e6e6e6&bgTextureDefault=02_glass.png&bgImgOpacityDefault=75&borderColorDefault=d3d3d3&fcDefault=555555&iconColorDefault=888888&bgColorHover=dadada&bgTextureHover=02_glass.png&bgImgOpacityHover=75&borderColorHover=999999&fcHover=212121&iconColorHover=454545&bgColorActive=ffffff&bgTextureActive=02_glass.png&bgImgOpacityActive=65&borderColorActive=aaaaaa&fcActive=212121&iconColorActive=454545&bgColorHighlight=fbf9ee&bgTextureHighlight=02_glass.png&bgImgOpacityHighlight=55&borderColorHighlight=fcefa1&fcHighlight=363636&iconColorHighlight=2e83ff&bgColorError=fef1ec&bgTextureError=02_glass.png&bgImgOpacityError=95&borderColorError=cd0a0a&fcError=cd0a0a&iconColorError=cd0a0a&bgColorOverlay=aaaaaa&bgTextureOverlay=01_flat.png&bgImgOpacityOverlay=0&opacityOverlay=30&bgColorShadow=aaaaaa&bgTextureShadow=01_flat.png&bgImgOpacityShadow=0&opacityShadow=30&thicknessShadow=8px&offsetTopShadow=-8px&offsetLeftShadow=-8px&cornerRadiusShadow=8px
- */
-
-
 /* Component containers
 ----------------------------------*/
 .ui-widget { font-family: Arial,Helvetica,sans-serif; font-size: 1.1em; }
@@ -84,7 +72,7 @@
 .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: 1px solid #a6a6ac; background: #ededf0; font-weight: normal; color: #212121; }
 .ui-state-hover a, .ui-state-hover a:hover { color: #212121; text-decoration: none; }
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: 1px solid #D5D5D5; background: #ffffff; font-weight: normal; color: #212121; }
-.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #212121; text-decoration: none; }
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #1996FF; text-decoration: none; }
 .ui-widget :active { outline: none; }
 
 /* Interaction Cues
@@ -483,7 +471,7 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
  *
  * http://docs.jquery.com/UI/Dialog#theming
  */
-.ui-dialog { position: absolute; padding: .2em; width: 300px; overflow: visible; border: 0 none; -webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.75); -moz-box-shadow: 0 1px 4px rgba(0,0,0,0.75); box-shadow: 0 1px 4px rgba(0,0,0,0.75); z-index:999999 !important; }
+.ui-dialog { position: absolute; padding: .2em; width: 300px; overflow: visible; border: 0 none; -webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.75); -moz-box-shadow: 0 1px 4px rgba(0,0,0,0.75); box-shadow: 0 1px 4px rgba(0,0,0,0.75); }
 .ui-dialog .ui-dialog-titlebar { position: relative; background: transparent !important; padding: 0 0 8px 0; margin: 20px 20px 5px 20px; border: solid #e5e5e5; border-width: 0 0 1px 0; -webkit-border-radius: 0; -moz-border-radius: 0; border-radius: 0; }
 .ui-dialog .ui-dialog-title { float: left; margin: .1em 16px .1em 0; color: #353536; font-size: 20px !important; }
 ui-button.ui-dialog-titlebar-close,.ui-dialog .ui-dialog-titlebar-close { position: absolute !important; right: -32px !important; top: -32px !important; margin: 0 !important; width: 30px !important; height: 30px !important; background: url(images/modalClose.png) 0 0 no-repeat !important; border: 0 !important; z-index: 9999999999999999 !important;border: 0 !important; box-shadow: none !important;}
@@ -535,7 +523,7 @@ ui-button.ui-dialog-titlebar-close,.ui-dialog .ui-dialog-titlebar-close { positi
 .ui-tabs .ui-tabs-nav li.ui-tabs-selected { margin-bottom: 0; padding-bottom: 1px; }
 .ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .ui-tabs .ui-tabs-nav li.ui-state-processing a { cursor: text; }
 .ui-tabs .ui-tabs-nav li a, .ui-tabs.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-selected a { cursor: pointer; } /* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
-.ui-tabs .ui-tabs-panel { display: block; border-width: 1px; padding: 1em 1.4em; background: #FFF; }
+.ui-tabs .ui-tabs-panel { display: block; border-width: 1px; padding: 1em 1.4em; background: #FFF; margin-bottom: 15px;}
 .ui-tabs .ui-tabs-hide { display: none !important; }
 
 /* radius reset */
@@ -823,18 +811,40 @@ only screen and (   min--moz-device-pixel-ratio: 2),
 only screen and (     -o-min-device-pixel-ratio: 2/1) { 
   
   .ui-dialog .ui-dialog-titlebar-close {
-  	background-image: url(images/modalClose@2x.png);
+  	background-image: url('images/modalClose@2x.png');
   	background-size: 30px 30px;
   }
 
   .ui-slider .ui-slider-handle {
-  	background-image: url(images/slider_handles@2x.png);
+  	background-image: url('images/slider_handles@2x.png');
   	background-size: 34px 21px;
   }
 
 }
 
 .ui-dialog-titlebar button.ui-button,
-.ui-button.ui-dialog-titlebar-close { position: absolute !important; right: -32px !important; top: -32px !important; margin: 0 !important; width: 30px !important; height: 30px !important; background: transparent url(images/modalClose.png) 0 0 no-repeat !important; border: 0 !important; z-index: 9999999999999999 !important;border: 0 !important; box-shadow: none !important;}
+.ui-button.ui-dialog-titlebar-close { 
+    position: absolute !important; 
+    right: -32px !important; 
+    top: -32px !important; 
+    margin: 0 !important; 
+    width: 30px !important; 
+    height: 30px !important; 
+    background: transparent url(images/modalClose.png) 0 0 no-repeat !important; 
+    border: 0 !important; 
+    z-index: 9999999 !important;
+    border: 0 !important; 
+    box-shadow: none !important;
+}
 
+.ui-widget-overlay{
+    position: fixed !important;
+}
 
+.ui-dialog{
+ z-index: 999999 !important;   
+}
+.tb-close-icon,
+.tb-close-icon:before{
+    content: '' !important;
+}

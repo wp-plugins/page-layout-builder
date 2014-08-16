@@ -14,7 +14,7 @@ ul.accordion_ul {
     margin: 0;
     min-height: 350px;
     max-height: 350px;
-    overflow-y:scroll;
+    overflow-y: auto;
 }
 .accordion_ul li{
     padding: 5px 10px;
@@ -25,28 +25,17 @@ ul.accordion_ul {
     background: #fafafa !important;
     border-radius: 4px;
 }
-.slider_title{
-    vertical-align: top;
-    margin: 0 10px 0  70px;
-    font-size: 15px;
-    float: left;
-    display: block;
+
+#poststuff h3 {
+    font-size: 14px;
+    line-height: 1.4;
+    margin: 0;
+    padding: 8px 12px;
 }
-#nivo_control, #boutique_control,#parallex_control{
-    display: none;
+.js .postbox .hndle {
+    cursor: move;
 }
-.slider_settings input[type="text"], .slider_settings input[type="text"], .slider_settings select,.slider_settings input[type="button"]{
-    height: 25px !important;
-    box-shadow:none !important;
-    padding: 5px !important;
-    font-size: 12px !important;
+#namediv h3, #submitdiv h3, .postbox h3 {
+    border-bottom: 1px solid #eee;
 }
-.slider_settings label{
-    padding-bottom: 20px !important;
-}
-.slider_settings select{
-    padding: 3px !important;
-}
-.slider_settings{
-    padding: 10px;
-}
+
