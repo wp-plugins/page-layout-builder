@@ -163,17 +163,7 @@ class MiniMax_tabwidget extends WP_Widget {
         </ul>
         </div>
 
-        Tab Style <select name="<?php echo $this->get_field_name('tab_style');?>">
-        <option value="">Default(Style 1)</option>
-        <option value="tab-style-1" <?php if(isset($tab_style) && $tab_style=="tab-style-1")echo 'selected="selected"';?>>Style 2</option>
-        <option value="tab-style-2" <?php if(isset($tab_style) && $tab_style=="tab-style-2")echo 'selected="selected"';?>>Style 3</option>
-        </select><br />
-        Tab Position <select name="<?php echo $this->get_field_name('tab_position');?>">
-        <option value="top">Top</option>
-<!--        <option value="left" <?php if(isset($tab_position) && $tab_position=="left")echo 'selected="selected"';?>>Left</option>
-        <option value="right" <?php if(isset($tab_position) && $tab_position=="right")echo 'selected="selected"';?>>Right</option>-->
-        <option value="below" <?php if(isset($tab_position) && $tab_position=="below")echo 'selected="selected"';?>>Bottom</option>
-        </select><br />
+
         <div style="clear: both;"></div>
         
         <script type="text/javascript">                        

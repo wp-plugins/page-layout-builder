@@ -1,4 +1,4 @@
-=== Page Layout Builder ===
+=== MiniMax - Page Layout Builder ===
 Contributors: codename065, shahriar0822
 Donate link: http://wpeden.com/minimax-wordpress-page-layout-builder-plugin/
 Tags: content builder, page builder, layout builder, theme builder, squeeze page builder, sales page builder, drag and drop page builder, drag and drop content builder, drag drop
@@ -53,6 +53,9 @@ You may [Upgrade to Pro](http://wpeden.com/minimax-wordpress-page-layout-builder
 
 
 == Changelog ==
+
+= 1.7.1 =
+* Upgraded table module
 
 = 1.7.0 =
 * Added module clone feature
