@@ -4,7 +4,7 @@ Plugin Name: MiniMax - Page Layout Builder
 Description: MiniMax - Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress
 Plugin URI: http://wpeden.com/minimax-wordpress-page-layout-builder-plugin/
 Author: Shaon
-Version: 1.7.1
+Version: 1.7.2
 Author URI: http://wpeden.com
 */
 
@@ -50,7 +50,7 @@ function minimax_squeeze_page_canvas() {
 }
 
 function upload_logo() {
-    if (isset($_GET['task']) && $_GET['task'] == 'uploadlogo') {
+    if (isset($_GET['task']) && $_GET['task'] == 'uploadlogo' && current_user_can('manage_options')) {
         if (is_uploaded_file($_FILES['Filedata']['tmp_name'])) { /* File Uploaded function */
             move_uploaded_file($_FILES['Filedata']['tmp_name'], dirname(__FILE__) . '/images/' . $_FILES['Filedata']['name']);
             update_option("thm_logo", $_FILES['Filedata']['name']);
@@ -61,7 +61,7 @@ function upload_logo() {
 }
 
 function upload_favicon() {
-    if (isset($_GET['task']) && $_GET['task'] == 'upload_favicon') {
+    if (isset($_GET['task']) && $_GET['task'] == 'upload_favicon' && current_user_can('manage_options')) {
         if (is_uploaded_file($_FILES['Filedata']['tmp_name'])) { /* File Uploaded function */
             move_uploaded_file($_FILES['Filedata']['tmp_name'], dirname(__FILE__) . '/images/' . $_FILES['Filedata']['name']);
             update_option("thm_favicon", $_FILES['Filedata']['name']);

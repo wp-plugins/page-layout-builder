@@ -54,8 +54,11 @@ You may [Upgrade to Pro](http://wpeden.com/minimax-wordpress-page-layout-builder
 
 == Changelog ==
 
+= 1.7.2 =
+* Fixed 2 security issue with file upload
+
 = 1.7.1 =
-* Upgraded table module
+* Upgraded tab module
 
 = 1.7.0 =
 * Added module clone feature
