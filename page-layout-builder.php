@@ -4,7 +4,7 @@ Plugin Name: MiniMax - Page Layout Builder
 Description: MiniMax - Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress
 Plugin URI: http://wpeden.com/minimax-wordpress-page-layout-builder-plugin/
 Author: Shaon
-Version: 1.7.2
+Version: 1.7.3
 Author URI: http://wpeden.com
 */
 
@@ -48,28 +48,7 @@ function minimax_squeeze_page_canvas() {
         die();
     endif;
 }
-
-function upload_logo() {
-    if (isset($_GET['task']) && $_GET['task'] == 'uploadlogo' && current_user_can('manage_options')) {
-        if (is_uploaded_file($_FILES['Filedata']['tmp_name'])) { /* File Uploaded function */
-            move_uploaded_file($_FILES['Filedata']['tmp_name'], dirname(__FILE__) . '/images/' . $_FILES['Filedata']['name']);
-            update_option("thm_logo", $_FILES['Filedata']['name']);
-            die("<img src='" . get_bloginfo('template_url') . '/images/' . get_option('thm_logo') . "' />");
-        }
-        die();
-    }
-}
-
-function upload_favicon() {
-    if (isset($_GET['task']) && $_GET['task'] == 'upload_favicon' && current_user_can('manage_options')) {
-        if (is_uploaded_file($_FILES['Filedata']['tmp_name'])) { /* File Uploaded function */
-            move_uploaded_file($_FILES['Filedata']['tmp_name'], dirname(__FILE__) . '/images/' . $_FILES['Filedata']['name']);
-            update_option("thm_favicon", $_FILES['Filedata']['name']);
-            die("<img src='" . get_bloginfo('template_url') . '/images/' . get_option('thm_favicon') . "' />");
-        }
-        die();
-    }
-}
+ 
 
 function minimax_module_status_change() {
     if (isset($_POST['module']) && $_POST['module']) {
@@ -220,9 +199,7 @@ function minimax_update_module() {
 
 add_action('add_meta_boxes', 'minimax_add_custom_box');
 add_action('save_post', 'minimax_save_link');
-
-add_action('init', 'upload_logo', 0);
-add_action('init', 'upload_favicon', 0);
+ 
 add_action('init', 'custom_init');
 
 add_action('admin_menu', 'minimax_opt_menu');

@@ -54,7 +54,7 @@ You may [Upgrade to Pro](http://wpeden.com/minimax-wordpress-page-layout-builder
 
 == Changelog ==
 
-= 1.7.2 =
+= 1.7.3 =
 * Fixed 2 security issue with file upload
 
 = 1.7.1 =
