@@ -581,7 +581,7 @@ border-top-right-radius: 4px !important;
 }
 
 .ui-widget-overlay.ui-front {
-   z-index: 98 !important;
+   z-index: 9999 !important;
 }
 
 
@@ -614,4 +614,7 @@ border-top-right-radius: 4px !important;
 }
 .panel.pro_only{
     opacity: 0.5 !important;
+}
+.ui-dialog{
+    overflow: visible !important;
 }

@@ -3,7 +3,7 @@ Contributors: codename065, shahriar0822
 Donate link: http://wpeden.com/minimax-wordpress-page-layout-builder-plugin/
 Tags: content builder, page builder, layout builder, theme builder, squeeze page builder, sales page builder, drag and drop page builder, drag and drop content builder, drag drop
 Requires at least: 3.5
-Tested up to: 3.9
+Tested up to: 4.0
 License: GPLv2 or later
  
   
@@ -53,6 +53,9 @@ You may [Upgrade to Pro](http://wpeden.com/minimax-wordpress-page-layout-builder
 
 
 == Changelog ==
+
+= 1.7.4 =
+* Compatibility release for WordPress 4.0
 
 = 1.7.3 =
 * Fixed 2 security issue with file upload

@@ -425,21 +425,23 @@ function minimax_module_settings(){
     ?>
         <script>
         jQuery(function() {
-          jQuery( "#mod_set_tabs" ).tabs();
+          //jQuery( "#mod_set_tabs" ).tabs();
         });
         </script>
-      <div id="mod_set_tabs">
-        <ul>
-          <li><a href="#tabs-1">General Options</a></li>
-          <li><a href="#tabs-2">Extra Styling Options</a></li>
+    <style>.nav-tabs a{ outline: 0 !important; box-shadow: none !important;}</style>
+        <div class="w3eden">
+        <ul class="nav nav-tabs">
+          <li class="tab active"><a data-toggle="tab" href="#tabs-1">General Options</a></li>
+          <li class="tab"><a data-toggle="tab" href="#tabs-2">Extra Styling Options</a></li>
         </ul>
-        <div id="tabs-1">
+     <div class="tab-content" style="padding: 20px;border: 1px solid #dddddd; border-top: 0">
+        <div class="tab-pane active" id="tabs-1">
           <?php $mxwidgets[$_GET['module']]->form($iinstance);  ?>
         </div>
-        <div id="tabs-2">
+        <div class="tab-pane" id="tabs-2">
             <?php include("module-settings.php"); ?>    
         </div>
-      </div>
+      </div></div><br/>
     <?php
         
     echo "
