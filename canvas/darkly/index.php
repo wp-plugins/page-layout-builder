@@ -56,7 +56,7 @@ body{
     
     wp_head();
 ?>
-<link rel="stylesheet" type="text/css" media="all" href="<?php echo plugins_url( 'minimax/canvas/darkly/style.css' ); ?>" />
+<link rel="stylesheet" type="text/css" media="all" href="<?php echo plugins_url( 'page-layout-builder/canvas/darkly/style.css' ); ?>" />
 </head>
 
 <body <?php body_class(); ?>>

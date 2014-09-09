@@ -54,6 +54,9 @@ You may [Upgrade to Pro](http://wpeden.com/minimax-wordpress-page-layout-builder
 
 == Changelog ==
 
+= 1.7.5 =
+* Fixed canvas style sheet path issue.
+
 = 1.7.4 =
 * Compatibility release for WordPress 4.0
 

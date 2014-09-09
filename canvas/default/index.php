@@ -32,7 +32,7 @@
     ?>
 </title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
-<link rel="stylesheet" type="text/css" media="all" href="<?php echo plugins_url( 'minimax/canvas/default/style.css' ); ?>" />
+<link rel="stylesheet" type="text/css" media="all" href="<?php echo plugins_url( 'page-layout-builder/canvas/default/style.css' ); ?>" />
 <style type="text/css">
 body{
     background: <?php echo get_post_meta(get_the_ID(),"bodybgcolor",true); ?> url("<?php echo get_post_meta(get_the_ID(),"bodybgimage",true); ?>") !important;

@@ -56,7 +56,7 @@ body{
     
     wp_head();
 ?>
-<link rel="stylesheet" type="text/css" media="all" href="<?php echo plugins_url( 'minimax/canvas/yeti/style.css' ); ?>" />
+<link rel="stylesheet" type="text/css" media="all" href="<?php echo plugins_url( 'page-layout-builder/canvas/yeti/style.css' ); ?>" />
 </head>
 
 <body <?php body_class(); ?>>
