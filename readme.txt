@@ -54,6 +54,10 @@ You may [Upgrade to Pro](http://wpeden.com/minimax-wordpress-page-layout-builder
 
 == Changelog ==
 
+
+= 1.7.6 =
+* Padding and margin from column/module settings not being applied issue solved.
+
 = 1.7.5 =
 * Fixed canvas style sheet path issue.
 

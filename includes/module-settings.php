@@ -53,24 +53,24 @@
 </p>    
     <div style="border:1px dashed #7a7a7a;width: 600px;height: 300px;position: relative;">
         <p style="position: absolute;left: 3%;">Margin</p>
-        <input class="top_set" style="height: 25px;line-height:25px;" type="text" name="ms[margin_top]" value="<?php echo $ms['margin_top'];?>"  >
-        <input class="right_set" style="height: 25px;line-height:25px;" type="text" name="ms[margin_right]" value="<?php echo $ms['margin_right'];?>"  >
-        <input class="bottom_set" style="height: 25px;line-height:25px;" type="text" name="ms[margin_bottom]" value="<?php echo $ms['margin_bottom'];?>"  >
-        <input class="left_set" style="height: 25px;line-height:25px;" type="text" name="ms[margin_left]" value="<?php echo $ms['margin_left'];?>"  >
+        <input class="top_set" style="height: 25px;line-height:25px;" type="text" name="ms[margin_top]" value="<?php echo $ms['margin_top']?$ms['margin_top']:"0";?>"  >
+        <input class="right_set" style="height: 25px;line-height:25px;" type="text" name="ms[margin_right]" value="<?php echo $ms['margin_right']?$ms['margin_right']:"0";?>"  >
+        <input class="bottom_set" style="height: 25px;line-height:25px;" type="text" name="ms[margin_bottom]" value="<?php echo $ms['margin_bottom']?$ms['margin_bottom']:"0";?>"  >
+        <input class="left_set" style="height: 25px;line-height:25px;" type="text" name="ms[margin_left]" value="<?php echo $ms['margin_left']?$ms['margin_left']:"0";?>"  >
         
         <div style="border:1px dotted #7a7a7a;margin: 40px 45px;background: #f3f3f3;position: relative;">
             <p style="position: absolute;left: 3%;">Border</p>
-            <input class="top_set" style="height: 25px;line-height:25px;" type="text" name="ms[border_top]" value="<?php echo $ms['border_top'];?>"  >
-            <input class="right_set" style="height: 25px;line-height:25px;" type="text" name="ms[border_right]" value="<?php echo $ms['border_right'];?>"  >
-            <input class="bottom_set" style="height: 25px;line-height:25px;" type="text" name="ms[border_bottom]" value="<?php echo $ms['border_bottom'];?>"  >
-            <input class="left_set" style="height: 25px;line-height:25px;" type="text" name="ms[border_left]" value="<?php echo $ms['border_left'];?>"  >
+            <input class="top_set" style="height: 25px;line-height:25px;" type="text" name="ms[border_top]" value="<?php echo $ms['border_top']?$ms['border_top']:"0";?>"  >
+            <input class="right_set" style="height: 25px;line-height:25px;" type="text" name="ms[border_right]" value="<?php echo $ms['border_right']?$ms['border_right']:"0";?>"  >
+            <input class="bottom_set" style="height: 25px;line-height:25px;" type="text" name="ms[border_bottom]" value="<?php echo $ms['border_bottom']?$ms['border_bottom']:"0";?>"  >
+            <input class="left_set" style="height: 25px;line-height:25px;" type="text" name="ms[border_left]" value="<?php echo $ms['border_left']?$ms['border_left']:"0";?>"  >
 
             <div style="border:1px solid #7a7a7a;margin: 40px 45px;background: #e5e5e5;position: relative;">
                 <p style="position: absolute;left: 3%;">Padding</p>
-                <input class="top_set" style="height: 25px;line-height:25px;" type="text" name="ms[padding_top]" value="<?php echo $ms['padding_top'];?>"  >
-                <input class="right_set" style="height: 25px;line-height:25px;" type="text" name="ms[padding_right]" value="<?php echo $ms['padding_right'];?>"  >
-                <input class="bottom_set" style="height: 25px;line-height:25px;" type="text" name="ms[padding_bottom]" value="<?php echo $ms['padding_bottom'];?>"  >
-                <input class="left_set" style="height: 25px;line-height:25px;" type="text" name="ms[padding_left]" value="<?php echo $ms['padding_left'];?>"  >
+                <input class="top_set" style="height: 25px;line-height:25px;" type="text" name="ms[padding_top]" value="<?php echo $ms['padding_top']?$ms['padding_top']:"0";?>"  >
+                <input class="right_set" style="height: 25px;line-height:25px;" type="text" name="ms[padding_right]" value="<?php echo $ms['padding_right']?$ms['padding_right']:"0";?>"  >
+                <input class="bottom_set" style="height: 25px;line-height:25px;" type="text" name="ms[padding_bottom]" value="<?php echo $ms['padding_bottom']?$ms['padding_bottom']:"0";?>"  >
+                <input class="left_set" style="height: 25px;line-height:25px;" type="text" name="ms[padding_left]" value="<?php echo $ms['padding_left']?$ms['padding_left']:"0";?>"  >
 
                 <div style="border:1px solid #7a7a7a;margin: 40px 45px;background: #3276d2;text-transform: uppercase;">
                     <p style="text-align: center;padding: 5px;color: #fff;">MiniMax Module</p>

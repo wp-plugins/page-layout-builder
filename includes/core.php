@@ -192,14 +192,14 @@ function minimax_render_layout($layout, $id, $holder = '') {
     $ls  = unserialize(base64_decode($minimax_layout_settings[$holder][$layout][$id]));
 
     }
-    $row_style = $ls['bg_color'] ? "background:".$ls['bg_color'].";" : "";
+    $row_style  = $ls['bg_color'] ? "background:".$ls['bg_color'].";" : "";
     $row_style .= $ls['tx_color'] ? "color:".$ls['tx_color'].";" : "";
-    $row_style .= $ls['border_top'] ? "border-top:".$ls['border_top']."px solid ".$ls['border_color'].";" : "";
-    $row_style .= $ls['border_right'] ? "border-right:".$ls['border_right']."px solid ".$ls['border_color'].";" : "";
-    $row_style .= $ls['border_bottom'] ? "border-bottom:".$ls['border_bottom']."px solid ".$ls['border_color'].";" : "";
-    $row_style .= $ls['border_left'] ? "border-left:".$ls['border_left']."px solid ".$ls['border_color'].";" : "";    
-    $row_style .= $ls['margin_top'] ? "margin:".$ls['margin_top']."px ".$ls['margin_right']."px ".$ls['margin_bottom']."px ".$ls['margin_left']."px;" : "";
-    $row_style .= $ls['padding_top'] ? "padding:".$ls['padding_top']."px ".$ls['padding_right']."px ".$ls['padding_bottom']."px ".$ls['padding_left']."px;" : "";
+    $row_style .= $ls['border_color'] ? "border-top:".$ls['border_top']."px solid ".$ls['border_color'].";" : "";
+    $row_style .= $ls['border_color'] ? "border-right:".$ls['border_right']."px solid ".$ls['border_color'].";" : "";
+    $row_style .= $ls['border_color'] ? "border-bottom:".$ls['border_bottom']."px solid ".$ls['border_color'].";" : "";
+    $row_style .= $ls['border_color'] ? "border-left:".$ls['border_left']."px solid ".$ls['border_color'].";" : "";    
+    $row_style .= "margin:".$ls['margin_top']."px ".$ls['margin_right']."px ".$ls['margin_bottom']."px ".$ls['margin_left']."px;" ;
+    $row_style .= "padding:".$ls['padding_top']."px ".$ls['padding_right']."px ".$ls['padding_bottom']."px ".$ls['padding_left']."px;" ;
     
     if(count($minimax_layout_settings)==0 || !is_array($minimax_layout_settings)) $mls = "";
     else $mls =  $minimax_layout_settings[$holder][$layout][$id];
@@ -338,14 +338,14 @@ function minimax_render_modules($id){
         
         //Get extra styling data
         $ms = $instance[ms];
-        $mod_style = $ms['bg_color'] ? "background:".$ms['bg_color'].";" : "";
+        $mod_style  = $ms['bg_color'] ? "background:".$ms['bg_color'].";" : "";
         $mod_style .= $ms['tx_color'] ? "color:".$ms['tx_color'].";" : "";
-        $mod_style .= $ms['border_top'] ? "border-top:".$ms['border_top']."px solid ".$ms['border_color'].";" : "";
-        $mod_style .= $ms['border_right'] ? "border-right:".$ms['border_right']."px solid ".$ms['border_color'].";" : "";
-        $mod_style .= $ms['border_bottom'] ? "border-bottom:".$ms['border_bottom']."px solid ".$ms['border_color'].";" : "";
-        $mod_style .= $ms['border_left'] ? "border-left:".$ms['border_left']."px solid ".$ms['border_color'].";" : "";    
-        $mod_style .= $ms['margin_top'] ? "margin:".$ms['margin_top']."px ".$ms['margin_right']."px ".$ms['margin_bottom']."px ".$ms['margin_left']."px;" : "";
-        $mod_style .= $ms['padding_top'] ? "padding:".$ms['padding_top']."px ".$ms['padding_right']."px ".$ms['padding_bottom']."px ".$ms['padding_left']."px;" : "";
+        $mod_style .= $ms['border_color'] ? "border-top:".$ms['border_top']."px solid ".$ms['border_color'].";" : "";
+        $mod_style .= $ms['border_color'] ? "border-right:".$ms['border_right']."px solid ".$ms['border_color'].";" : "";
+        $mod_style .= $ms['border_color'] ? "border-bottom:".$ms['border_bottom']."px solid ".$ms['border_color'].";" : "";
+        $mod_style .= $ms['border_color'] ? "border-left:".$ms['border_left']."px solid ".$ms['border_color'].";" : "";    
+        $mod_style .= "margin:".$ms['margin_top']."px ".$ms['margin_right']."px ".$ms['margin_bottom']."px ".$ms['margin_left']."px;" ;
+        $mod_style .= "padding:".$ms['padding_top']."px ".$ms['padding_right']."px ".$ms['padding_bottom']."px ".$ms['padding_left']."px;" ;
         $mod_class = $ms['css_class'];
         
         //Get general module options

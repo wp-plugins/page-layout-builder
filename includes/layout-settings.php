@@ -61,24 +61,24 @@
     </p>    
     <div style="border:1px dashed #7a7a7a;width: 600px;height: 300px;position: relative;">
         <p style="position: absolute;left: 3%;">Margin</p>
-        <input class="top_set" type="text" name="ls[margin_top]" value="<?php echo $ls['margin_top'];?>"  >
-        <input class="right_set" type="text" name="ls[margin_right]" value="<?php echo $ls['margin_right'];?>"  >
-        <input class="bottom_set" type="text" name="ls[margin_bottom]" value="<?php echo $ls['margin_bottom'];?>"  >
-        <input class="left_set" type="text" name="ls[margin_left]" value="<?php echo $ls['margin_left'];?>"  >
+        <input class="top_set" type="text" name="ls[margin_top]" value="<?php echo $ls['margin_top']?$ls['margin_top']:"0";?>"  >
+        <input class="right_set" type="text" name="ls[margin_right]" value="<?php echo $ls['margin_right']?$ls['margin_right']:"0";?>"  >
+        <input class="bottom_set" type="text" name="ls[margin_bottom]" value="<?php echo $ls['margin_bottom']?$ls['margin_bottom']:"0";?>"  >
+        <input class="left_set" type="text" name="ls[margin_left]" value="<?php echo $ls['margin_left']?$ls['margin_left']:"0";?>"  >
         
         <div style="border:1px dotted #7a7a7a;margin: 40px 45px;background: #f3f3f3;position: relative;">
             <p style="position: absolute;left: 3%;">Border</p>
-            <input class="top_set" type="text" name="ls[border_top]" value="<?php echo $ls['border_top'];?>"  >
-            <input class="right_set" type="text" name="ls[border_right]" value="<?php echo $ls['border_right'];?>"  >
-            <input class="bottom_set" type="text" name="ls[border_bottom]" value="<?php echo $ls['border_bottom'];?>"  >
-            <input class="left_set" type="text" name="ls[border_left]" value="<?php echo $ls['border_left'];?>"  >
+            <input class="top_set" type="text" name="ls[border_top]" value="<?php echo $ls['border_top']?$ls['border_top']:"0";?>"  >
+            <input class="right_set" type="text" name="ls[border_right]" value="<?php echo $ls['border_right']?$ls['border_right']:"0";?>"  >
+            <input class="bottom_set" type="text" name="ls[border_bottom]" value="<?php echo $ls['border_bottom']?$ls['border_bottom']:"0";?>"  >
+            <input class="left_set" type="text" name="ls[border_left]" value="<?php echo $ls['border_left']?$ls['border_left']:"0";?>"  >
 
             <div style="border:1px solid #7a7a7a;margin: 40px 45px;background: #e5e5e5;position: relative;">
                 <p style="position: absolute;left: 3%;">Padding</p>
-                <input class="top_set" type="text" name="ls[padding_top]" value="<?php echo $ls['padding_top'];?>"  >
-                <input class="right_set" type="text" name="ls[padding_right]" value="<?php echo $ls['padding_right'];?>"  >
-                <input class="bottom_set" type="text" name="ls[padding_bottom]" value="<?php echo $ls['padding_bottom'];?>"  >
-                <input class="left_set" type="text" name="ls[padding_left]" value="<?php echo $ls['padding_left'];?>"  >
+                <input class="top_set" type="text" name="ls[padding_top]" value="<?php echo $ls['padding_top']?$ls['padding_top']:"0";?>"  >
+                <input class="right_set" type="text" name="ls[padding_right]" value="<?php echo $ls['padding_right']?$ls['padding_right']:"0";?>"  >
+                <input class="bottom_set" type="text" name="ls[padding_bottom]" value="<?php echo $ls['padding_bottom']?$ls['padding_bottom']:"0";?>"  >
+                <input class="left_set" type="text" name="ls[padding_left]" value="<?php echo $ls['padding_left']?$ls['padding_left']:"0";?>"  >
 
                 <div style="border:1px solid #7a7a7a;margin: 40px 45px;background: #3276d2;text-transform: uppercase;">
                     <p style="text-align: center;padding: 5px;color: #fff;">MiniMax Row Contents</p>
