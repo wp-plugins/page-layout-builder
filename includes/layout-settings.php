@@ -1,43 +1,76 @@
 <style type="text/css">
-.btn5x{
-    -webkit-border-radius: 5px !important;
-    -moz-border-radius: 5px !important;
-    border-radius: 5px !important;
-}
-.top_set{
-    position: absolute;
-    left: 50%;
-    top: 2%;
-    width: 33px;
-    padding: 0px;
-    height: 25px;
-}
-.bottom_set{
-    position: absolute;
-    left: 50%;
-    bottom: 2%;
-    width: 33px;
-    padding: 0px;
-    height: 25px;
-}
-.right_set{
-    top: 50%;
-    position: absolute;
-    right: 1%;
-    width: 33px;
-    margin-top: -10px;
-    padding: 0px;
-    height: 25px;
-}
-.left_set{
-    position: absolute;
-    top: 50%;
-    left: 1%;
-    width: 33px;
-    margin-top: -10px;
-    padding: 0px;
-    height: 25px;
-}
+    .btn5x{
+        -webkit-border-radius: 5px !important;
+        -moz-border-radius: 5px !important;
+        border-radius: 5px !important;
+    }
+    .spacing *{
+        margin: 40px 45px;
+    }
+    .ms-margin{
+        border:1px dashed #7a7a7a;
+        width: 100%;
+        position: relative;
+        margin: 1px;
+    }
+    .ms-border{
+        border:1px dotted #7a7a7a;
+        background: #f3f3f3;
+        position: relative;
+    }
+    .ms-padding{
+        border:1px solid #7a7a7a;
+        background: #e5e5e5;
+        position: relative;
+    }
+    .ms-core{
+        border:1px solid #7a7a7a;
+        background: #7A7A7A;
+        text-transform: uppercase;
+        text-align: center;
+        color: #fff;
+    }
+    .top_set{
+        left: 50%;
+        top: 2%;
+        width: 33px;
+        text-align: center;
+    }
+    .bottom_set{
+        left: 50%;
+        bottom: 2%;
+        width: 33px;
+        text-align: center;
+    }
+    .right_set{
+        top: 50%;
+        right: 1%;
+        width: 33px;
+        margin-top: -10px;
+        text-align: center;
+    }
+    .left_set{
+        top: 50%;
+        left: 1%;
+        width: 33px;
+        margin-top: -10px;
+        text-align: center;
+    }
+    .spacing input[type="text"] {
+        position: absolute;
+        text-align: center;
+        height: 24px;
+        width: 34px;
+        margin: 0px;
+        border: 1px solid #BDBDBD;
+        font-size: 11px;
+        line-height: 11px;
+        padding: 3px 0px;
+        border-radius: 3px;
+    }
+    p,p label{
+        font-size: 13px;
+    }
 </style>
 
 <script type='text/javascript'>
@@ -59,38 +92,40 @@
         <label> Border</label> <br/>
         <input type="text" class="myclrpkr" name="ls[border_color]" value="<?php echo $ls['border_color'];?>"  > 
     </p>    
-    <div style="border:1px dashed #7a7a7a;width: 600px;height: 300px;position: relative;">
-        <p style="position: absolute;left: 3%;">Margin</p>
+    <div class="spacing">
+    <div class="ms-margin">
+        <p style="position: absolute;left: 3%;margin: 0px;">Margin</p>
         <input class="top_set" type="text" name="ls[margin_top]" value="<?php echo $ls['margin_top']?$ls['margin_top']:"0";?>"  >
         <input class="right_set" type="text" name="ls[margin_right]" value="<?php echo $ls['margin_right']?$ls['margin_right']:"0";?>"  >
         <input class="bottom_set" type="text" name="ls[margin_bottom]" value="<?php echo $ls['margin_bottom']?$ls['margin_bottom']:"0";?>"  >
         <input class="left_set" type="text" name="ls[margin_left]" value="<?php echo $ls['margin_left']?$ls['margin_left']:"0";?>"  >
         
-        <div style="border:1px dotted #7a7a7a;margin: 40px 45px;background: #f3f3f3;position: relative;">
-            <p style="position: absolute;left: 3%;">Border</p>
+        <div class="ms-border">
+            <p style="position: absolute;left: 3%;margin: 0px;">Border</p>
             <input class="top_set" type="text" name="ls[border_top]" value="<?php echo $ls['border_top']?$ls['border_top']:"0";?>"  >
             <input class="right_set" type="text" name="ls[border_right]" value="<?php echo $ls['border_right']?$ls['border_right']:"0";?>"  >
             <input class="bottom_set" type="text" name="ls[border_bottom]" value="<?php echo $ls['border_bottom']?$ls['border_bottom']:"0";?>"  >
             <input class="left_set" type="text" name="ls[border_left]" value="<?php echo $ls['border_left']?$ls['border_left']:"0";?>"  >
 
-            <div style="border:1px solid #7a7a7a;margin: 40px 45px;background: #e5e5e5;position: relative;">
-                <p style="position: absolute;left: 3%;">Padding</p>
+            <div class="ms-padding">
+                <p style="position: absolute;left: 3%;margin: 0px;">Padding</p>
                 <input class="top_set" type="text" name="ls[padding_top]" value="<?php echo $ls['padding_top']?$ls['padding_top']:"0";?>"  >
                 <input class="right_set" type="text" name="ls[padding_right]" value="<?php echo $ls['padding_right']?$ls['padding_right']:"0";?>"  >
                 <input class="bottom_set" type="text" name="ls[padding_bottom]" value="<?php echo $ls['padding_bottom']?$ls['padding_bottom']:"0";?>"  >
                 <input class="left_set" type="text" name="ls[padding_left]" value="<?php echo $ls['padding_left']?$ls['padding_left']:"0";?>"  >
 
-                <div style="border:1px solid #7a7a7a;margin: 40px 45px;background: #3276d2;text-transform: uppercase;">
-                    <p style="text-align: center;padding: 5px;color: #fff;">MiniMax Row Contents</p>
+                <div class="ms-core">
+                    <p style="padding: 5px;">Row Contents</p>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <p>
         <label>Row CSS Class:</label>
         <input class="widefat" type="text" name="ls[css_class]" value="<?php echo $ls['css_class']; ?>">
-        ( If you want to apply css from specific class, write the class name in this field )
+        ( If you want to apply CSS from specific class, write the class name in this field )
     </p>
 
     <p>

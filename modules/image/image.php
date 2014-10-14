@@ -33,20 +33,17 @@ class MiniMax_Image extends WP_Widget {
         $thumburl = str_replace(ABSPATH, site_url('/'), $thumbpath);
                   
         echo "<div class='widget'>";
-
         ?>
-
         <div class="media">
             <a href="#" class="pull-left thumbnail" style="margin-right: 5px !important;">
                 <img class="imgbr" src="<?php echo $thumburl; ?>" title="<?php echo $title; ?>" alt="<?php echo $alt; ?>">
             </a>
             <div class="meida-body" style="padding-top:5px !important;">
                 <h3 class='media-heading'><i class="icon icon-th"></i> <?php echo $title; ?></h3>
-                <?php /* <p><?php echo $desc; ?></p> */ ?>
                 <i class="icon icon-link"></i> <?php echo $link; ?><br/>
-                <i class='icon icon-resize-horizontal'></i> Width: <?php echo $imgw;?> <i class='icon icon-resize-vertical'></i> Height: <?php echo $imgh;?>
+                <i class='icon icon-resize-horizontal'></i> Width: <?php echo $imgw; ?>
+                <i class='icon icon-resize-vertical'></i> Height: <?php echo $imgh; ?>
             </div>
-
         </div>
         <div style="clear: both;"></div>
 

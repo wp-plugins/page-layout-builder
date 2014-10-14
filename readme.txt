@@ -28,7 +28,7 @@ What You See Is What You Get
 * Sub-pages module
 
 = Want more modules? =
-You may [Upgrade to Pro](http://wpeden.com/minimax-wordpress-page-layout-builder-plugin/ "20+ modules and Extensive Front-end Page Builder") for 20+ modules & Extensive features of front-end page builder
+You may [Upgrade to Pro](http://wpeden.com/minimax-wordpress-page-layout-builder-plugin/ "30+ modules and Extensive Front-end Page Builder") for 30+ modules & Extensive features of front-end page builder
 
  
 
@@ -54,6 +54,9 @@ You may [Upgrade to Pro](http://wpeden.com/minimax-wordpress-page-layout-builder
 
 == Changelog ==
 
+
+= 1.7.7 =
+* Updated Layout settings and Module settings area
 
 = 1.7.6 =
 * Padding and margin from column/module settings not being applied issue solved.

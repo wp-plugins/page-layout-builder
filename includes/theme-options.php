@@ -1,5 +1,5 @@
 <div class="wrap">
-    <div id="icon-options-general" class="icon32"><br></div><h2>MiniMax Modules</h2>
+    <h2>MiniMax Modules</h2>
 </div>
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
 
@@ -145,8 +145,24 @@
         </div>
         <div class="container-fluid  tab-pane fade" id="store">
             <div class="row">
-                <div class="span12">
-                    <div class="alert alert-info">Store will be available for pro only</div>
+                <div class="col-md-12">
+                    <div class="alert alert-info">Take MiniMax Builder to a new level of awesomeness with following extensions</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <div class="mxaddon" style="max-width: 251px; background: #fff;padding: 10px; border-radius:4px; margin-right: 45px;border: 1px solid #f3f3f3">
+                        <a target="blank" href="http://wpeden.com/product/minimax-modules-pack-1/">
+                            <img style="height:auto; max-width: 100%;"class="" alt="MiniMax Modules Pack 1" src="http://cdn.wpeden.com/wp-content/uploads/2014/06/minimax-modules-pack-1-250x250.png">
+                        </a>
+                        <div class="addon-info" style="background:#F8F8F8;margin-top: 20px;padding: 10px;">
+                            <a target="blank" href="http://wpeden.com/product/minimax-modules-pack-1/">
+                                <b>MiniMax Modules Pack 1</b>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
                 </div>
             </div>
         </div>
