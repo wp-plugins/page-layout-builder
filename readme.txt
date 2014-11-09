@@ -54,6 +54,9 @@ You may [Upgrade to Pro](http://wpeden.com/minimax-wordpress-page-layout-builder
 
 == Changelog ==
 
+= 1.7.8 =
+* Fixed 'link button' issue in Rich Text module
+* Updated Image module 
 
 = 1.7.7 =
 * Updated Layout settings and Module settings area

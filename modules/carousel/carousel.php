@@ -1,8 +1,8 @@
 <?php
 /*
-Plugin Name: Carousel
+Plugin Name: Post Carousel
 Plugin URI: #
-Description: Carousel Module For MiniMax
+Description: Carousel Module using CarouFredSel
 Author: Shaon
 Version: pro_only
 Author URI: #

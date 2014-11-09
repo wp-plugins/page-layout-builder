@@ -2,7 +2,7 @@
 /*
 Plugin Name: Post Carousel
 Plugin URI: #
-Description: Post Carousel Module For MiniMax
+Description: Post Carousel using Bootstrap
 Author: Shaon
 Version: pro_only
 Author URI: #

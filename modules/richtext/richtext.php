@@ -55,13 +55,21 @@ if (!class_exists('MiniMax_RichText')) {
 
             <?php
             $id = uniqid('e');
-            wp_editor($content, $id, array('editor_class' => 'wp-editor', 'textarea_name' => $this->get_field_name('content'), 'media_buttons' => true)); ?>
+            
+            wp_editor( $content, $id, array('editor_class' => 'wp-editor',
+                                            'textarea_name' => $this->get_field_name('content'),
+                                            'textarea_rows' => 15,
+                                            'media_buttons' => true
+                                            )
+                     );
+            ?>
                  
                 <script type="text/javascript">
                     
                     tinymce.init({
                         selector: "#<?php echo $id;?>",
-                        relative_urls: false
+                        relative_urls: false,
+                        plugins: "wplink"
                     });
                     
                     function load_mceeditor($element) {
@@ -108,6 +116,8 @@ if (!class_exists('MiniMax_RichText')) {
             <style>
                 .media-modal{ z-index: 999999; }
                 .mce-panel.mce-menu { z-index: 1000000 !important; }
+                #wp-link-backdrop{ z-index: 1000000 !important; }
+                #wp-link-wrap{ z-index: 99999999 !important; }
             </style>
 
             </p>

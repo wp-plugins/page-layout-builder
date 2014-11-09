@@ -352,4 +352,11 @@ jQuery(function(){
              jQuery('#st_'+jQuery(obj).attr("rel")).html("Inactive");
          }
      });
- });        
+ });    
+ 
+ /*Fixes link field focus issue in tinyMCE link dialog (Added V.3.0.8)*/
+jQuery(document).on('focusin', function(e) {
+    if (jQuery(e.target).closest("#wp-link-wrap").length) {
+        e.stopImmediatePropagation();
+    }
+});

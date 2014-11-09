@@ -270,7 +270,7 @@ class MiniMax_Image extends WP_Widget {
         <select class="widefat" id="<?php echo $this->get_field_id('bootstrap_style'); ?>" name="<?php echo $this->get_field_name('bootstrap_style'); ?>" type="text">
         <option value="rounded" <?php if($bootstrap_style=='rounded') echo 'selected=selected'; ?> >Rounded</option>
         <option value="circle" <?php if($bootstrap_style=='circle') echo 'selected=selected'; ?> >Circle </option>
-        <option value="polaroid" <?php if($bootstrap_style=='polaroid') echo 'selected=selected'; ?> >Polaroid </option>
+        <option value="thumbnail" <?php if($bootstrap_style=='thumbnail') echo 'selected=selected'; ?> >Thumbnail </option>
         
         </select>
         </p>

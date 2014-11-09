@@ -3,4 +3,11 @@
 .widget_minimax_image h3,
 .widget_minimax_image h4{
     margin:0px !important;
+    text-align: left;
+}
+.widget_minimax_image {
+    text-align: center;
+}
+.widget_minimax_image p {
+    text-align: left;
 }

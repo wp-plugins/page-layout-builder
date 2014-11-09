@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: MiniMax Button 
+Plugin Name: Button 
 Plugin URI: #
 Description: MiniMax Button with icon support
 Author: Shaon
