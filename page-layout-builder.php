@@ -4,7 +4,7 @@ Plugin Name: MiniMax - Page Layout Builder
 Description: MiniMax - Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress
 Plugin URI: http://wpeden.com/minimax-wordpress-page-layout-builder-plugin/
 Author: Shaon
-Version: 1.7.8
+Version: 1.7.9
 Author URI: http://wpeden.com
 */
 
@@ -31,7 +31,8 @@ include("includes/core.php");
 /* Theme Option Menu */
 
 function minimax_opt_menu() {
-    add_menu_page("MiniMax", "MiniMax", 'administrator', 'minimax', 'minimax_options', 'http://cdn2.iconfinder.com/data/icons/crystalproject/16x16/apps/blockdevice.png');
+    $iconurl = plugins_url() . '/minimax/images/menuicon.png';
+    add_menu_page("MiniMax", "MiniMax", 'administrator', 'minimax', 'minimax_options', $iconurl);
 }
 
 /* Theme Option Function */

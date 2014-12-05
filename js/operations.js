@@ -217,6 +217,24 @@ jQuery(function(){
           return false;
       });
       
+      //Clone a row
+     jQuery('.rclone').live('click', function() {
+
+        var d = new Date();
+        var new_id = d.getTime();
+        var row_id = jQuery(this).attr('rel');
+        var gid = jQuery(this).attr('rthis');
+        var cloned_row = jQuery("#" + row_id).clone().attr('id', 'row_li_'+new_id);
+        var re = new RegExp(gid,"g");
+        
+        cloned_row.html(function(i, oldHTML) {
+            return oldHTML.replace(re, new_id);
+        });
+
+        jQuery("#"+row_id).after(cloned_row);
+
+        });
+      
       jQuery('#layout-settings-form').live('submit',function(){
           var layout_settings_id = jQuery(this).attr('rel');
           jQuery(this).append('<div style="position: absolute;margin-top: -5px"><img src="images/loading.gif" /> Saving...</div>');

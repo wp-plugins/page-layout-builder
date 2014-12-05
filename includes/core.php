@@ -110,7 +110,7 @@ function minimax_select_layout(){
 function minimax_insert_layout(){
     $id = uniqid();              
     $holder = $_REQUEST['holder'];
-    echo '<li id="row_li_'.$id.'"><input id="row_settings_'.$id.'" type="hidden" name="layout_settings['.$holder.']['.$_GET['layout'].']['.$id.']" value="" /><div class="row-handler"><div class="sort"></div><div rel="row_li_'.$id.'" class="rdel delete dtooltip" title="Delete this Row?"></div><div class="rsettings dtooltip" title="Row CSS Settings" rel="row_settings_'.$id.'"></div></div><div class="row-container"><div class="container_12 clearfix wrapper row" id="row_'.$id.'"><input type="hidden" name="layouts['.$holder.']['.$id.']" value="'.(isset($_REQUEST['layout'])?$_REQUEST['layout']:'').'" />';
+    echo '<li id="row_li_'.$id.'"><input id="row_settings_'.$id.'" type="hidden" name="layout_settings['.$holder.']['.$_GET['layout'].']['.$id.']" value="" /><div class="row-handler"><div class="sort"></div><div rel="row_li_'.$id.'" class="rdel delete dtooltip" title="Delete this Row?"></div><div class="rsettings dtooltip" title="Row CSS Settings" rel="row_settings_'.$id.'"></div><div class="rclone dtooltip" title="Clone this Row" rel="row_li_'.$id.'" rthis="'.$id.'"></div></div><div class="row-container"><div class="container_12 clearfix wrapper row" id="row_'.$id.'"><input type="hidden" name="layouts['.$holder.']['.$id.']" value="'.(isset($_REQUEST['layout'])?$_REQUEST['layout']:'').'" />';
     $cols = (int)str_replace("col-","", $_GET['layout']);
     include(MX_THEME_DIR."/frames/dynamic.frame.php");
     echo "</div></div><div class='clear'></div></li>";
@@ -159,7 +159,7 @@ function minimax_render_layout_frames($holder){
     $gs = $gs[$holder."_rows"];  
     if(is_array($minimax_layout_data)&&isset($minimax_layout_data[$holder])&&is_array($minimax_layout_data[$holder])):    
     foreach($minimax_layout_data[$holder] as $id=>$layout):
-    echo '<li id="row_li_'.$id.'"><input id="row_settings_'.$id.'" type="hidden" name="layout_settings['.$holder.']['.$layout.']['.$id.']" value="'.$minimax_layout_settings[$holder][$layout][$id].'" /><div class="row-handler"><div class="sort"></div><div rel="row_li_'.$id.'" class="rdel delete dtooltip" title="Delete this Row?"></div><div  rel="row_settings_'.$id.'" class="rsettings dtooltip" title="Row CSS Settings"></div></div><div class="row-container"><div class="container_12 clearfix wrapper row" id="row_'.$id.'"><input type="hidden" name="layouts['.$holder.']['.$id.']" value="'.$layout.'" />';    
+    echo '<li id="row_li_'.$id.'"><input id="row_settings_'.$id.'" type="hidden" name="layout_settings['.$holder.']['.$layout.']['.$id.']" value="'.$minimax_layout_settings[$holder][$layout][$id].'" /><div class="row-handler"><div class="sort"></div><div rel="row_li_'.$id.'" class="rdel delete dtooltip" title="Delete this Row?"></div><div  rel="row_settings_'.$id.'" class="rsettings dtooltip" title="Row CSS Settings"></div><div class="rclone dtooltip" title="Clone this Row" rel="row_li_'.$id.'" rthis="'.$id.'"></div></div><div class="row-container"><div class="container_12 clearfix wrapper row" id="row_'.$id.'"><input type="hidden" name="layouts['.$holder.']['.$id.']" value="'.$layout.'" />';    
     if(!isset($gs[$id]))
     include(MX_THEME_DIR."/frames/{$layout}.frame.php");
     else  {
