@@ -1,10 +1,11 @@
 <?php
-$aid=uniqid();
+$aid = uniqid();
 ?>
 <div class="panel-group <?php if($accordion_style)echo $accordion_style;?>" id="accordion<?php echo $aid;?>">
     <?php
     if($pid){
-        $cnt=uniqid(); $zi = $xi = 0;
+        $cnt = uniqid(); 
+        $zi = $xi = 0;
         foreach($pid as $key=>$val){
             if($val!='')  {
                 $pimg = get_post($val);
@@ -24,6 +25,4 @@ $aid=uniqid();
         }
     }
     ?>
-
-
 </div>

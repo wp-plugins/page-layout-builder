@@ -54,6 +54,9 @@ You may [Upgrade to Pro](http://wpeden.com/minimax-wordpress-page-layout-builder
 
 == Changelog ==
 
+= 1.8.0 =
+* Updated Accordion module. Now has 6 different accordion style.
+
 = 1.7.9 =
 * Added row clone feature
 

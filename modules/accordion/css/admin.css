@@ -5,8 +5,7 @@
     border-radius:5px;
     height: auto;
     margin-right :10px ;
-    min-height: 300px;
-    
+    min-height: 300px;    
 }
 
 ul.accordion_ul {
@@ -17,25 +16,10 @@ ul.accordion_ul {
     overflow-y: auto;
 }
 .accordion_ul li{
-    padding: 5px 10px;
-    /*height: 20px;*/
-    font-weight: bold;
+    padding: 8px;
+    font-weight: bold !important;
     cursor: move;
     height: auto;
     background: #fafafa !important;
-    border-radius: 4px;
+    border-radius: 2px;
 }
-
-#poststuff h3 {
-    font-size: 14px;
-    line-height: 1.4;
-    margin: 0;
-    padding: 8px 12px;
-}
-.js .postbox .hndle {
-    cursor: move;
-}
-#namediv h3, #submitdiv h3, .postbox h3 {
-    border-bottom: 1px solid #eee;
-}
-
