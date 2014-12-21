@@ -3,7 +3,7 @@ Contributors: codename065, shahriar0822
 Donate link: http://wpeden.com/minimax-wordpress-page-layout-builder-plugin/
 Tags: content builder, page builder, layout builder, theme builder, squeeze page builder, sales page builder, drag and drop page builder, drag and drop content builder, drag drop
 Requires at least: 3.5
-Tested up to: 4.0
+Tested up to: 4.1
 License: GPLv2 or later
  
   
@@ -24,7 +24,7 @@ What You See Is What You Get
 * RichText Module 
 * Image Module with 5 predefined styles
 * Tabs Module
-* Accordion Module
+* Accordion Module with 6 predefined styles
 * Sub-pages module
 
 = Want more modules? =
@@ -53,6 +53,9 @@ You may [Upgrade to Pro](http://wpeden.com/minimax-wordpress-page-layout-builder
 
 
 == Changelog ==
+
+= 1.8.1 =
+* WordPress 4.1 compatibility release.
 
 = 1.8.0 =
 * Updated Accordion module. Now has 6 different accordion style.

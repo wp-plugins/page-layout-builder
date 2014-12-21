@@ -377,4 +377,10 @@ jQuery(document).on('focusin', function(e) {
     if (jQuery(e.target).closest("#wp-link-wrap").length) {
         e.stopImmediatePropagation();
     }
+    if (jQuery(e.target).closest("#embed-url-field").length) {
+        e.stopImmediatePropagation();
+    }
+    if (jQuery(e.target).closest(".alignment").length) {
+        e.stopImmediatePropagation();
+    }
 });
