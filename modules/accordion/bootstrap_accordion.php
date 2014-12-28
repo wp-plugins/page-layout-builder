@@ -3,7 +3,7 @@
         border-radius: 0px;
     }
     .widget_minimax_accordion .panel .panel-heading{
-        padding: 8px 15px;
+        padding: 6px 15px;
     }
     .widget_minimax_accordion .panel-group .panel + .panel{
         margin-top: 2px;

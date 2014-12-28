@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: CSS Tab widget
+Plugin Name: CSS Tab
 Plugin URI: #
 Description: CSS Tab widget
 Author: Shaon
@@ -123,8 +123,7 @@ class MiniMax_tabwidget extends WP_Widget {
     function form( $instance ) {
         extract($instance);  
         
-        $tab_posts = get_posts("post_type=minimax_tabs&posts_per_page=-1");
-        //print_r($tabs_posts);    
+        $tab_posts = get_posts("post_type=minimax_tabs&posts_per_page=-1"); 
         ?>
         <!--left box-->
         <div style="padding-top: 0;" id="poststuff" class="left_box postbox ">
@@ -149,23 +148,24 @@ class MiniMax_tabwidget extends WP_Widget {
         <h3 class="hndle"><span>Active tabs</span></h3>
         <ul class="tab_ul" id="active_tabs">
          <?php
-                if(!empty($pid)){
+            if(!empty($pid)){
             for($i=0;$i<count($pid);$i++ ){
-                //saved tabs 
                 $pimg = get_post($pid[$i]);
                 ?>
                 <li class='ui-state-default' rel='<?php echo $pid[$i];?>'><table style='padding:0px;margin:0px;'><tr><td style='padding-right:10px;' valign='top'><?php echo $pimg->post_title; ?></td></tr><tr><td style='padding-right:10px;' valign='top'><small class='tab-small'></small></td></tr></table><input id="i_<?php echo $pid[$i];?>" name="<?php echo $this->get_field_name('pid'); ?>[]" type="hidden" value="<?php echo $pid[$i]; ?>" /></li>
 
                 <?php
             }
-                }
+            }
         ?>
         </ul>
         </div>
 
 
         <div style="clear: both;"></div>
-        
+        <p style="padding: 10px;background-color: #dedede;border-radius: 3px;">
+            Tabs are custom posts. Add new Tab from <b>Dashboard >> Tabs >> Add Tab</b> menu. Drag tabs from left to right box to insert them into page.
+        </p>
         <script type="text/javascript">                        
         jQuery(document).ready(function(){
             var c = <?php if(isset($title))echo count($title); else echo "0"; ?>;

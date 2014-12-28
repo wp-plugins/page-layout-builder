@@ -103,6 +103,10 @@ class MiniMax_accordion extends WP_Widget {
         </p>
         <div style="clear: both;"></div>
 
+        <p style="padding: 10px;background-color: #dedede;border-radius: 3px;">
+            Accordions are custom posts. Add new Accordion from <b>Dashboard >> Accordion >> Add Accordion</b> menu. Drag Accordions from left to right box to insert them into page.
+        </p>
+        
         <script type="text/javascript">                        
         jQuery(document).ready(function(){
             var c = <?php echo count($title) > 0 ? count($title):0; ?>;

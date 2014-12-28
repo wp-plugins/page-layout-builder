@@ -321,7 +321,8 @@ border-top-right-radius: 4px !important;
     background: url(../images/icons/link.png) 6px center no-repeat;
   
 }
-#modules li#WP_Widget_Text{
+#modules li#WP_Widget_Text,
+#modules li#MiniMax_RichText{
     background: url(../images/icons/text.png) 6px center no-repeat;
   
 }
@@ -361,9 +362,7 @@ border-top-right-radius: 4px !important;
     
 }
 
-#modules li#MiniMax_Logo,
-#modules li#minimax_NivoSlider,
-#modules li#minimax_carousalwidget{
+#modules li#minimax_image{
    background: url(../images/icons/photo.png) 6px center no-repeat;
      
 }
@@ -607,7 +606,14 @@ border-top-right-radius: 4px !important;
     margin: 0;
 }
 #smdl{
+    box-shadow: none !important;
+    font-family: "Open Sans";
+    font-size: 9pt !important;
+    font-weight: 800 !important;
+    height: 40px !important;
+    line-height: 40px !important;
     margin-bottom: 10px !important;
+    padding: 5px 15px !important;
 }
 
 #modules li:hover{

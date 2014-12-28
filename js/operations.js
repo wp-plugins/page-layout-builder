@@ -64,8 +64,7 @@ jQuery(function(){
       
       jQuery('.admin-cont').css('min-height',(jQuery('body').height()-120)+'px');
       
-      jQuery('.insert-layout').live('click',function(){       
-       //jQuery(this).find('img').fadeTo('slow',0.3);       
+      jQuery('.insert-layout').live('click',function(){      
        if(holder=='') { 
            holder = jQuery(this).attr('holder')+" .layout-data";           
            holder_id = jQuery(this).attr('holder').replace("#layout_","");                       
@@ -88,9 +87,7 @@ jQuery(function(){
       //Insert Layout
       jQuery('.select-layout').live('click',function(){
           holder = this.rel+" .layout-data";
-          holder_id = this.rel.replace("#layout_","");           
-          //tb_show("Insert Layout","themes.php?page=minimax&task=select_layout&TB_iframe=1&width=400&height=270");
-          //jQuery('#ui-dialog-title-dialog').html('Available Modules');
+          holder_id = this.rel.replace("#layout_","");
           jQuery('#ui-dialog-title-dialog').html('Select Layout');
           jQuery( "#dialog" ).dialog( "open" ).load("themes.php?page=minimax&task=select_layout&width=400&height=270");
           return false;
@@ -103,6 +100,12 @@ jQuery(function(){
           layout_settings_data = jQuery('#'+layout_settings_id).val();
           jQuery( "#dialog" ).dialog( 'option', 'title','Row Settings');
           jQuery( "#dialog" ).dialog( 'option', 'width',660);
+          
+          var left = jQuery( window ).width()/2 - 330;
+          var top = jQuery(document).scrollTop();
+          jQuery(".ui-dialog").css({'left':left,'top':top});
+          
+          jQuery( "#dialog" ).html( '<img style="margin-left: 39%; margin-top: 100px; margin-bottom: 140px;" src='+base_theme_url+'/images/preloader.gif />');
           jQuery( "#dialog" ).dialog( "open" ).load("admin-ajax.php?page=minimax&action=layout_settings&layout_settings_id="+layout_settings_id+"&layout_settings_data="+layout_settings_data+"&modal=1&width=400&height=200");
           return false;
       });
@@ -121,9 +124,15 @@ jQuery(function(){
           insertto = '#'+this.rel+' .module';          
           module_index = this.rel;
           
-          jQuery( "#dialog" ).dialog( 'option', 'width',940);
-          //jQuery( "#dialog" ).dialog( 'option', 'height',600);
+          var screen_width = jQuery( window ).width();
+          jQuery( "#dialog" ).dialog( 'option', 'width',screen_width*0.7);
           jQuery( "#dialog" ).dialog( 'option', 'title','Modules');
+          
+          var left = jQuery( window ).width()/2 - (screen_width*0.7)/2;
+          var top = jQuery(document).scrollTop();
+          jQuery(".ui-dialog").css({'left':left,'top':top});
+          
+          jQuery( "#dialog" ).html( '<img style="margin-left: 42%; margin-top: 100px; margin-bottom: 140px;" src='+base_theme_url+'/images/preloader.gif />');
           jQuery( "#dialog" ).dialog( "open" ).load("admin-ajax.php?page=minimax&action=insert_module&modal=1&width=770&height=600");
           return false;
       });
@@ -143,13 +152,17 @@ jQuery(function(){
           msf_mid = jQuery(this).attr('rel');          
           msf_title = jQuery(this).attr('wname');
           var data = jQuery(this).attr('data') == undefined ? "" : "&instance="+jQuery(this).attr('data');
-          var datafield = jQuery(this).attr('datafield')==undefined?"":"&datafield="+jQuery(this).attr('datafield');          
-          //var post = typenow=='page'?"&post="+pageid:"";
+          var datafield = jQuery(this).attr('datafield')==undefined?"":"&datafield="+jQuery(this).attr('datafield');
           var post = "&post="+pageid;
           var data_inst = jQuery('#'+jQuery(this).attr('datafield')).val();
                               
           jQuery( "#dialog" ).dialog( 'option', 'title', msf_title);
-          jQuery( "#dialog" ).html( 'Loading...');
+          
+          var left = jQuery( window ).width()/2 - 330;
+          var top = jQuery(document).scrollTop();
+          jQuery(".ui-dialog").css({'left':left,'top':top});
+          
+          jQuery( "#dialog" ).html( '<img style="margin-left: 39%; margin-top: 100px; margin-bottom: 140px;" src='+base_theme_url+'/images/preloader.gif />');
           jQuery( "#dialog" ).dialog( 'option', 'width',700);
           jQuery( "#dialog" ).dialog('open').load("admin-ajax.php?page=minimax&action=module_settings&modal=1&width=510&height=500&module="+msf_mid+data+datafield+post,{data_inst:data_inst});
 

@@ -12,7 +12,24 @@ Drag and Drop Responsive Page Builder / Layout Builder / Content Builder for Wor
    
 
 == Description ==
-Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress. Building custom WordPress page layout using Page Layout Builder is just as easy as drag-and-drop. You don't need to run for learning HTML or finding a coder/designer to change a page layout. Also you can directly use more than 3000+ widgets from wordpress.org to place anywhere inside your page content. No longer need to hang with build in sidebars with theme. We also developing all necessary modules like sliders, galleries, images, drop-down menu, progress bar, timeline, testimonials, message box, warning box, notification box, loop for custom post type, post loop with various templates, sub-pages, heading, regular html and many more to build a eye catching page layout or a complete theme just from a blank canvas within few minutes even without knowing or writing a single html code. Do anything within your imagination. Yes, it is time to take control over your website and its content. 
+Drag and Drop Page Builder / Layout Builder / Content Builder for WordPress. Building custom WordPress page layout using Page Layout Builder is just as easy as drag-and-drop. You don't need to run for learning HTML or finding a coder/designer to change a page layout. We also developing all necessary modules like sliders, galleries, images, drop-down menu, progress bar, timeline, testimonials, message box, warning box, notification box, loop for custom post type, post loop with various templates, sub-pages, heading, regular html and many more to build a eye catching page layout or a complete theme just from a blank canvas within few minutes even without knowing or writing a single html code.
+
+= Use With Any Theme =
+Minimax- Layout Builder is compatible with any theme. Just install and start using with existing theme.
+
+= Anyone Can Build, No coding required =
+No coding knowledge is required to use Minimax - Layout Builder Plugin for WordPress. Everything is just drag and drop here. Page Layout Builder will give you all power to do anything within a page layout without editing code.
+
+= Export Import Layout =
+Yes, you can even export your page layout and import it to another site with minimax just in few clicks. No need to build same layout repeatedly.
+
+= Squeeze Page =
+Minimax - Layout Builder Plugin for WordPress packaged with special options for building squeeze pages with all necessary modules. Build a landing page within minutes.
+
+= Works with widgets from wordpress.org =
+You can directly use more than 3000+ widgets from wordpress.org to place anywhere inside your page content. No longer need to hang with built in sidebars with theme.
+
+Do anything within your imagination. Yes, it is time to take control over your website and its content. 
 
 [youtube https://www.youtube.com/watch?v=iPQAYdP2kyI]
 
@@ -53,6 +70,10 @@ You may [Upgrade to Pro](http://wpeden.com/minimax-wordpress-page-layout-builder
 
 
 == Changelog ==
+
+= 1.8.2 =
+* Fixed dialog position issue.
+* Updated minor styles in admin area.
 
 = 1.8.1 =
 * WordPress 4.1 compatibility release.

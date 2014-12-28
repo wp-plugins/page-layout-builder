@@ -214,9 +214,9 @@ class MiniMax_Image extends WP_Widget {
             extract($instance);
         }
         else {
-            //$title1 = __( 'New title', 'text_domain' );
+            $imgw = 200;
+            $imgh = 200;
         }
-        //print_r($instance['content']);
         ?>
         <style type="text/css">
         #TB_window{
@@ -258,19 +258,19 @@ class MiniMax_Image extends WP_Widget {
         <p>
         Template:
         <select class="widefat" id="<?php echo $this->get_field_id('style'); ?>" name="<?php echo $this->get_field_name('style'); ?>" type="text">
-        <option value="2l" <?php if($style=='2l') echo 'selected=selected'; ?> >Style 1 (2 col, Image Left)</option>
-        <option value="1t" <?php if($style=='1t') echo 'selected=selected'; ?> >Style 2 (1 col, Image Top)</option>
-        <option value="2r" <?php if($style=='2r') echo 'selected=selected'; ?> >Style 3 (2 col, Image Right)</option>
-        <option value="1l" <?php if($style=='1l') echo 'selected=selected'; ?> >Style 4 (1 Col, Image Left)</option>
-        <option value="1r" <?php if($style=='1r') echo 'selected=selected'; ?> >Style 5 (1 Col, Image Right)</option>
+        <option value="2l" <?php if($style=='2l') echo 'selected=selected'; ?> > Two column, Image Left </option>
+        <option value="1t" <?php if($style=='1t') echo 'selected=selected'; ?> > One column, Image Top </option>
+        <option value="2r" <?php if($style=='2r') echo 'selected=selected'; ?> > Two column, Image Right </option>
+        <option value="1l" <?php if($style=='1l') echo 'selected=selected'; ?> > One Column, Image Left </option>
+        <option value="1r" <?php if($style=='1r') echo 'selected=selected'; ?> > One Column, Image Right </option>
         </select>
         </p>
         <p>
         Image Style:
         <select class="widefat" id="<?php echo $this->get_field_id('bootstrap_style'); ?>" name="<?php echo $this->get_field_name('bootstrap_style'); ?>" type="text">
-        <option value="rounded" <?php if($bootstrap_style=='rounded') echo 'selected=selected'; ?> >Rounded</option>
-        <option value="circle" <?php if($bootstrap_style=='circle') echo 'selected=selected'; ?> >Circle </option>
-        <option value="thumbnail" <?php if($bootstrap_style=='thumbnail') echo 'selected=selected'; ?> >Thumbnail </option>
+        <option value="rounded" <?php if($bootstrap_style=='rounded') echo 'selected=selected'; ?> > Rounded </option>
+        <option value="circle" <?php if($bootstrap_style=='circle') echo 'selected=selected'; ?> > Circle </option>
+        <option value="thumbnail" <?php if($bootstrap_style=='thumbnail') echo 'selected=selected'; ?> > Thumbnail </option>
         
         </select>
         </p>
