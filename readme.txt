@@ -71,6 +71,12 @@ You may [Upgrade to Pro](http://wpeden.com/minimax-wordpress-page-layout-builder
 
 == Changelog ==
 
+= 1.8.3 =
+* Updated tab module for better theme compatibility
+* Updated image module
+* Fixed minor issue related to Drag and Drop
+* Now it is possible to clone a module without updating page.
+
 = 1.8.2 =
 * Fixed dialog position issue.
 * Updated minor styles in admin area.

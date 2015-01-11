@@ -11,15 +11,12 @@ Author URI: #
 class MiniMax_Image extends WP_Widget {
     /** constructor */
     function __construct() {
-        parent::WP_Widget( /* Base ID */'MiniMax_Image', /* Name */'Image', array( 'description' => 'Image Widget' ) );
-         if(!is_admin()){
-            wp_enqueue_style("minimax-image",base_theme_url.'/modules/image/image.css');
-        }
+        parent::WP_Widget( /* Base ID */'MiniMax_Image', /* Name */'Image', array( 'description' => 'Image Widget' ) );         
     }
 
     /** @see WP_Widget::widget */
     function widget( $args, $instance ) {
-         
+         wp_enqueue_style("minimax-image",base_theme_url.'/modules/image/image.css');
          $style =  $instance['style'] ;
          $fn = "image_$style";
          $this->{$fn}($args, $instance);
@@ -70,7 +67,7 @@ class MiniMax_Image extends WP_Widget {
         if ( !empty( $title1 ) ) { echo $before_title . $title . $after_title; } 
         ?>
         <div class="media">
-        <a href="<?php echo $link; ?>" class="pull-left">
+        <a href="<?php echo $link; ?>" class="pull-left" style="max-width: 100%;">
         <img class="img-<?php echo $instance['bootstrap_style'];?>" src="<?php if($w && $h)echo $thumburl; else echo $url; ?>" title="<?php echo $title; ?>" alt="<?php echo $alt; ?>">
         </a>
         
@@ -103,10 +100,9 @@ class MiniMax_Image extends WP_Widget {
         if ( !empty( $title1 ) ) { echo $before_title . $title . $after_title; } 
         ?>
         <div class="media">
-        <a href="<?php echo $link; ?>" class="pull-right">
-        <img class="img-<?php echo $instance['bootstrap_style'];?>" src="<?php if($w && $h)echo $thumburl; else echo $url; ?>" title="<?php echo $title; ?>" alt="<?php echo $alt; ?>">
-        </a>
-        
+            <a href="<?php echo $link; ?>" class="pull-right" style="max-width: 100%;">
+                <img class="img-<?php echo $instance['bootstrap_style'];?>" src="<?php if($w && $h)echo $thumburl; else echo $url; ?>" title="<?php echo $title; ?>" alt="<?php echo $alt; ?>">
+            </a>        
         <div  class="media-body" id="mx-img-txt-<?php echo $id; ?>">
         <<?php echo $titleh; ?>><a href="<?php echo $link; ?>"><?php echo $title; ?></a></<?php echo $titleh; ?>>
         <p><?php echo $desc; ?></p>         
@@ -135,9 +131,9 @@ class MiniMax_Image extends WP_Widget {
         if ( !empty( $title1 ) ) { echo $before_title . $title . $after_title; } 
         ?>
            
-        <a href="<?php echo $link; ?>">
+        <?php if(!empty($link)) echo '<a href="'.$link.'">';?>
         <img class="img-<?php echo $instance['bootstrap_style'];?>" src="<?php if($w && $h)echo $thumburl; else echo $url; ?>" title="<?php echo $title; ?>" alt="<?php echo $title; ?>">
-        </a>         
+        <?php if(!empty($link)) echo '</a>'; ?>        
         <<?php echo $titleh; ?>><a href="<?php echo $link; ?>"><?php echo $title; ?></a></<?php echo $titleh; ?>>
         <p><?php echo $desc; ?></p>                  
         <?php
@@ -164,7 +160,7 @@ class MiniMax_Image extends WP_Widget {
         if ( !empty( $title1 ) ) { echo $before_title . $title . $after_title; } 
         ?>
         <<?php echo $titleh; ?>><a href="<?php echo $link; ?>"><?php echo $title; ?></a></<?php echo $titleh; ?>> 
-        <a href="<?php echo $link; ?>" class="pull-left" style="margin-right: 10px;margin-top: 5px;">
+        <a href="<?php echo $link; ?>" class="pull-left" style="margin-right: 10px;margin-top: 5px;max-width: 100%;">
         <img class="img-<?php echo $instance['bootstrap_style'];?>" src="<?php if($w && $h)echo $thumburl; else echo $url; ?>" title="<?php echo $title; ?>" alt="<?php echo $title; ?>">
         </a>                 
         <p><?php echo $desc; ?></p>                  
@@ -191,7 +187,7 @@ class MiniMax_Image extends WP_Widget {
         if ( !empty( $title1 ) ) { echo $before_title . $title . $after_title; } 
         ?>
         <<?php echo $titleh; ?>><a href="<?php echo $link; ?>"><?php echo $title; ?></a></<?php echo $titleh; ?>> 
-        <a href="<?php echo $link; ?>" class="pull-right" style="margin-left: 10px;margin-top: 5px;">
+        <a href="<?php echo $link; ?>" class="pull-right" style="margin-left: 10px;margin-top: 5px;max-width: 100%;">
         <img class="img-<?php echo $instance['bootstrap_style'];?>" src="<?php if($w && $h)echo $thumburl; else echo $url; ?>" title="<?php echo $title; ?>" alt="<?php echo $title; ?>">
         </a>                 
         <p><?php echo $desc; ?></p>                  

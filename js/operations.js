@@ -202,7 +202,7 @@ jQuery(function(){
               success:function(res){
                   var d = new Date();
                   var z = d.getTime();
-                  jQuery(insertto).append('<li id="module_'+module_index+'_'+z+'" rel="'+module_index+'"><input type="hidden" id="modid_module_'+module_index+'_'+z+'" name="modules['+module_index+'][]" value="'+msf_mid+'" /><input type="hidden" name="modules_settings['+module_index+'][]" id="modset_module_'+module_index+'_'+z+'" value="'+res+'" /><h3><nobr class="title">'+msf_title+'</nobr><nobr class="ctl"><span class="handle"></span> <img src="'+base_theme_url+'/images/delete.png"  class="delete_module" rel="#module_'+module_index+'_'+z+'" />&nbsp;<img class="insert" rel="'+msf_mid+'" datafield="modset_module_'+module_index+'_'+z+'" data="'+module_index+'|0" src="'+base_theme_url+'/images/settings.png" /></nobr></h3><div class="module-preview w3eden"><img src="images/loading.gif" /> Loading Preview...</div><div class="clear"</div></li>');
+                  jQuery(insertto).append('<li id="module_'+module_index+'_'+z+'" rel="'+module_index+'"><input type="hidden" id="modid_module_'+module_index+'_'+z+'" name="modules['+module_index+'][]" value="'+msf_mid+'" /><input type="hidden" name="modules_settings['+module_index+'][]" id="modset_module_'+module_index+'_'+z+'" value="'+res+'" /><h3><nobr class="title">'+msf_title+'</nobr><nobr class="ctl"><span class="handle"></span> <img src="'+base_theme_url+'/images/delete.png"  class="delete_module" rel="#module_'+module_index+'_'+z+'" />&nbsp;<img class="insert" rel="'+msf_mid+'" datafield="modset_module_'+module_index+'_'+z+'" data="'+module_index+'|0" src="'+base_theme_url+'/images/settings.png" />&nbsp;<img class="module-clone dtooltip" title="Clone this module" col_id = '+module_index+' mod_name="'+msf_title+'" mod_id='+msf_mid+' mod_set= '+res+' src="'+base_theme_url+'/images/copy.png" /></nobr></h3><div class="module-preview w3eden"><img src="images/loading.gif" /> Loading Preview...</div><div class="clear"</div></li>');
                   jQuery( insertto ).sortable({handle : '.handle', connectWith: "ul.module"});
                   jQuery( insertto ).disableSelection({handle : '.handle'});   
                   jQuery("#dialog").html("Loading...");                
@@ -290,9 +290,6 @@ jQuery(function(){
       jQuery( '.layout-data' ).disableSelection();      
       if(jQuery.cookie('active_mx_'+pageid)==1) switchtominimax();
       jQuery('.module').bind('sortupdate',function(event, ui){
-          //console.log(event);
-          //console.log(ui);
-          //console.log(jQuery(ui.item).parent().attr(''));
           var d = new Date();
           var z = d.getTime();
           var id = jQuery(jQuery(ui.item).parent()).attr('rel')+'_'+z;
@@ -303,7 +300,6 @@ jQuery(function(){
           jQuery(ui.item).html(jQuery(ui.item).html().replace(new RegExp(rplc+'_([\d]*)',"g"),rplcw+'_'+z));
            
       });
-      //jQuery('.ghbutton').addClass('button button-small button-secondary').removeClass('ghbutton').css('border-radius','0px').css('padding','4px');
   });
   
   var holder = "", holder_id = "";
@@ -311,6 +307,18 @@ jQuery(function(){
      jQuery.get("admin-ajax.php?page=minimax&action=insert_layout&holder="+holder_id+"&layout="+layout,function(res){          
          jQuery(holder).append(res);         
          jQuery( '.layout-data' ).sortable({handle : '.row-handler'});
+         /*Binding drag and drop feature in dynamically generated columns (v.1.8.3)*/
+         jQuery( "ul.module" ).sortable({handle : '.handle', connectWith: "ul.module"});
+         jQuery("ul.module").bind('sortupdate',function(event, ui){
+          var d = new Date();
+          var z = d.getTime();
+          var id = jQuery(jQuery(ui.item).parent()).attr('rel')+'_'+z;
+          var rplc = jQuery(ui.item).attr('rel');
+          var rplcw = jQuery(jQuery(ui.item).parent()).attr('rel');
+          jQuery(ui.item).attr('id',id).attr('rel',jQuery(jQuery(ui.item).parent()).attr('rel'));          
+          jQuery(ui.item).html(jQuery(ui.item).html().replace(new RegExp(rplc,"g"),rplcw));
+          jQuery(ui.item).html(jQuery(ui.item).html().replace(new RegExp(rplc+'_([\d]*)',"g"),rplcw+'_'+z));           
+        });
          jQuery( '.layout-data' ).disableSelection();
          jQuery("#dialog").html("Loading...");
          jQuery('#dialog').dialog('close');
