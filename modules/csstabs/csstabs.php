@@ -16,7 +16,7 @@ class MiniMax_tabwidget extends WP_Widget {
     function __construct() {
         parent::WP_Widget( /* Base ID */'minimax_tabwidget', /* Name */'Tabs', array( 'description' => 'Tab Panel' ) );
         if(is_admin()){
-            wp_enqueue_style('tab-css',base_theme_url.'/modules/csstabs/csstabs.css');
+            wp_enqueue_style('tab-css',base_theme_url.'/modules/csstabs/tabs_admin.css');
         }
     }
 
@@ -25,7 +25,7 @@ class MiniMax_tabwidget extends WP_Widget {
         extract( $args );
         extract($instance);
 
-        wp_enqueue_style('mx-tab-style',base_theme_url.'/modules/csstabs/tab-style.css');
+        wp_enqueue_style('mx-tab-style',base_theme_url.'/modules/csstabs/tabs_front.css');
         
         echo $before_widget; 
         ?>

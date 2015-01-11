@@ -1,0 +1,41 @@
+.left_box, .right_box{
+    float: left;
+    width:48%;
+    border:1px solid #ccc;
+    border-radius:5px;
+    height: auto;
+    margin-right :10px ;
+    min-height: 300px;    
+}
+ul.tab_ul {
+    padding: 5px;
+    margin: 0;
+    min-height: 350px;
+    max-height: 350px;
+    overflow-y:auto;
+}
+.tab_ul li{
+    padding: 8px;
+    font-weight: bold !important;
+    cursor: move;
+    height: auto;
+    background: #fafafa !important;
+    border-radius: 2px;
+    overflow:auto;
+    margin-bottom: 4px;
+}
+.tab-pane{
+    text-align: left !important;
+}
+#poststuff h3 {
+    font-size: 14px;
+    line-height: 1.4;
+    margin: 0;
+    padding: 8px 12px;
+}
+.js .postbox .hndle {
+    cursor: move;
+}
+#namediv h3, #submitdiv h3, .postbox h3 {
+    border-bottom: 1px solid #eee;
+}
