@@ -221,55 +221,75 @@ class MiniMax_Image extends WP_Widget {
         </style>
         <div id="tabpane">
  
-        <p>
-        <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label> 
-        <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" />
-        </p>
-        <p>
-        <label for="<?php echo $this->get_field_id('titleh'); ?>"><?php _e('Title Tag:'); ?></label> 
-        <select class="widefat" id="<?php echo $this->get_field_id('titleh'); ?>" name="<?php echo $this->get_field_name('titleh'); ?>">
-        <option value="h1">H1</option>
-        <option value="h2" <?php if($titleh=='h2') echo 'selected=selected'; ?> >H2</option>
-        <option value="h3" <?php if($titleh=='h3') echo 'selected=selected'; ?> >H3</option>
-        <option value="h4" <?php if($titleh=='h4') echo 'selected=selected'; ?> >H4</option>
-        </select>
-        </p>
+        <div class="row">    
+            <div class="col-md-8">
+                <p>
+                    <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label> 
+                    <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" />
+                </p>
+            </div>
+            <div class="col-md-4">
+                <p>
+                    <label for="<?php echo $this->get_field_id('titleh'); ?>"><?php _e('Title Tag:'); ?></label> 
+                    <select class="widefat" id="<?php echo $this->get_field_id('titleh'); ?>" name="<?php echo $this->get_field_name('titleh'); ?>">
+                    <option value="h1">H1</option>
+                    <option value="h2" <?php if($titleh=='h2') echo 'selected=selected'; ?> >H2</option>
+                    <option value="h3" <?php if($titleh=='h3') echo 'selected=selected'; ?> >H3</option>
+                    <option value="h4" <?php if($titleh=='h4') echo 'selected=selected'; ?> >H4</option>
+                    </select>
+                </p>
+            </div>
+        </div>
         <p>
         <label for="<?php echo $this->get_field_id('desc'); ?>"><?php _e('Description:'); ?></label> 
         <textarea class="widefat" id="<?php echo $this->get_field_id('desc'); ?>" name="<?php echo $this->get_field_name('desc'); ?>" ><?php echo $desc; ?></textarea>
         </p>
         <p>
         <label for="<?php echo $this->get_field_id('url'); ?>"><?php _e('Image URL:'); ?></label> <Br/>
-        <input style="width: 90%" id="<?php echo $this->get_field_id('url'); ?>" name="<?php echo $this->get_field_name('url'); ?>" type="text" value="<?php echo $url; ?>" /><input type="button" style="font-size: 10px;" value="Browse" onclick="mediaupload('<?php echo $this->get_field_id('url'); ?>')" />
+        <input class="widefat" id="<?php echo $this->get_field_id('url'); ?>" name="<?php echo $this->get_field_name('url'); ?>" type="text" value="<?php echo $url; ?>" /><br/><br/><input type="button" style="font-size: 10px;" value="Browse" onclick="mediaupload('<?php echo $this->get_field_id('url'); ?>')" />
         </p>
         <p>
         <label for="<?php echo $this->get_field_id('link'); ?>"><?php _e('Link URL:'); ?></label> 
         <input class="widefat" id="<?php echo $this->get_field_id('link'); ?>" name="<?php echo $this->get_field_name('link'); ?>" type="text" value="<?php echo $link; ?>" />
-        </p>
-        <p>
-        <label><?php _e('Dimension :'); ?></label> <br/>
-        Width: <input id="<?php echo $this->get_field_id('imgw'); ?>" name="<?php echo $this->get_field_name('imgw'); ?>" type="text" value="<?php echo $imgw; ?>" />
-        Height: <input id="<?php echo $this->get_field_id('imgh'); ?>" name="<?php echo $this->get_field_name('imgh'); ?>" type="text" value="<?php echo $imgh; ?>" />
-        </p>
-        <p>
-        Template:
-        <select class="widefat" id="<?php echo $this->get_field_id('style'); ?>" name="<?php echo $this->get_field_name('style'); ?>" type="text">
-        <option value="2l" <?php if($style=='2l') echo 'selected=selected'; ?> > Two column, Image Left </option>
-        <option value="1t" <?php if($style=='1t') echo 'selected=selected'; ?> > One column, Image Top </option>
-        <option value="2r" <?php if($style=='2r') echo 'selected=selected'; ?> > Two column, Image Right </option>
-        <option value="1l" <?php if($style=='1l') echo 'selected=selected'; ?> > One Column, Image Left </option>
-        <option value="1r" <?php if($style=='1r') echo 'selected=selected'; ?> > One Column, Image Right </option>
-        </select>
-        </p>
-        <p>
-        Image Style:
-        <select class="widefat" id="<?php echo $this->get_field_id('bootstrap_style'); ?>" name="<?php echo $this->get_field_name('bootstrap_style'); ?>" type="text">
-        <option value="rounded" <?php if($bootstrap_style=='rounded') echo 'selected=selected'; ?> > Rounded </option>
-        <option value="circle" <?php if($bootstrap_style=='circle') echo 'selected=selected'; ?> > Circle </option>
-        <option value="thumbnail" <?php if($bootstrap_style=='thumbnail') echo 'selected=selected'; ?> > Thumbnail </option>
-        
-        </select>
-        </p>
+        </p>        
+        <div class="row">    
+            <div class="col-md-6">
+                <p>
+                    <label><?php _e('Image Width :'); ?></label>
+                    <input placeholder="i.e. 300" class="widefat" id="<?php echo $this->get_field_id('imgw'); ?>" name="<?php echo $this->get_field_name('imgw'); ?>" type="text" value="<?php echo $imgw; ?>" />
+                </p>
+            </div>
+            <div class="col-md-6">
+                <p>
+                    <label><?php _e('Image Height :'); ?></label>
+                    <input placeholder="i.e. 300" class="widefat" id="<?php echo $this->get_field_id('imgh'); ?>" name="<?php echo $this->get_field_name('imgh'); ?>" type="text" value="<?php echo $imgh; ?>" />
+                </p>
+            </div>
+        </div>
+        <div class="row">    
+            <div class="col-md-6">
+                <p>
+                    <label><?php _e('Template :'); ?></label> <br/>
+                    <select class="widefat" id="<?php echo $this->get_field_id('style'); ?>" name="<?php echo $this->get_field_name('style'); ?>" type="text">
+                    <option value="2l" <?php if($style=='2l') echo 'selected=selected'; ?> > Two Column, Image Left </option>
+                    <option value="1t" <?php if($style=='1t') echo 'selected=selected'; ?> > One Column, Image Top </option>
+                    <option value="2r" <?php if($style=='2r') echo 'selected=selected'; ?> > Two Column, Image Right </option>
+                    <option value="1l" <?php if($style=='1l') echo 'selected=selected'; ?> > One Column, Image Left </option>
+                    <option value="1r" <?php if($style=='1r') echo 'selected=selected'; ?> > One Column, Image Right </option>
+                    </select>
+                </p>
+            </div>
+            <div class="col-md-6">
+                <p>
+                    <label><?php _e('Image Style:'); ?></label> <br/>
+                    <select class="widefat" id="<?php echo $this->get_field_id('bootstrap_style'); ?>" name="<?php echo $this->get_field_name('bootstrap_style'); ?>" type="text">
+                    <option value="rounded" <?php if($bootstrap_style=='rounded') echo 'selected=selected'; ?> >Rounded</option>
+                    <option value="circle" <?php if($bootstrap_style=='circle') echo 'selected=selected'; ?> >Circle </option>
+                    <option value="thumbnail" <?php if($bootstrap_style=='thumbnail') echo 'selected=selected'; ?> >Thumbnail </option>
+                    </select>
+                </p>
+            </div>
+        </div>
         </div>
    
         <?php 

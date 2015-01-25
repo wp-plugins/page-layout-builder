@@ -165,7 +165,9 @@ class MiniMax_tabwidget extends WP_Widget {
         </div>
         
         <div style="clear: both;"></div>
-        
+        <p style="padding: 10px;background-color: #dedede;border-radius: 3px;">
+            Tabs are custom posts. Add new Tab from <b>Dashboard >> Tabs >> Add Tab</b> menu. Drag Tabs from left to right box to insert them into page.
+        </p>
         
         <script type="text/javascript">                        
         jQuery(document).ready(function(){

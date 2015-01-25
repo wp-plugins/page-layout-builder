@@ -71,6 +71,9 @@ You may [Upgrade to Pro](http://wpeden.com/minimax-wordpress-page-layout-builder
 
 == Changelog ==
 
+= 1.8.4 =
+* Fixed minor JS issue in Add Media dialog
+
 = 1.8.3 =
 * Updated tab module for better theme compatibility
 * Updated image module

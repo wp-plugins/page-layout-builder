@@ -404,4 +404,10 @@ jQuery(document).on('focusin', function(e) {
     if (jQuery(e.target).closest(".alignment").length) {
         e.stopImmediatePropagation();
     }
+    if (jQuery(e.target).closest(".attachment-details").length) {
+        e.stopImmediatePropagation();
+    }
+    if (jQuery(e.target).closest(".attachment-display-settings").length) {
+        e.stopImmediatePropagation();
+    }
 });
