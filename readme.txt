@@ -71,6 +71,9 @@ You may [Upgrade to Pro](http://wpeden.com/minimax-wordpress-page-layout-builder
 
 == Changelog ==
 
+= 1.8.5 =
+* Fixed dialog position on import layout operation
+
 = 1.8.4 =
 * Fixed minor JS issue in Add Media dialog
 

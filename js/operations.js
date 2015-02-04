@@ -142,6 +142,11 @@ jQuery(function(){
       jQuery('.import-layout').live('click',function(){
           jQuery( "#dialog" ).dialog( 'option', 'title','Import Layout');
           jQuery( "#dialog" ).dialog( 'option', 'width',540);
+          
+          var left = jQuery( window ).width()/2 - 270;
+          var top = jQuery(document).scrollTop();
+          jQuery(".ui-dialog").css({'left':left,'top':top});
+          
           jQuery( "#dialog" ).dialog( "open" ).load("admin-ajax.php?page=minimax&action=import_layout&modal=1&width=370&height=300");
           return false;
       });
