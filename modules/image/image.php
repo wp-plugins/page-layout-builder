@@ -134,7 +134,7 @@ class MiniMax_Image extends WP_Widget {
         <?php if(!empty($link)) echo '<a href="'.$link.'">';?>
         <img class="img-<?php echo $instance['bootstrap_style'];?>" src="<?php if($w && $h)echo $thumburl; else echo $url; ?>" title="<?php echo $title; ?>" alt="<?php echo $title; ?>">
         <?php if(!empty($link)) echo '</a>'; ?>        
-        <<?php echo $titleh; ?>><a href="<?php echo $link; ?>"><?php echo $title; ?></a></<?php echo $titleh; ?>>
+        <<?php echo $titleh; ?>><?php if(!empty($link)) echo '<a href="'.$link.'">';?><?php echo $title; ?><?php if(!empty($link)) echo '</a>'; ?></<?php echo $titleh; ?>>
         <p><?php echo $desc; ?></p>                  
         <?php
          echo $after_widget;         
