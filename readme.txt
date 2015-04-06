@@ -71,6 +71,9 @@ You may [Upgrade to Pro](http://wpeden.com/minimax-wordpress-page-layout-builder
 
 == Changelog ==
 
+= 1.8.7 =
+* Updated Accordion module. Added option to collapse all accordion tabs on page load.
+
 = 1.8.6 =
 * Updated image module (One Column,Image Top style). When link field is empty there will be no link in image or title.
 

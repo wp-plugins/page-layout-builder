@@ -91,15 +91,20 @@ class MiniMax_accordion extends WP_Widget {
         </ul>
         </div>
         <p>
-        <b>Accordion Style</b> 
-        <select name="<?php echo $this->get_field_name('accordion_style');?>">
-            <option value="default" <?php if($accordion_style=='default') echo 'selected=selected'; ?> >Gray</option>
-            <option value="primary" <?php if($accordion_style=='primary') echo 'selected=selected'; ?> >Blue</option>        
-            <option value="warning" <?php if($accordion_style=='warning') echo 'selected=selected'; ?> >Orange</option>
-            <option value="success" <?php if($accordion_style=='success') echo 'selected=selected'; ?> >Green</option> 
-            <option value="danger" <?php if($accordion_style=='danger') echo 'selected=selected'; ?> >Red</option>
-            <option value="info" <?php if($accordion_style=='info') echo 'selected=selected'; ?> >Turquoise Blue</option>
-        </select>
+            <label for="<?php echo $this->get_field_id('accordion_style'); ?>"><?php _e('Accordion Style:'); ?></label>      
+            <select class="widefat" name="<?php echo $this->get_field_name('accordion_style');?>">
+                <option value="default" <?php if($accordion_style=='default') echo 'selected=selected'; ?> >Gray</option>
+                <option value="primary" <?php if($accordion_style=='primary') echo 'selected=selected'; ?> >Blue</option>        
+                <option value="warning" <?php if($accordion_style=='warning') echo 'selected=selected'; ?> >Orange</option>
+                <option value="success" <?php if($accordion_style=='success') echo 'selected=selected'; ?> >Green</option> 
+                <option value="danger" <?php if($accordion_style=='danger') echo 'selected=selected'; ?> >Red</option>
+                <option value="info" <?php if($accordion_style=='info') echo 'selected=selected'; ?> >Turquoise Blue</option>
+            </select>
+        </p>
+        <p>
+            <label>
+                    <input type="checkbox" id="<?php echo $this->get_field_id('closed'); ?>" name="<?php echo $this->get_field_name('closed'); ?>" value="closed" <?php if($closed == "closed") echo "checked=checked";?> > Collapse all Accordion tabs on page load
+            </label>
         </p>
         <div style="clear: both;"></div>
 
