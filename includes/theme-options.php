@@ -43,10 +43,7 @@
 </style>
 
 <div id="avmodules" class="w3eden">
-
     <br/>
-
-
     <ul class="nav nav-tabs" style="margin-left:-20px;padding-left:20px;">
         <li class="active"><a href="#available" data-toggle="tab">Available Modules</a></li>
         <li><a href="#settings" data-toggle="tab">Settings</a></li>
@@ -55,9 +52,13 @@
     <div class="tab-content"><br/>
         <div class="container-fluid tab-pane fade in active" id="available">
             <div class="row">
-                <!-- div class="col-md-12" -->
-
-                    <!--table class="table table-striped" style="border: 1px solid #dddddd" -->
+                <div class="col-md-12">
+                    <div style="margin:5px 0;background: #18BC9C;padding:8px 10px;border-radius:2px">
+                        <a style="text-decoration:none;font-size:14pt;font-weight:400;color:#fff;" title="Link will open in new window" href="http://wordpress.org/support/view/plugin-reviews/page-layout-builder?rate=5#postform" target="_blank">Like MiniMax Page Layout Builder? A 5* review at wordpress.org will be very inspiring :)</a>                    
+                    </div>
+                </div>
+            </div>
+            <div class="row">
 
                         <?php
                         //print_r($minimax_options);
@@ -119,10 +120,6 @@
                             }
                         }
                         ?>
-                    <!-- /table -->
-
-
-                <!--/div -->
             </div>
         </div>
         <div class="container-fluid  tab-pane fade" id="settings">

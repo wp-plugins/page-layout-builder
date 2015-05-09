@@ -32,9 +32,9 @@
         ?>
         <div class="panel panel-<?php echo $accordion_style; ?>">
             <div class="panel-heading">
-                <a class="accordion-toggle <?php if($xi++>0) echo "collapsed"; ?>" data-toggle="collapse" data-parent="#accordion<?php echo $aid;?>" href="#collapse<?php echo ++$cnt;?>" ><?php echo $pimg->post_title;?></a>
+                <a class="accordion-toggle <?php if($xi++ > 0 || $closed == 'closed') echo "collapsed"; ?>" data-toggle="collapse" data-parent="#accordion<?php echo $aid;?>" href="#collapse<?php echo ++$cnt;?>" ><?php echo $pimg->post_title;?></a>
             </div>
-            <div id="collapse<?php echo $cnt;?>" class="panel-body collapse <?php if($zi++==0 && $closed != 'closed') echo "in"; ?>">
+            <div id="collapse<?php echo $cnt;?>" class="panel-body collapse <?php if($zi++ == 0 && $closed != 'closed') echo "in"; ?>">
                     <?php echo wpautop(htmlspecialchars_decode(stripcslashes($pimg->post_content)));?>
             </div>
         </div>

@@ -3,7 +3,7 @@ Contributors: codename065, shahriar0822
 Donate link: http://wpeden.com/minimax-wordpress-page-layout-builder-plugin/
 Tags: content builder, page builder, layout builder, theme builder, squeeze page builder, sales page builder, drag and drop page builder, drag and drop content builder, drag drop
 Requires at least: 3.5
-Tested up to: 4.1.1
+Tested up to: 4.2.2
 License: GPLv2 or later
  
   
@@ -70,6 +70,10 @@ You may [Upgrade to Pro](http://wpeden.com/minimax-wordpress-page-layout-builder
 
 
 == Changelog ==
+
+= 1.8.8 =
+* Updated image module
+* Updated accordion module
 
 = 1.8.7 =
 * Updated Accordion module. Added option to collapse all accordion tabs on page load.
