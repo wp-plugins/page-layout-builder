@@ -71,6 +71,11 @@ You may [Upgrade to Pro](http://wpeden.com/minimax-wordpress-page-layout-builder
 
 == Changelog ==
 
+= 1.9.0 =
+* Updated frontend builder look
+* Added module clone and row clone feature in frontend
+
+
 = 1.8.8 =
 * Updated image module
 * Updated accordion module

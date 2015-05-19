@@ -55,6 +55,7 @@ class MiniMax_accordion extends WP_Widget {
         
         $accordion_posts = get_posts("post_type=minimax_accordion&posts_per_page=-1");    
         ?>
+        <div id="tabpane">
         <!--left box-->
         <div style="padding-top: 0;" id="poststuff" class="left_box postbox">
         <h3 class="hndle"><span>Inactive Accordion</span></h3>
@@ -111,6 +112,8 @@ class MiniMax_accordion extends WP_Widget {
         <p style="padding: 10px;background-color: #dedede;border-radius: 3px;">
             Accordions are custom posts. Add new Accordion from <b>Dashboard >> Accordion >> Add Accordion</b> menu. Drag Accordions from left to right box to insert them into page.
         </p>
+        
+        </div>
         
         <script type="text/javascript">                        
         jQuery(document).ready(function(){

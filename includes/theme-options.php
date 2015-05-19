@@ -143,7 +143,9 @@
         <div class="container-fluid  tab-pane fade" id="store">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="alert alert-info">Take MiniMax Builder to a new level of awesomeness with following extensions</div>
+                    <div class="alert alert-info" style="font-size: 16px;line-height: 21px;">
+                        Extend your MiniMax by adding following premium modules bundle. Each of these bundle packed with some awesome widgets. Check details in product page. 
+                    </div>
                 </div>
             </div>
             <div class="row">

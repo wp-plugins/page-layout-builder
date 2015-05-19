@@ -1,6 +1,6 @@
 <script type="text/javascript" charset="utf-8">
     jQuery(document).ready(function($) {
-        
+        $("#smdl").focus();
         $("#smdl").keyup(function(){
             // Retrieve the input field text and reset the count to zero
             var filter = $(this).val(), count = 0;
@@ -23,19 +23,12 @@
         });
     });
 </script>
-<style>
 
-    #modules li{
-        -webkit-transition: all 600ms ease-in-out;
-        -moz-transition: all 600ms ease-in-out;
-        -o-transition: all 600ms ease-in-out;
-        transition: all 600ms ease-in-out;
-    }
-
-</style>
-<input type="text" class="widefat" style="padding: 5px 10px;font-size: 12pt" id="smdl" placeholder="Search Module">
 <div class="w3eden">
 <div class="container-fluid">
+        
+    <input type="text" class="widefat" style="padding: 5px 10px;font-size: 12pt" id="smdl" placeholder="Search Module">
+
 <ul id="modules" class="row">
 <?php
 global $mxwidgets;

@@ -68,6 +68,10 @@
         padding: 3px 0px;
         border-radius: 3px;
     }
+    p{
+        margin-top: 13px;
+        margin-bottom: 13px;
+    }
     p,p label{
         font-size: 13px;
     }
@@ -79,7 +83,7 @@
 	});
 </script>
 
-<form method="post" action="admin-ajax.php" id="layout-settings-form" rel="<?php echo $_GET['layout_settings_id']; ?>" >
+<form method="post" class="w3eden" action="admin-ajax.php" id="layout-settings-form" rel="<?php echo $_GET['layout_settings_id']; ?>" >
     <p>
         <label> Background</label><br/>
         <input type="text" class="myclrpkr" name="ls[bg_color]" value="<?php echo $ls['bg_color'];?>"  > 

@@ -42,51 +42,65 @@ function minimax_layout_holder($name){
     
 }
 
-//Page layout renderer (site)
+/*
+ * Page layout renderer (site)
+ */
 function minimax_page_layout($content){    
     $pid = get_the_ID();        
-    //if(get_post_type($pid)!='page') return $content;
-    if(file_exists(MX_CACHE_DIR.$pid) && get_option('minimax_cahce_status',0)==1 && get_option('minimax_frontend_editing',0)==0) return $content.file_get_contents(MX_CACHE_DIR.$pid);
+
+    if( file_exists(MX_CACHE_DIR.$pid) && get_option('minimax_cahce_status',0) == 1 && get_option('minimax_frontend_editing',0) == 0 )
+            return $content.file_get_contents(MX_CACHE_DIR.$pid);
+    
     ob_start();   
     $minimax_layout_data = get_post_meta($pid,'minimax_layout',true);     
     $minimax_modules = get_post_meta($pid,'minimax_modules',true);        
-    $minimax_modules_settings = get_post_meta($pid,'minimax_modules_settings',true);  
+    $minimax_modules_settings = get_post_meta($pid,'minimax_modules_settings',true);
+    
     if(is_array($minimax_layout_data[get_post_type()])):
-
-    echo "<div class='w3eden' id='layout_".get_post_type()."'>";
-    if(current_user_can('edit_posts') && get_option('minimax_frontend_editing',0)==1)
-        echo "<ul class='layout-data mxrows'>";
-    foreach($minimax_layout_data[get_post_type()] as $id=>$layout):
-    minimax_render_layout($layout, $id, get_post_type());
-    endforeach;
-    if(current_user_can('edit_posts') && get_option('minimax_frontend_editing',0)==1)
-    echo "</ul>";
-    echo "</div>";
+        echo "<div class='w3eden' id='layout_".get_post_type()."'>";
+        if(current_user_can('edit_posts') && get_option('minimax_frontend_editing',0) == 1)
+            echo "<ul class='layout-data mxrows'>";
+        
+        foreach($minimax_layout_data[get_post_type()] as $id=>$layout):
+            minimax_render_layout($layout, $id, get_post_type());
+        endforeach;
+        
+        if(current_user_can('edit_posts') && get_option('minimax_frontend_editing',0) == 1)
+            echo "</ul>";
+        echo "</div>";
     endif;
+    
     $data = ob_get_clean();
     if(get_option('minimax_cahce_status',0)==1 && get_option('minimax_frontend_editing',0)==0)
     file_put_contents(MX_CACHE_DIR.$pid, $data);
 
     $dialog = "";
     if(current_user_can('edit_posts') && get_option('minimax_frontend_editing',0)==1 && (is_page()||is_single()))
-    $dialog = '<div id="dialog" title="Basic dialog">Dialog</div><input type="hidden" name="frontend_minimax" value="1" class="mx-input" />
-    <input type="hidden" name="post_id" value="'.$pid.'" class="mx-input" />
-    <div id="mx-toolbar" class="w3eden">
-    <div class="panel panel-default">
-    <div class="panel-heading">Insert Row <a class="pull-right btn btn-xs btn-danger" title="Disable Front-end Editing"  href="'.home_url('/?mxfrontend=0').'"><i class="fa fa-times"></i></a></div>
-    <div class="panel-body">
-    <a href="#" rel="col-1" holder="#layout_'.get_post_type().'" class="insert-layout  btn btn-sm btn-default btn-block"><i class="fa fa-plus-circle"></i>1 Col Row</a>
-    <a href="#" rel="col-2" holder="#layout_'.get_post_type().'" class="insert-layout  btn btn-sm btn-default btn-block "><i class="fa fa-plus-circle"></i>2 Cols Row</a>
-    <a href="#" rel="col-3" holder="#layout_'.get_post_type().'" class="insert-layout  btn btn-sm btn-default btn-block "><i class="fa fa-plus-circle"></i>3 Cols Row</a>
-    <a href="#" rel="col-4" holder="#layout_'.get_post_type().'" class="insert-layout  btn btn-sm btn-default btn-block "><i class="fa fa-plus-circle"></i>4 Cols Row</a>
-    <a href="#" rel="col-5" holder="#layout_'.get_post_type().'" class="insert-layout  btn btn-sm btn-default btn-block "><i class="fa fa-plus-circle"></i>5 Cols Row</a>
-    <a href="#" rel="col-6" holder="#layout_'.get_post_type().'" class="insert-layout  btn btn-sm btn-default btn-block "><i class="fa fa-plus-circle"></i>6 Cols Row</a>
-    </div>
-    <div class="panel-footer">
-    <button class="btn btn-primary btn-block" id="scng"><i class="fa fa-save"></i> Save Changes</button>
-    </div></div></div>';
+    $dialog =   '<div id="dialog" title="Basic dialog">Dialog</div>
+                    <input type="hidden" name="frontend_minimax" value="1" class="mx-input" />
+                    <input type="hidden" name="post_id" value="'.$pid.'" class="mx-input" />
+                    <div id="mx-toolbar" class="w3eden">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Insert Row <a class="pull-right btn btn-xs btn-danger" title="Disable Front-end Editing"  href="'.home_url('/?mxfrontend=0').'"><i class="fa fa-times"></i></a></div>
+                        <div class="panel-body">
+                        <a href="#" rel="col-1" holder="#layout_'.get_post_type().'" class="insert-layout  btn btn-sm btn-default btn-block "><i class="fa fa-plus-circle"></i>1 Col Row</a>
+                        <a href="#" rel="col-2" holder="#layout_'.get_post_type().'" class="insert-layout  btn btn-sm btn-default btn-block "><i class="fa fa-plus-circle"></i>2 Cols Row</a>
+                        <a href="#" rel="col-3" holder="#layout_'.get_post_type().'" class="insert-layout  btn btn-sm btn-default btn-block "><i class="fa fa-plus-circle"></i>3 Cols Row</a>
+                        <a href="#" rel="col-4" holder="#layout_'.get_post_type().'" class="insert-layout  btn btn-sm btn-default btn-block "><i class="fa fa-plus-circle"></i>4 Cols Row</a>
+                        <a href="#" rel="col-5" holder="#layout_'.get_post_type().'" class="insert-layout  btn btn-sm btn-default btn-block "><i class="fa fa-plus-circle"></i>5 Cols Row</a>
+                        <a href="#" rel="col-6" holder="#layout_'.get_post_type().'" class="insert-layout  btn btn-sm btn-default btn-block "><i class="fa fa-plus-circle"></i>6 Cols Row</a>
+                        </div>
+                        <div class="panel-footer">
+                            <button class="btn btn-primary btn-block" id="scng"><i class="fa fa-save"></i> Save Changes</button>
+                        </div>
+                    </div>
+                </div>';
     if(current_user_can('edit_posts') && get_option('minimax_frontend_editing',0)==0 && (is_page()||is_single()))
-    $dialog = '<div id="mx-toolbar" style="position:fixed;left:10px;top:80px;" class="w3eden"><a title="Enable Front-end Editing" style="height: 50px;border-radius: 3px !important;" class="btn btn-lg btn-primary ttip" href="'.home_url('/?mxfrontend=1').'"><i class="fa fa-pencil"></i></a></div>';
+    $dialog =   '<div id="mx-toolbar" style="position:fixed;left:20px;top:80px;z-index:99999;" class="w3eden">
+                    <a title="Enable Front-end Editing" style="background:#34C3A7;height:50px; width:50px; border-radius:2px !important;" class="btn btn-lg ttip" href="'.home_url('/?mxfrontend=1').'">
+                        <i class="fa fa-pencil"></i>
+                    </a>
+                </div>';
 
     return $content.$data.$dialog;
 }
@@ -125,7 +139,7 @@ function minimax_insert_layout_front(){
     $rid = isset($ls['css_id'])?$ls['css_id']:"row_{$id}";
     $init = 1;
     if(current_user_can('edit_posts') && get_option('minimax_frontend_editing',0)==1){
-        echo '<li id="row_li_'.$id.'"><input class="mx-input" id="row_settings_'.$id.'" type="hidden" name="layout_settings['.$holder.']['.$layout.']['.$id.']" value="" /><div class="row-handler"><div class="sort"></div><div rel="row_li_'.$id.'" class="rdel delete dtooltip" title="Delete this Row?"></div><div  rel="row_settings_'.$id.'" class="rsettings dtooltip" title="Row CSS Settings"></div></div><div class="row-container"><input  class="mx-input" type="hidden" name="layouts['.$holder.']['.$id.']" value="'.$layout.'" />';
+        echo '<li id="row_li_'.$id.'"><input class="mx-input" id="row_settings_'.$id.'" type="hidden" name="layout_settings['.$holder.']['.$layout.']['.$id.']" value="" /><div class="row-handler"><div class="sort dtooltip" title="Drag this row"><i class="fa fa-arrows"></i></div><div rel="row_li_'.$id.'" class="rdel delete dtooltip" title="Delete this Row ?"><i class="fa fa-trash-o"></i></div><div  rel="row_settings_'.$id.'" class="rsettings dtooltip" title="Row CSS Settings"><i class="fa fa-cog"></i></div></div><div class="row-container"><input  class="mx-input" type="hidden" name="layouts['.$holder.']['.$id.']" value="'.$layout.'" />';
     echo '<div class="minimax_content_area borderfocus row '.$ls['css_class'].'" id="'.$rid.'" style="'.$ls['css_txt'].'" >';
 
         $cols = (int)str_replace("col-","", $_GET['layout']);
@@ -172,7 +186,7 @@ function minimax_render_layout_frames($holder){
     endif;
 } 
 
-//Render layout (site)
+//Render saved layout frames (site)
 function minimax_render_layout($layout, $id, $holder = '') {
     $minimax_options = get_option("wpeden_admin");
     $gs = get_post_meta(get_the_ID(),'minimax_grid_settings',true);
@@ -204,20 +218,20 @@ function minimax_render_layout($layout, $id, $holder = '') {
     if(count($minimax_layout_settings)==0 || !is_array($minimax_layout_settings)) $mls = "";
     else $mls =  $minimax_layout_settings[$holder][$layout][$id];
     $rid = $ls['css_id']?$ls['css_id']:"row_{$id}";
+    
+    $preh = $posh = "";
 
     if(current_user_can('edit_posts') && get_option('minimax_frontend_editing',0)==1 && (is_page()||is_single())){
-    echo '<li id="row_li_'.$id.'"><input class="mx-input" id="row_settings_'.$id.'" type="hidden" name="layout_settings['.$holder.']['.$layout.']['.$id.']" value="'.$mls.'" />
-    <div class="row-handler"><div class="sort"></div><div rel="row_li_'.$id.'" class="rdel delete dtooltip" title="Delete this Row?"></div><div  rel="row_settings_'.$id.'" class="rsettings dtooltip" title="Row CSS Settings"></div></div>
-    <div class="row-container"><input  class="mx-input" type="hidden" name="layouts['.$holder.']['.$id.']" value="'.$layout.'" />';}
-    echo '<div class="minimax_content_area row '.$ls['css_class'].'" id="'.$rid.'" style="'.$row_style.'" >';
-
-    if(!isset($gs[$id]))
-    include(MX_THEME_DIR."/layouts/{$layout_folder}/{$layout}.layout.php");
-    else  {
-        $cols = count($gs[$id]);
-        include(MX_THEME_DIR."/layouts/{$layout_folder}/dynamic.layout.php");
+        echo '<li id="row_li_'.$id.'"><input class="mx-input" id="row_settings_'.$id.'" type="hidden" name="layout_settings['.$holder.']['.$layout.']['.$id.']" value="'.$mls.'" />
+        <div class="row-handler"><div class="sort dtooltip" title="Drag this row"><i class="fa fa-arrows"></i></div><div rel="row_li_'.$id.'" class="rdel delete dtooltip" title="Delete this Row ?"><i class="fa fa-trash-o"></i></div><div  rel="row_settings_'.$id.'" class="rsettings dtooltip" title="Row CSS Settings"><i class="fa fa-cog"></i></div><div class="rclone dtooltip" title="Clone this Row" rel="row_li_'.$id.'" rthis="'.$id.'"><i class="fa fa-copy"></i></div></div>
+        <div class="row-container"><input  class="mx-input" type="hidden" name="layouts['.$holder.']['.$id.']" value="'.$layout.'" />';    
     }
-    echo "<div style='clear: both;'></div></div>";
+    echo '<div class="minimax_content_area row '.$ls['css_class'].'" id="'.$rid.'" style="'.$row_style.'" >'.$preh;
+
+    $cols = count($gs[$id]);
+    include(MX_THEME_DIR."/layouts/{$layout_folder}/dynamic.layout.php");
+        
+    echo "<div style='clear: both;'></div>{$posh}</div>";
     if(current_user_can('edit_posts') && get_option('minimax_frontend_editing',0)==1 && (is_page()||is_single()))
     echo "</div><div class='clear'></div></li>";
 
@@ -346,8 +360,8 @@ function minimax_render_modules($id){
         $mod_style .= $ms['border_color'] ? "border-left:".$ms['border_left']."px solid ".$ms['border_color'].";" : "";    
         $mod_style .= "margin:".$ms['margin_top']."px ".$ms['margin_right']."px ".$ms['margin_bottom']."px ".$ms['margin_left']."px;" ;
         $mod_style .= "padding:".$ms['padding_top']."px ".$ms['padding_right']."px ".$ms['padding_bottom']."px ".$ms['padding_left']."px;" ;
-        $mod_class = $ms['css_class'];
-        
+        $mod_class  = $ms['css_class'];
+
         //Get general module options
         $instance = @array_shift(array_shift($instance));     
         if($instance):
@@ -362,12 +376,12 @@ function minimax_render_modules($id){
     echo <<<HFL
         <input class="mx-input" type="hidden" id="modid_module_{$id}_{$z}" name="modules[{$id}][]" value="{$module}" />
         <input class="mx-input" id="modset_module_{$id}_{$z}" type="hidden" name="modules_settings[{$id}][]" value="{$minimax_modules_settings[$id][$index]}" />
-        <div class="mod-ctrl">{$mod->name}<nobr class="ctl"><i class="handle icon icon-move"></i><i class='delete_module icon icon-trash' rel='#module_{$id}_{$z}'></i><i class="insert icon icon-cog" wname="{$mod->name}" id="modset_module_{$id}_{$z}_icon" rel="$module" data="{$id}|{$mid}" datafield="modset_module_{$id}_{$z}"></i></nobr></div>
-        <div class='minimax_module $module $mod_class' style='$mod_style'>
+        <div class="mod-ctrl">{$mod->name}<nobr class="ctl"><i class="handle icon icon-move dtooltip" title="Drag this module"></i><i class='delete_module icon icon-trash dtooltip' title='Delete this module?' rel='#module_{$id}_{$z}'></i><i class="insert icon icon-cog dtooltip" title="Module settings" wname="{$mod->name}" id="modset_module_{$id}_{$z}_icon" rel="$module" data="{$id}|{$mid}" datafield="modset_module_{$id}_{$z}"></i><i class="module-clone icon icon-copy dtooltip" title="Clone this module" col_id = "module_{$id}_{$z}" mod_name="{$mod->name}" mod_id={$module}></i></nobr></div>
+        <div class='minimax_module $module $mod_class' style='$mod_style' data-wow-duration='1s' data-wow-delay='1s'>
 
 HFL;
     } else
-        echo "<div class='minimax_module $module $mod_class' style='$mod_style'>";
+        echo "<div class='minimax_module $module $mod_class' style='$mod_style' data-wow-duration='1s' data-wow-delay='1s'>";
 
     the_widget($module,$ins);
 
@@ -428,20 +442,41 @@ function minimax_module_settings(){
           //jQuery( "#mod_set_tabs" ).tabs();
         });
         </script>
-    <style>.nav-tabs a{ outline: 0 !important; box-shadow: none !important;}</style>
+      
+    <style>
+        .nav-tabs{
+            margin-bottom: 0 !important;
+            padding-bottom: 0 !important;
+        }
+        .tab-content{
+            border: 1px solid #dddddd;
+            border-top: 0;
+            padding: 20px;
+        }
+        .nav-tabs a{
+            font-weight: 900;
+            color: #aaaaaa;
+        }
+        .nav-tabs a:focus,
+        .nav-tabs a:active{
+            outline: none !important;
+            box-shadow: none !important;
+        }
+    </style>
         <div class="w3eden">
         <ul class="nav nav-tabs">
           <li class="tab active"><a data-toggle="tab" href="#tabs-1">General Options</a></li>
           <li class="tab"><a data-toggle="tab" href="#tabs-2">Extra Styling Options</a></li>
         </ul>
-     <div class="tab-content" style="padding: 20px;border: 1px solid #dddddd; border-top: 0">
+        <div class="tab-content">
         <div class="tab-pane active" id="tabs-1">
           <?php $mxwidgets[$_GET['module']]->form($iinstance);  ?>
         </div>
         <div class="tab-pane" id="tabs-2">
             <?php include("module-settings.php"); ?>    
         </div>
-      </div></div><br/>
+        </div>
+        </div><br/>
     <?php
         
     echo "

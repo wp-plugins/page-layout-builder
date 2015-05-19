@@ -1,15 +1,7 @@
 jQuery(function(){
             jQuery('#dialog').dialog();
             jQuery('#dialog').dialog('close');
-            //jQuery("#content-tmce").after('<a onclick="switchtominimax();" class="hide-if-no-js wp-switch-editor switch-minimax" id="content-minimax">MiniMax</a>');
-            //if(pageid!='')
-            //var mxnb = "<div style='float:right;' class='ghbutton-group'><a class='ghbutton icon arrowdown' href='"+userSettings.url+"wp-admin/?minimaxexport="+pageid+"' >Export Layout</a><a class='ghbutton icon arrowup import-layout' rel='"+pageid+"' href='#' >Import Layout</a><a class='ghbutton icon loop' href='"+userSettings.url+"wp-admin/?minimaxclone="+pageid+"' >Clone</a></div>";
-            //else
-            //var mxnb = "<div style='float:right;' class='ghbutton-group'><a class='ghbutton icon arrowdown' href='#' onclick='alert(\""+post_type+" is not published or saved yet!\");return false;' >Export Layout</a><a class='ghbutton icon arrowup' href='#' onclick='alert(\""+post_type+" is not published or saved yet!\");return false;' >Import Layout</a><a class='ghbutton icon loop' href='#' onclick='alert(\""+post_type+" is not published or saved yet!\");return false;' >Clone</a></div>";
             var mxnb = '';
-            //jQuery('#wp-admin-bar-root-default').after("<div id='minimax-builder' class='w3eden'><div class='minimax-toolbar'> <span style='font-weight: 700;margin-left: 30px'>Insert Row:</span> <div class='btn-group'><a class='insert-layout btn btn-primary ' holder='#layout_"+post_type+"' rel='col-1' href='#' >1 Col</a><a class='insert-layout  btn btn-primary ' holder='#layout_"+post_type+"' rel='col-2' href='#' >2 Cols</a><a class='insert-layout  btn btn-primary ' holder='#layout_"+post_type+"' rel='col-3' href='#' >3 Cols</a><a class='insert-layout  btn btn-primary ' holder='#layout_"+post_type+"' rel='col-4' href='#' >4 Cols</a><a class='insert-layout  btn btn-primary ' holder='#layout_"+post_type+"' rel='col-5' href='#' >5 Cols</a><a class='insert-layout  btn btn-primary ' holder='#layout_"+post_type+"' rel='col-6' href='#' >6 Cols</a></div>"+mxnb+"</div><div id='lbrd'></div></div>");
-            //jQuery('#lbrd').html(jQuery('#'+post_type+'-minimax-layout-builder .inside').html());
-            //jQuery('#'+post_type+'-minimax-layout-builder .inside').html('');
             jQuery('#content-html,#content-tmce').click(function(){             
             jQuery('.wp-switch-editor').removeClass('tactive');     
             if(this.id=='content-tmce') {jQuery('#ed_toolbar').hide(); jQuery('#content-tmce').addClass('tactive');   }
@@ -23,12 +15,11 @@ jQuery(function(){
             });
             
             jQuery(window).resize(function(){
-               // reset_layout_width();
             });
     
-      jQuery('.module-preview.w3eden *').live('click',function(e){
-          e.preventDefault();
-      });
+        jQuery('.module-preview.w3eden *').live('click',function(e){
+            e.preventDefault();
+        });
 
     jQuery(document).on('click', '#scng', function(){
         var data = jQuery('.mx-input').serializeArray();
@@ -76,14 +67,13 @@ jQuery(function(){
       
       jQuery('.admin-cont').css('min-height',(jQuery('body').height()-120)+'px');
       
-      jQuery('.insert-layout').live('click',function(){       
-       //jQuery(this).find('img').fadeTo('slow',0.3);       
-       if(holder=='') { 
-           holder = jQuery(this).attr('holder')+" .layout-data";           
-           holder_id = jQuery(this).attr('holder').replace("#layout_","");
-       }       
-       load_layout(this.rel);       
-       return false;
+      jQuery('.insert-layout').live('click',function(){            
+            if(holder=='') { 
+                holder = jQuery(this).attr('holder')+" .layout-data";           
+                holder_id = jQuery(this).attr('holder').replace("#layout_","");
+            }       
+            load_layout(this.rel);       
+            return false;
        });
       
       jQuery('#theme-admin-menu a').click(function(){
@@ -101,48 +91,85 @@ jQuery(function(){
       jQuery('.select-layout').live('click',function(){
           holder = this.rel+" .layout-data";
           holder_id = this.rel.replace("#layout_","");
-          //tb_show("Insert Layout","themes.php?page=minimax&task=select_layout&TB_iframe=1&width=400&height=270");
-          //jQuery('#ui-dialog-title-dialog').html('Available Modules');
           jQuery('#ui-dialog-title-dialog').html('Select Layout');
           jQuery( "#dialog" ).dialog( "open" ).load("themes.php?page=minimax&task=select_layout&width=400&height=270");
           return false;
       });
       
       //Layout Settings
+//      var layout_settings_id = "",layout_settings_data="";
+//      jQuery('.rsettings').live('click',function(){
+//          layout_settings_id = jQuery(this).attr('rel');          
+//          layout_settings_data = jQuery('#'+layout_settings_id).val();
+//          jQuery( "#dialog" ).dialog( 'option', 'title','Row Settings');
+//          jQuery( "#dialog" ).dialog( 'option', 'width',660);
+//          jQuery( "#dialog" ).dialog( "open" ).load(adminurl+"admin-ajax.php?page=minimax&action=layout_settings&layout_settings_id="+layout_settings_id+"&layout_settings_data="+layout_settings_data+"&modal=1&width=400&height=200");
+//          return false;
+//      });
+      
+
+      //Layout Settings
       var layout_settings_id = "",layout_settings_data="";
       jQuery('.rsettings').live('click',function(){
           layout_settings_id = jQuery(this).attr('rel');          
           layout_settings_data = jQuery('#'+layout_settings_id).val();
+          
+          jQuery( "#dialog" ).dialog( {modal: true} );
           jQuery( "#dialog" ).dialog( 'option', 'title','Row Settings');
           jQuery( "#dialog" ).dialog( 'option', 'width',660);
-          //tb_show("Layout Settings",adminurl+"admin-ajax.php?page=minimax&action=layout_settings&layout_settings_id="+layout_settings_id+"&layout_settings_data="+layout_settings_data+"&modal=1&width=400&height=200");
+          var left = jQuery( window ).width()/2 - 330;
+          var top = jQuery(document).scrollTop();
+          jQuery(".ui-dialog").css({'left':left,'top':top});
+          jQuery( "#dialog" ).html( '<img style="margin-left: 39%; margin-top: 100px; margin-bottom: 140px;" src='+base_theme_url+'/images/preloader.gif />');
           jQuery( "#dialog" ).dialog( "open" ).load(adminurl+"admin-ajax.php?page=minimax&action=layout_settings&layout_settings_id="+layout_settings_id+"&layout_settings_data="+layout_settings_data+"&modal=1&width=400&height=200");
           return false;
       });
       
+      
       //Delete Layout
       jQuery('.rdel').live('click',function(){           
-          jQuery(this).after("<div class='besure' style='display:none;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;z-index:99999999;position:absolute;color:#000 !important;border:5px solid rgba(0,0,0,0.4);'><div style='padding:10px;background:#fff;font-family:verdana;font-size:10px'>Are you sure? <a style='-webkit-border-radius: 15px;-moz-border-radius: 15px;border-radius: 15px;background:#800;padding:4px 8px 6px 8px;color:#fff;text-decoration:none;' href='#' onclick='jQuery(\".besure\").fadeOut(function(){jQuery(this).remove();jQuery(\"#"+jQuery(this).attr("rel")+"\").slideUp(function(){jQuery(this).remove();});});return false;'>y</a> <a href='' style='-webkit-border-radius: 15px;-moz-border-radius: 15px;border-radius: 15px;background:#080;padding:4px 8px 6px 8px;color:#fff;text-decoration:none;' onclick='jQuery(\".besure\").fadeOut(function(){jQuery(this).remove();mxdm=null;});return false;'>n</a></div></div>");
+          jQuery(this).after("<div class='besure' style='display:none;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;left:28px;top:10px;width: 160px;z-index:99999999;position:absolute;color:#000 !important;border:5px solid rgba(0,0,0,0.4);'><div style='padding:10px;background:#fff;font-family:verdana;font-size:10px'>Are you sure? <a style='-webkit-border-radius: 15px;-moz-border-radius: 15px;border-radius: 15px;background:#800;padding:4px 8px 6px 8px;color:#fff;text-decoration:none;' href='#' onclick='jQuery(\".besure\").fadeOut(function(){jQuery(this).remove();jQuery(\"#"+jQuery(this).attr("rel")+"\").slideUp(function(){jQuery(this).remove();});});return false;'>y</a> <a href='' style='-webkit-border-radius: 15px;-moz-border-radius: 15px;border-radius: 15px;background:#080;padding:4px 8px 6px 8px;color:#fff;text-decoration:none;' onclick='jQuery(\".besure\").fadeOut(function(){jQuery(this).remove();mxdm=null;});return false;'>n</a></div></div>");
           jQuery('.besure').fadeIn();                     
       });
       
       
       
       //Select Module
+//      var insertto = "", module_index = "", msf_mid = "", msf_title = "";
+//      jQuery(document).on('click', '.btnAddMoudule',function(){
+//          insertto = '#'+this.rel+' .module';          
+//          module_index = this.rel;
+//          jQuery( "#dialog" ).dialog( {modal: true} );
+//          jQuery( "#dialog" ).dialog( "open" ).load(adminurl+"admin-ajax.php?page=minimax&action=insert_module&modal=1&width=770&height=600");
+//          jQuery( "#dialog" ).dialog( 'option', 'width',940);
+//          jQuery( "#dialog" ).dialog( 'option', 'title','Modules');
+//          return false;
+//      });
+      
+      
+      //Select Module
       var insertto = "", module_index = "", msf_mid = "", msf_title = "";
-      jQuery(document).on('click', '.btnAddMoudule',function(){
+      jQuery('.btnAddMoudule').live('click',function(){
           insertto = '#'+this.rel+' .module';          
           module_index = this.rel;
-          //tb_show("Insert Module",adminurl+"admin-ajax.php?page=minimax&action=insert_module&modal=1&width=510&height=500")
-          //jQuery( "#dialog" ).dialog( 'option', 'position',{my:"top+50px,center"});
-          //jQuery( "#dialog" ).dialog( 'option', 'width',940);
-          //jQuery( "#dialog" ).dialog( 'option', 'height',600);
+          
+          var screen_width = jQuery( window ).width();
+          
           jQuery( "#dialog" ).dialog( {modal: true} );
-          jQuery( "#dialog" ).dialog( "open" ).load(adminurl+"admin-ajax.php?page=minimax&action=insert_module&modal=1&width=770&height=600");
-          jQuery( "#dialog" ).dialog( 'option', 'width',940);
+          jQuery( "#dialog" ).dialog( 'option', 'width',screen_width*0.7);
           jQuery( "#dialog" ).dialog( 'option', 'title','Modules');
+          var left = jQuery( window ).width()/2 - (screen_width*0.7)/2;
+          var top = jQuery(document).scrollTop();
+          jQuery(".ui-dialog").css({'left':left,'top':top});
+          
+          jQuery( "#dialog" ).html( '<img style="margin-left: 42%; margin-top: 100px; margin-bottom: 140px;" src='+base_theme_url+'/images/preloader.gif />');
+          
+          jQuery( "#dialog" ).dialog( "open" ).load(adminurl+"admin-ajax.php?page=minimax&action=insert_module&modal=1&width=770&height=600");
           return false;
       });
+      
+      
+      
       
       //Import Layout
       var insertto = "", module_index = "", msf_mid = "", msf_title = "";
@@ -154,20 +181,44 @@ jQuery(function(){
       });
       
       //Insert Module
+//      jQuery('.insert').live('click',function(){
+//          
+//          msf_mid = jQuery(this).attr('rel');
+//          msf_title = jQuery(this).attr('wname');
+//          var data = jQuery(this).attr('data')==undefined?"":"&instance="+jQuery(this).attr('data');
+//          var datafield = jQuery(this).attr('datafield')==undefined?"":"&datafield="+jQuery(this).attr('datafield');          
+//          var post = "&post="+pageid;
+//          var data_inst = jQuery('#'+jQuery(this).attr('datafield')).val();
+//                             
+//          jQuery( "#dialog" ).dialog( 'option', 'title', msf_title);
+//          jQuery( "#dialog" ).html( 'Loading...');
+//          jQuery( "#dialog" ).dialog( 'option', 'width',700);
+//          jQuery( "#dialog" ).dialog( 'option', 'modal',true);
+//          jQuery( "#dialog" ).dialog('open').load(adminurl+"admin-ajax.php?page=minimax&action=module_settings&modal=1&width=510&height=500&module="+msf_mid+data+datafield+post,{data_inst:data_inst});
+//
+//          return false;
+//      });
+      
+      
+            //Insert Module
       jQuery('.insert').live('click',function(){
           
-          msf_mid = jQuery(this).attr('rel');
+          msf_mid = jQuery(this).attr('rel');          
           msf_title = jQuery(this).attr('wname');
-          var data = jQuery(this).attr('data')==undefined?"":"&instance="+jQuery(this).attr('data');
-          var datafield = jQuery(this).attr('datafield')==undefined?"":"&datafield="+jQuery(this).attr('datafield');          
-          //var post = typenow=='page'?"&post="+pageid:"";
+          var data = jQuery(this).attr('data') == undefined ? "" : "&instance="+jQuery(this).attr('data');
+          var datafield = jQuery(this).attr('datafield')==undefined?"":"&datafield="+jQuery(this).attr('datafield');
           var post = "&post="+pageid;
           var data_inst = jQuery('#'+jQuery(this).attr('datafield')).val();
-                             
+                              
+          jQuery( "#dialog" ).dialog( {modal: true} );                    
           jQuery( "#dialog" ).dialog( 'option', 'title', msf_title);
-          jQuery( "#dialog" ).html( 'Loading...');
+          var left = jQuery( window ).width()/2 - 330;
+          var top = jQuery(document).scrollTop();
+          jQuery(".ui-dialog").css({'left':left,'top':top});
+          
+          jQuery( "#dialog" ).html( '<img style="margin-left: 39%; margin-top: 100px; margin-bottom: 140px;" src='+base_theme_url+'/images/preloader.gif />');
           jQuery( "#dialog" ).dialog( 'option', 'width',700);
-          jQuery( "#dialog" ).dialog( 'option', 'modal',true);
+          jQuery( "#dialog" ).dialog( 'option', 'dialogClass','mce');
           jQuery( "#dialog" ).dialog('open').load(adminurl+"admin-ajax.php?page=minimax&action=module_settings&modal=1&width=510&height=500&module="+msf_mid+data+datafield+post,{data_inst:data_inst});
 
           return false;
@@ -176,10 +227,49 @@ jQuery(function(){
       
       //Delete Module              
       jQuery('.delete_module').live('click',function(){            
-          jQuery(this).after("<div class='besure' style='display:none;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;z-index:99999999;position:absolute;color:#000;border:5px solid rgba(0,0,0,0.4);'><div style='padding:10px;background:#fff;color: #000000 !important;font-family: verdana;font-size:10px'>Are you sure? <a style='-webkit-border-radius: 15px;-moz-border-radius: 15px;border-radius: 15px;background:#800;padding:4px 8px 6px 8px;color:#fff;text-decoration:none;' href='#' onclick='jQuery(\".besure\").fadeOut(function(){jQuery(this).remove();jQuery(\""+jQuery(this).attr("rel")+"\").slideUp(function(){jQuery(this).remove();});});return false;'>y</a> <a href='' style='-webkit-border-radius: 15px;-moz-border-radius: 15px;border-radius: 15px;background:#080;padding:4px 8px 6px 8px;color:#fff;text-decoration:none;' onclick='jQuery(\".besure\").fadeOut(function(){jQuery(this).remove();mxdm=null;});return false;'>n</a></div></div>");
+          jQuery(this).after("<div class='besure' style='display:none;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;z-index:99999999;position:absolute;right:0px;top:30px;color:#000;border:5px solid rgba(0,0,0,0.4);'><div style='padding:10px;background:#fff;color: #000000 !important;font-family: verdana;font-size:10px'>Are you sure? <a style='-webkit-border-radius: 15px;-moz-border-radius: 15px;border-radius: 15px;background:#800;padding:4px 8px 6px 8px;color:#fff;text-decoration:none;' href='#' onclick='jQuery(\".besure\").fadeOut(function(){jQuery(this).remove();jQuery(\""+jQuery(this).attr("rel")+"\").slideUp(function(){jQuery(this).remove();});});return false;'>y</a> <a href='' style='-webkit-border-radius: 15px;-moz-border-radius: 15px;border-radius: 15px;background:#080;padding:4px 8px 6px 8px;color:#fff;text-decoration:none;' onclick='jQuery(\".besure\").fadeOut(function(){jQuery(this).remove();mxdm=null;});return false;'>n</a></div></div>");
           jQuery('.besure').fadeIn();
           
       });
+      
+      
+      //Clone a module
+     jQuery('.module-clone').live('click', function() {
+
+        var d = new Date();
+        var new_id = d.getTime();
+        var col_id = jQuery(this).attr('col_id');
+        var rel = jQuery('#'+col_id).attr('rel');
+        var new_col_id = 'module_'+rel+'_'+new_id;
+        
+        var cloned_row = jQuery("#" + col_id).clone().attr('id', new_col_id);
+        var re = new RegExp(col_id,"g");
+        
+        cloned_row.html(function(i, oldHTML) {
+            return oldHTML.replace(re, new_col_id);
+        });
+
+        jQuery("#"+col_id).after(cloned_row);
+
+        });
+      
+     //Clone a row
+     jQuery('.rclone').live('click', function() {
+
+        var d = new Date();
+        var new_id = d.getTime();
+        var row_id = jQuery(this).attr('rel');
+        var gid = jQuery(this).attr('rthis');
+        var cloned_row = jQuery("#" + row_id).clone().attr('id', 'row_li_'+new_id);
+        var re = new RegExp(gid,"g");
+        
+        cloned_row.html(function(i, oldHTML) {
+            return oldHTML.replace(re, new_id);
+        });
+
+        jQuery("#"+row_id).after(cloned_row);
+
+        });
       
       
       // Form Submit
@@ -199,13 +289,13 @@ jQuery(function(){
       });            
       
       jQuery('#module-settings-form').live('submit',function(){
-          jQuery(this).append('<img src="images/loading.gif" /> Saving...');
+          jQuery(this).append('<i class="fa fa-spinner"></i> Saving...');
           jQuery(this).ajaxSubmit({              
               url:ajaxurl+'?page=minimax&action=module_settings_data',
               success:function(res){
                   var d = new Date();
                   var z = d.getTime();
-                  jQuery(insertto).append('<li id="module_'+module_index+'_'+z+'" rel="'+module_index+'" class="minimax_module '+msf_mid+'"><input class="mx-input" type="hidden" id="modid_module_'+module_index+'_'+z+'" name="modules['+module_index+'][]" value="'+msf_mid+'" /><input class="mx-input" type="hidden" name="modules_settings['+module_index+'][]" id="modset_module_'+module_index+'_'+z+'" value="'+res+'" /><div class="mod-ctrl">'+msf_title+'<nobr class="ctl"><i class="handle icon icon-move"></i><i class="delete_module icon icon-trash" rel="#module_'+module_index+'_'+z+'"></i><i class="insert icon icon-cog" rel="'+msf_mid+'" datafield="modset_module_'+module_index+'_'+z+'" data="'+module_index+'|0"></i></nobr></div><div class="module-p"><i class="icon-spinner icon-spin"></i> Loading Preview...</div><div class="clear"</div></li>');
+                  jQuery(insertto).append('<li id="module_'+module_index+'_'+z+'" rel="'+module_index+'" class="minimax_module '+msf_mid+'"><input class="mx-input" type="hidden" id="modid_module_'+module_index+'_'+z+'" name="modules['+module_index+'][]" value="'+msf_mid+'" /><input class="mx-input" type="hidden" name="modules_settings['+module_index+'][]" id="modset_module_'+module_index+'_'+z+'" value="'+res+'" /><div class="mod-ctrl">'+msf_title+'<nobr class="ctl"><i class="handle icon icon-move"></i><i class="delete_module icon icon-trash" rel="#module_'+module_index+'_'+z+'"></i><i class="insert icon icon-cog" rel="'+msf_mid+'" datafield="modset_module_'+module_index+'_'+z+'" data="'+module_index+'|0"></i></nobr></div><div class="module-p"><i class="icon-spinner icon-spin"></i> Loading Preview...</div><div class="clear"></div></li>');
                   jQuery( insertto ).sortable({handle : '.handle', connectWith: "ul.module"});
                   jQuery( insertto ).disableSelection({handle : '.handle'});   
                   jQuery("#dialog").html("Loading...");                
@@ -220,7 +310,7 @@ jQuery(function(){
       
       jQuery('#layout-settings-form').live('submit',function(){
           var layout_settings_id = jQuery(this).attr('rel');
-          jQuery(this).append('<div style="position: absolute;margin-top: -5px"><img src="images/loading.gif" /> Saving...</div>');
+          jQuery(this).append('<div style="position: absolute;margin-top: -5px"><i class="fa fa-spinner"></i> Saving...</div>');
           jQuery(this).ajaxSubmit({                        
               url:ajaxurl+'?page=minimax&action=layout_settings_data',
               success:function(res){
@@ -234,7 +324,7 @@ jQuery(function(){
       
       jQuery('#update-module-settings-form').live('submit',function(){
           var datafield = jQuery(this).attr('datafield');
-          jQuery(this).append('<img src="images/loading.gif" /> Saving...');
+          jQuery(this).append('<i class="fa fa-spinner"></i> Saving...');
           jQuery(this).ajaxSubmit({              
               url:ajaxurl+'?page=minimax&action=module_settings_data',
               success:function(res){
@@ -254,15 +344,22 @@ jQuery(function(){
           return false;
       });
       
-      jQuery('.module').sortable({handle : '.handle', connectWith: "ul.module"});
+      /* sort event handler to control sortable element offset issue in FF [Shahriar][v.3.1.3]*/
+      jQuery('.module').sortable({handle : '.handle',
+                                    sort : function(event, ui) {
+                                                var $target = jQuery(event.target);
+                                                if (!/html|body/i.test($target.offsetParent()[0].tagName)) {
+                                                var top = event.pageY - $target.offsetParent().offset().top - (ui.helper.outerHeight(true) / 2);
+                                                ui.helper.css({'top' : top + 'px'});
+                                                }
+                                            },
+                                connectWith: "ul.module"
+                            });
       
       jQuery( '.layout-data' ).sortable({handle : '.row-handler'});
       jQuery( '.layout-data' ).disableSelection();      
 
       jQuery('.module').bind('sortupdate',function(event, ui){
-          //console.log(event);
-          //console.log(ui);
-          //console.log(jQuery(ui.item).parent().attr(''));
           var d = new Date();
           var z = d.getTime();
           var id = jQuery(jQuery(ui.item).parent()).attr('rel')+'_'+z;
@@ -272,8 +369,7 @@ jQuery(function(){
           jQuery(ui.item).html(jQuery(ui.item).html().replace(new RegExp(rplc,"g"),rplcw));
           jQuery(ui.item).html(jQuery(ui.item).html().replace(new RegExp(rplc+'_([\d]*)',"g"),rplcw+'_'+z));
            
-      }); //*/
-      //jQuery('.ghbutton').addClass('button button-small button-secondary').removeClass('ghbutton').css('border-radius','0px').css('padding','4px');
+      });
   });
   
   var holder = "", holder_id = "";
@@ -321,9 +417,8 @@ jQuery(function(){
         
  //function for the module activate/deactivate
  jQuery('.mod_name').live("click",function(){
-     //alert("");
+
      var obj=this;
-     //jQuery(this).find('.icon').removeClass('icon-ok icon-remove').addClass('icon-spinner icon-spin');
      jQuery(this).html('<i class="icon-spinner icon-spin"></i>');
      jQuery('.mod_'+jQuery(obj).attr("rel")).removeClass(jQuery('.mod_'+jQuery(obj).attr("rel")).attr("rel")); 
      jQuery('.mod_'+jQuery(obj).attr("rel")).addClass( "loading");    
@@ -332,22 +427,18 @@ jQuery(function(){
         status:jQuery(this).attr("status"),
         module: jQuery(this).attr("rel")
      },function(res){         
-         //alert(jQuery(_obj).attr("rel"));
           
          jQuery('.mod_'+jQuery(obj).attr("rel")).removeClass(jQuery('.mod_'+jQuery(obj).attr("rel")).attr("rel"));           
          jQuery('.mod_'+jQuery(obj).attr("rel")).addClass( res); 
          jQuery('.mod_'+jQuery(obj).attr("rel")).attr("rel",res);
-         //change the status
-         //alert(jQuery('#st_'+jQuery(this).attr("rel")).text());
+
          if(res=="power_on"){
-             //alert(jQuery(obj).find('.icon').attr('class'));
              jQuery(obj).html('Deactivate');
              jQuery(obj).attr('status','power_on');
              jQuery('#st_'+jQuery(obj).attr("rel")).removeClass("mod_status_Inactive").removeClass("label-danger");
              jQuery('#st_'+jQuery(obj).attr("rel")).addClass("mod_status_Active").addClass('label-success');
              jQuery('#st_'+jQuery(obj).attr("rel")).html("active");
          }else{
-             //alert(jQuery(obj).find('.icon').attr('class'));
              jQuery(obj).attr('status','power_off');
              jQuery(obj).html('Activate');
              jQuery('#st_'+jQuery(obj).attr("rel")).removeClass("mod_status_Active").removeClass("label-success");
@@ -357,4 +448,11 @@ jQuery(function(){
      });
 
 
- });        
+});
+
+/*Fixes link field focus issue in tinyMCE link dialog (Added V.3.0.8)*/
+jQuery(document).on('focusin', function(e) {
+    if (jQuery(e.target).closest("#wp-link-wrap").length) {
+        e.stopImmediatePropagation();
+    }
+});

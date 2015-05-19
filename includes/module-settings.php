@@ -68,6 +68,10 @@
         padding: 3px 0px;
         border-radius: 3px;
     }
+    p{
+        margin-top: 13px;
+        margin-bottom: 13px;
+    }
     p,p label{
         font-size: 13px;
     }

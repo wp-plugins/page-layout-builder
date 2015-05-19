@@ -83,7 +83,7 @@ class MiniMax_tabwidget extends WP_Widget {
                 foreach($pid as $key => $val){
                     $pimg = get_post($val);
                     if($cnt == $temp) $cls = 'active'; else $cls = "";
-                    $ztabs .= "<a class='btn'>{$pimg->post_title}</a>";
+                    $ztabs .= "<a class='btn btn-default' style='border:1px solid #dedede;'>{$pimg->post_title}</a>";
                     ++$cnt;
                 }
             }
@@ -105,6 +105,7 @@ class MiniMax_tabwidget extends WP_Widget {
         $tab_posts = get_posts("post_type=minimax_tabs&posts_per_page=-1");   
         ?>
 
+        <div id="tabpane">
         <!--left box-->
         <div style="padding-top: 0;" id="poststuff" class="left_box postbox ">
         <h3 class="hndle"><span>Inactive Tabs</span></h3>
@@ -165,9 +166,13 @@ class MiniMax_tabwidget extends WP_Widget {
         </div>
         
         <div style="clear: both;"></div>
+        
         <p style="padding: 10px;background-color: #dedede;border-radius: 3px;">
             Tabs are custom posts. Add new Tab from <b>Dashboard >> Tabs >> Add Tab</b> menu. Drag Tabs from left to right box to insert them into page.
         </p>
+        
+        </div>
+        
         
         <script type="text/javascript">                        
         jQuery(document).ready(function(){
